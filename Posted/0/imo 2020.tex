@@ -1,0 +1,25 @@
+\documentclass[14pt]{extarticle}
+\usepackage{systeme}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+
+
+\setlength{\parindent}{0em}
+\begin{document}
+   \textbf{IMO 2020 Day 1}\\
+   
+   \textbf{Problem 1. }Consider the convex quadrilateral $ABCD$. The point $P$ is in the interior of $ABCD$. The following ratio equalities hold:
+		\begin{align*}
+			\angle PAD : \angle PBA : \angle DPA = 1:2:3 = \angle CBP : \angle BAP :\angle BPC.
+		\end{align*}
+	Prove that the following three lines meet in a point: the internal bisectors of angles $\angle ADP$ and $\angle PCB$ and the perpendicular bisector of segment $AB$.\\
+	
+	\textbf{Solution.} We will prove that indeed the three lines meet at the circumcenter of $ABP$.
+	For the convenience, let $\angle PAD = \alpha$ and $\angle CBP = \beta$.  Then, $\angle PBA= 2\alpha$,  $\angle DPA = 3\alpha$,  $\angle BAP = 2\beta$,  $\angle BPC = 3\beta$ \\
+	
+	Let  $O$ be the circumcenter of $ABP$. Since $\angle PCB = 180^\circ - \angle CBP - \angle BPC = 180^\circ - 4\beta$  and  $\angle POB = 2\angle PAB = 4\beta$,  then $BOPC$ is cyclic. Analogously we will find that $AOPD$ is also cyclic. \\
+	
+	Now, since $OPCB$ is cylic, observe that $\angle PCO = \angle PBO = \angle BPO = \angle BCO$. Analogously, $\angle PDO = \angle ODA$. Hence, the internal bisectors of angles $\angle ADP$ and $\angle PCB$ meet at point $O$. But, on the other hand, point $O$ is on the perpendicular bisector of segment $AB$ by definition. Therefore, our claim is complete. $\square$
+	
+\end{document}

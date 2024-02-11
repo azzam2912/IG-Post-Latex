@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage[a4paper, total={3.6in, 8in}]{geometry}
+
+\addtolength{\topmargin}{1in}
+\addtolength{\textheight}{2in} 
+\usepackage{amsmath, amsthm}
+\usepackage{amssymb}
+\usepackage{ulsy}
+
+
+
+\begin{document}
+	For $a > -4$ and $b > 0$, determine the minimum value of $$\frac{(a+b+4)^2}{2(a+4)}+\frac{512}{b^2}$$
+	\newpage
+	By AM-GM Inequality We have:
+	\begin{align*}
+		\dfrac{(a+b+4)^2}{2(a+4)}+\dfrac{512}{b^2} 
+		&= \dfrac{(a+4)^2+2(a+4)b+b^2}{2(a+4)}+\dfrac{2^{9}}{b^2}\\[5pt] &=\dfrac{a+4}{2}+b+\dfrac{b^2}{2(a+4)}+\dfrac{2^{9}}{b^2}\\[5pt] &=\dfrac{a+4}{2}+\dfrac{b}{2}+\dfrac{b}{2}+\dfrac{b^2}{2(a+4)}+\dfrac{2^{8}}{b^2}+\dfrac{2^{8}}{b^2}\\[5pt] &\ge 6\sqrt[6]{\dfrac{a+4}{2} \cdot \dfrac{b}{2} \cdot \dfrac{b}{2} \cdot \dfrac{b^2}{2(a+4)} \cdot \dfrac{2^{8}}{b^2} \cdot \dfrac{2^{8}}{b^2}}\\ &=6\sqrt[6]{2^{12}}\\ &= 24
+	\end{align*}
+
+Equality holds when $a=4$ and $b=8$. $\qed$
+
+	
+	
+\end{document}

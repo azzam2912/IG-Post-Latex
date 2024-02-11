@@ -1,0 +1,29 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage{graphicx,amsmath,amssymb,amsthm,amsfonts,babel}
+\usepackage{tikz, tkz-euclide}
+\usetikzlibrary{calc,through,intersections}
+\usepackage[paperwidth=16cm, paperheight=16cm,margin=1.5cm]{geometry}
+
+\author{Soal Esai Nomor 2 KTOM Oktober 2021}
+\date{Official solution by Azzam L. H.}
+
+\begin{document}
+\maketitle
+
+
+ \textbf{Soal.} Misalkan $a,b,c$ adalah suatu bilangan bulat yang memenuhi 
+ 	$$a^n + 69^n \mid b^n + c$$ untuk seluruh bilangan asli $n$. Carilah seluruh nilai $c$ yang mungkin.
+ 	\newpage
+ 	\begin{proof}[\textbf{Solusi.}]
+ 	 Perhatikan bahwa \[a^n+69^n \mid b^{n}+c \mid (b^n)^{69}+c^{69}\] atau \[a^n + 69^n \mid b^{69n}+c^{69}.\]
+ 		
+ 		Selanjutnya, \[a^n+69^n \mid a^{69n} + 6 9^{69n}\mid b^{69n} + c\] atau \[ a^n+69^n \mid b^{69n} + c\]
+ 		
+ 		Berarti 
+ 		\[a^n+69^n \mid (b^{69n}+c^{69})-(b^{69n} + c) \implies a^n+69^n \mid c^{69}-c.\]
+ 		Perhatikan bahwa $c^{69}-c$ dapat di fix dulu, sehingga jika dipiilih $n$ yang sangat besar maka $a^n+69^n$ juga akan menjadi sangat besar. Oleh karena itu, karena $c^{69}-c$ tetap, untuk $a^n+69^n$ yang sangat besar, haruslah $c^{69}-c=0$ yang mempunyai solusi $c=\boxed{-1,0,1}$.
+ 	\end{proof}
+
+
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage{graphicx,amsmath,amssymb,amsthm,amsfonts,babel}
+\usepackage{tikz, tkz-euclide}
+\usetikzlibrary{calc,through,intersections}
+\usepackage[paperwidth=16cm, paperheight=16cm,margin=1.5cm]{geometry}
+
+\author{Soal Esai Nomor 4 KTOM Oktober 2021}
+\date{Official solution by Azzam L. H.}
+
+\begin{document}
+\maketitle
+
+
+ \textbf{Soal.} Diberikan sebuah segitiga lancip $ABC$ dengan $AB < AC$ yang mempunyai titik tinggi $H$ dan  mempunyai lingkaran luar $\Gamma$ yang berpusat di $O$. Titik $T$ berada pada garis $AH$ dengan $A$ berada diantara $H$ dan $T$ sedemikian sehingga $AT=AO$. Misalkan  $\omega_1$ adalah lingkaran yang berpusat di $T$ dan melewati $A$. Lingkaran $\omega_1$ memotong lingkaran $\Gamma$ untuk kedua kalinya di $N$ ($N \neq A$). Misalkan $\omega_2$ adalah lingkaran yang melewati titik-titik $A$, $N$, dan $M$ dengan $M$ adalah titik tengah sisi $BC$. Lingkaran $\omega_2$ memotong $AB$, $AC$, dan $BC$ untuk kedua kalinya berturut-turut di $Q$, $P$, dan $D$ ($Q \neq A, P \neq A, D \neq M$). Jika diketahui bahwa $E$ adalah titik tengah segmen $PQ$, buktikan dua pernyataan berikut.
+\begin{enumerate}[a)]
+\item Buktikan bahwa $AD$ adalah garis bagi sudut $\angle BAC$.
+\item Buktikan bahwa $ME$ sejajar $OT$.
+\end{enumerate}
+\newpage
+\begin{proof}[.]
+\definecolor{xfqqff}{rgb}{0.4980392156862745,0,1}
+\definecolor{ffttww}{rgb}{1,0.2,0.4}
+\definecolor{qqqqff}{rgb}{0,0,1}
+\definecolor{ffqqtt}{rgb}{1,0,0.2}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(-10,-6) rectangle (5,9);
+\draw [line width=0.8pt] (-3.41,0.48) circle (4.4292211504958745cm);
+\draw [line width=0.8pt] (-7.69,-0.66)-- (0.8700540633404801,-0.6597970059982803);
+\draw [line width=0.8pt] (0.8700540633404801,-0.6597970059982803)-- (-6.2402498242472255,3.887005420064451);
+\draw [line width=0.8pt] (-6.2402498242472255,3.887005420064451)-- (-7.69,-0.66);
+\draw [line width=0.8pt] (-6.2402498242472255,3.887005420064451)-- (-3.4098949649945043,-3.9492211492504694);
+\draw [line width=0.8pt,color=ffqqtt] (-3.410105035005496,4.9092211492504685)-- (-3.4098949649945043,-3.9492211492504694);
+\draw [line width=0.8pt] (-6.2402498242472255,3.887005420064451)-- (-3.410105035005496,4.9092211492504685);
+\draw [line width=0.4pt] (-6.2403548592527205,8.316226569314919) circle (4.429221150495874cm);
+\draw [line width=0.8pt] (-6.2403548592527205,8.316226569314919)-- (-3.41,0.48);
+\draw [line width=0.8pt,color=qqqqff] (-4.004027655841831,2.124647237217679) circle (2.847208448834524cm);
+\draw [line width=0.8pt] (-6.847656975119362,1.9819298743640241)-- (-1.4661006185572567,0.8340960741347754);
+\draw [line width=0.8pt] (-6.2403548592527205,8.316226569314919)-- (-6.2401957609067455,1.6072084140661724);
+\draw [line width=0.4pt] (-6.2403548592527205,8.316226569314919)-- (-3.410105035005496,4.9092211492504685);
+\draw [line width=0.4pt] (-6.2402498242472255,3.887005420064451)-- (-3.41,0.48);
+\draw [line width=0.8pt] (-4.156878796838309,1.4080129742493996)-- (-3.40997296832976,-0.6598985029991402);
+\draw [line width=0.8pt,color=ffttww] (-3.410105035005496,4.9092211492504685)-- (-4.5979502766781675,-0.659926674815111);
+\draw [line width=0.4pt,dash pattern=on 1pt off 1pt,color=xfqqff] (-7.69,-0.66)-- (-3.4098949649945043,-3.9492211492504694);
+\draw [line width=0.4pt,dash pattern=on 1pt off 1pt,color=xfqqff] (-3.4098949649945043,-3.9492211492504694)-- (0.8700540633404801,-0.6597970059982803);
+\draw [line width=0.4pt,dash pattern=on 1pt off 1pt,color=xfqqff] (-3.410105035005496,4.9092211492504685)-- (-7.69,-0.66);
+\draw [line width=0.4pt,dash pattern=on 1pt off 1pt,color=xfqqff] (-3.410105035005496,4.9092211492504685)-- (0.8700540633404801,-0.6597970059982803);
+\draw [line width=0.4pt,dash pattern=on 1pt off 1pt,color=xfqqff] (-6.847656975119362,1.9819298743640241)-- (-3.410105035005496,4.9092211492504685);
+\draw [line width=0.4pt,dash pattern=on 1pt off 1pt,color=xfqqff] (-3.410105035005496,4.9092211492504685)-- (-1.4661006185572567,0.8340960741347754);
+\draw [line width=0.4pt,dash pattern=on 1pt off 1pt,color=xfqqff] (-6.847656975119362,1.9819298743640241)-- (-4.5979502766781675,-0.659926674815111);
+\draw [line width=0.4pt,dash pattern=on 1pt off 1pt,color=xfqqff] (-4.5979502766781675,-0.659926674815111)-- (-1.4661006185572567,0.8340960741347754);
+\begin{scriptsize}
+\draw [fill=ududff] (-3.41,0.48) circle (0.5pt);
+\draw[color=ududff] (-3.2555158200306185,0.7165928334717975) node {$O$};
+\draw [fill=ududff] (-7.69,-0.66) circle (0.5pt);
+\draw[color=ududff, left] (-7.548209771801251,-0.4214702142069259) node {$B$};
+\draw [fill=xdxdff] (-6.2402498242472255,3.887005420064451) circle (0.5pt);
+\draw[color=xdxdff, left] (-6.090690430037269,4.130781976507968) node {$A$};
+\draw [fill=xdxdff] (0.8700540633404801,-0.6597970059982803) circle (0.5pt);
+\draw[color=xdxdff, right] (1.0172121133596856,-0.4214702142069259) node {$C$};
+\draw [fill=uuuuuu] (-3.40997296832976,-0.6598985029991402) circle (0.5pt);
+\draw[color=uuuuuu] (-3.2555158200306185,-0.4214702142069259) node {$M$};
+\draw [fill=uuuuuu] (-4.5979502766781675,-0.659926674815111) circle (0.5pt);
+\draw[color=uuuuuu] (-4.45347692285033,-0.4214702142069259) node {$D$};
+\draw [fill=uuuuuu] (-3.4098949649945043,-3.9492211492504694) circle (0.5pt);
+\draw[color=uuuuuu] (-3.2555158200306185,-3.715863246961125) node {$R$};
+\draw [fill=uuuuuu] (-3.410105035005496,4.9092211492504685) circle (0.5pt);
+\draw[color=uuuuuu] (-3.2555158200306185,5.14904891390472) node {$N$};
+\draw [fill=uuuuuu] (-6.2403548592527205,8.316226569314919) circle (0.5pt);
+\draw[color=uuuuuu] (-6.090690430037269,8.56323805694089) node {$T$};
+\draw [fill=uuuuuu] (-6.847656975119362,1.9819298743640241) circle (0.5pt);
+\draw[color=uuuuuu, left] (-6.689670981447125,2.214044211996433) node {$Q$};
+\draw [fill=uuuuuu] (-1.4661006185572567,0.8340960741347754) circle (0.5pt);
+\draw[color=uuuuuu, right] (-1.3188120371387517,1.0759811643177102) node {$P$};
+\draw [fill=uuuuuu] (-4.156878796838309,1.4080129742493996) circle (0.5pt);
+\draw[color=uuuuuu] (-4.014224518483102,1.654995697347236) node {$E$};
+\draw [fill=uuuuuu] (-6.2401957609067455,1.6072084140661724) circle (0.5pt);
+\draw[color=uuuuuu, below] (-6.090690430037269,1.8546558811505207) node {$H$};
+\end{scriptsize}
+\end{tikzpicture}
+
+\newpage
+\textbf{Solusi.}
+\textbf{Pembuktian bagian (a)}\\
+Perhatikan bahwa $TA=ON$, $TN=OA$ dan $AN=AN$ sehingga $\triangle TAN \cong \triangle ONA$ dan $\angle TAN = \angle ONA$ yang menyebabkan $TA \parallel ON$. Karena $AH \perp BC \implies TA \perp BC$, $TA \parallel ON$ dan $ON$ jari-jari $\Gamma$, maka  $ON \perp BC$ dimana $N$ adalah titik tengah busur $BC$ lingkaran $\Gamma$. Dari sini didapatkan bahwa $AN$ adalah garis bagi luar $\angle BAC$.
+
+Sekarang, perhatikan, karena $ADMN$ siklis dan $OM \perp BC \implies NM \perp BC$, maka $\angle DAN = 180^\circ - \angle NMD = 90^\circ$. Karena $AN$ adalah garis bagi luar $\angle BAC$ dan garis bagi dalam dan luar sudut $BAC$ saling tegak lurus maka dapat disimpulkan bahwa $AD$ adalah garis bagi dalam $\angle BAC$. Bagian (a) terbukti.\\
+
+\textbf{Pembuktian bagian (b)}\\
+Misalkan $AD$ memotong lingkaran $\Gamma$ untuk kedua kalinya di $R$. Karena $AD$ garis bagi dalam $\angle BAC$, maka $R$ adalah titik tengah busur $BC$ lingkaran $\Gamma$ dengan $MR \perp BC$. Namun, kita juga punya $MN \perp BC$ sehingga didapatkan bahwa $NR$ adalah diameter $\Gamma$ dengan $N,M,R$ kolinear.
+
+Perhatikan bahwa $AD$ adalah garis bagi dalam $\angle QAP$ yang menyebabkan $D$ adalah titik tengah busur $QP$ dari lingkaran $\omega_2$. Karena $E$ adalah titik tengah $PQ$ maka jelas bahwa $ED \perp QP$. Di lain sisi, karena $\angle NMD = 90^\circ$, maka $ND$ adalah diameter $\omega_2$. Dari sini jelas bahwa $N, E, D$ kolinear.\\
+
+\begin{claim*}
+Segiempat $NQDP$ sebangun dengan segiempat $NBRC$.
+\end{claim*}
+\begin{proof}[Bukti Klaim]
+Perhatikan bahwa $\angle PNQ = \angle PAQ = \angle CAB = \angle CNB$. Karena $N$ adalah titik tengah busur $PQ$ lingkaran $\omega_2$, maka $NQ = NP$. Karena $N$ adalah titik tengah busur $BC$ lingkaran $\Gamma$, maka $NB = NC$. Dari sini didapat $\triangle NQP \sim \triangle NBC$. 
+
+Selanjutnya, perhatikan bahwa karena $QDPN$ dan $BRCN$ siklis, $\angle QDP = 180^\circ - \angle PNQ = 180^\circ - \angle CNB = \angle BRC$. Karena $D$ adalah titik tengah busur $PQ$ lingkaran $\omega_2$, maka $PD=DQ$. Karena $R$ adalah titik tengah busur $BC$ lingkaran $\Gamma$, maka $BR=RC$. Dari sini didapat $\triangle QDP \sim \triangle BRC$
+
+Dari kedua hal tersebut dapat disimpulkan bahwa Segiempat $NQDP$ sebangun dengan segiempat $NBRC$.\end{proof}
+
+Dari klaim tersebut, kita punya 
+\[\dfrac{NE}{ND} = \dfrac{NM}{NR}\]
+yang menyebabkan $EM$ dan $DR$ sejajar atau $EM \parallel AR$.
+
+Namun, kita punya $TA=OR$ dan $TA \parallel OR$ yang menyebabkan $TARO$ adalah sebuah jajargenjang dengan $AR \parallel OT$. Dari sini kita dapat menyimpulkan bahwa $EM \parallel OT$. Bagian (b) terbukti.
+\end{proof}
+
+
+\end{document}

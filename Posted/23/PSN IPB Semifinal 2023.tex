@@ -1,0 +1,75 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage{graphicx,amsmath,amssymb,amsthm,amsfonts,babel}
+\usepackage{tikz, tkz-euclide}
+\usepackage{lipsum}
+\usepackage{setspace}
+\graphicspath{ {./} }
+\usetikzlibrary{calc,through,intersections}
+\usepackage[paperwidth=16cm, paperheight=16cm,margin=1cm]{geometry}
+%\usepackage[rightcaption]{sidecap}
+\usepackage{caption}
+\captionsetup[figure]{font=small, labelformat=empty}
+\colorlet{EvanRed}{Red!50!Purple}
+\definecolor{officegreen}{rgb}{0.0, 0.5, 0.0}
+
+\newcommand{\siku}[4][.2cm]
+	{
+	\coordinate (tempa) at ($(#3)!#1!(#2)$);
+	\coordinate (tempb) at ($(#3)!#1!(#4)$);
+	\coordinate (tempc) at ($(tempa)!0.5!(tempb)$);%midpoint
+	\draw[black] (tempa) -- ($(#3)!2!(tempc)$) -- (tempb);
+	}
+	\usetikzlibrary{calc,positioning,intersections}
+
+\setstretch{1.5}
+
+\usepackage{etoolbox}
+\newcommand{\zerodisplayskips}{%
+  \setlength{\abovedisplayskip}{5pt}%
+  \setlength{\belowdisplayskip}{5pt}%
+  \setlength{\abovedisplayshortskip}{5pt}%
+  \setlength{\belowdisplayshortskip}{5pt}}
+\appto{\normalsize}{\zerodisplayskips}
+\appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
+\setlength\parindent{10pt}
+
+\title{Ineq from Semifinal PSN IPB 2023}
+\author{Azzam L. H.}
+\date{last update: \today}
+
+
+\begin{document}
+\maketitle
+\pagestyle{plain}
+\section{Soal}
+Diberikan $a,b,c \in \RR^+$. Jika $\dfrac{1}{a}+\dfrac{1}{b}+\dfrac{1}{c}=3$, buktikan bahwa
+\begin{align*}
+    \dfrac{1}{\sqrt{a^3+b}}+\dfrac{1}{\sqrt{b^3+c}}+\dfrac{1}{\sqrt{c^3+a}} \le \dfrac{3}{\sqrt{2}}.
+\end{align*}
+
+\newpage
+\section{Solusi}
+\textit{\textbf{Motivasi: }} Aku kepikiran CS (Cauchy-Schwarz) dan AM-GM karena penyebutnya akar, terus $\sqrt{a^3+b}$ pangkatnya 3/2 dijadiin $\sqrt{a^3b}$  yang derajatnya 4/2=2 habis itu diakarin lagi jadi $\sqrt{a\sqrt{ab}}$ yang jadi derajat 2/2=1 agar $\sum \frac{1}{a} = 3$ nya bisa dipake karena penyebutnya berderajat 1.\\
+\textit{\textbf{Solusi:}}
+\begin{align*}
+    \sum \dfrac{1}{\sqrt{a^3+b}}
+    &\overset{AM-GM}{\le}
+    \sum\dfrac{1}{\sqrt{2a\sqrt{ab}}}\\
+    &=
+    \dfrac{1}{\sqrt{2}}\sum\dfrac{1}{\sqrt{a}}\dfrac{1}{\sqrt{\sqrt{{ab}}}}\\
+    &\overset{CS}{\le}
+    \dfrac{1}{\sqrt{2}}\sqrt{\left(\sum\dfrac{1}{a}\right)\left(\sum\dfrac{1}{\sqrt{ab}}\right)}\\
+    &\overset{AM-GM}{\le}
+    \dfrac{1}{\sqrt{2}}\sqrt{\left(\sum\dfrac{1}{a}\right)\left(\sum\dfrac{\frac{1}{a}+\frac{1}{b}}{2}\right)}\\
+    &=
+    \dfrac{1}{\sqrt{2}}\sqrt{\left(\sum\dfrac{1}{a}\right)\left(\sum\dfrac{1}{a}\right)}\\
+    &=
+    \dfrac{1}{\sqrt{2}}\left(\sum\dfrac{1}{a}\right)
+    =
+    \dfrac{3}{\sqrt{2}}
+\end{align*}
+dengan kesamaan terjadi saat $a=b=c=1$. Terbukti. \qed
+
+\end{document}

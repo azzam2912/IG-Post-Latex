@@ -1,0 +1,79 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage{graphicx,amsmath,amssymb,amsthm,amsfonts,babel}
+\usepackage{tikz, tkz-euclide}
+\usetikzlibrary{calc,through,intersections}
+\usepackage[paperwidth=16cm, paperheight=16cm,margin=1.5cm]{geometry}
+
+\title{KTOM November 2021 Esai Nomor 2 }
+\author{Edisi Kontes Akhir Tahun (Bagian 1)}
+\date{Official solution by Azzam L. H.}
+
+\begin{document}
+\maketitle
+\pagestyle{plain}
+\noindent
+ \textbf{Soal.} Diberikan sebuah segitiga lancip $ABC$ dengan titik tinggi $H$ dan lingkaran dalamnya menyinggung $BC$ di $D$. Misalkan titik $X$ di dalam segitiga $ABC$ sedemikian sehingga lingkaran dalam $\triangle BXC$ menyinggung $BC$ di $D$ dan $B,H,X,C$ berada dalam satu lingkaran, sebut sebagai lingkaran $\Gamma$.  Sekarang misalkan garis bagi dalam $\angle BXC$ memotong lingkaran $\Gamma$ di $T$. Misalkan pula $AM$ adalah garis berat $\triangle ABC$ dengan $AM$ memotong lingkaran $\Gamma$ di titik $N$ yang terletak di luar $\triangle ABC$. Jika $L$ adalah perpotongan antara $HN$ dan $MT$, buktikan bahwa $HL=LN$.	
+ \newpage	
+
+ \usetikzlibrary{arrows}
+ \pagestyle{empty}
+ 
+ \definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+ \definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+ 
+ \begin{center}
+ \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm,scale=0.55]
+ \draw [line width=1pt] (-2.1089294063040342,6.607463870020379)-- (-3.1937593138204754,-4.304648729115588);
+ \draw [line width=1pt] (-3.1937593138204754,-4.304648729115588)-- (7.686446523329714,-3.8898608233004777);
+ \draw [line width=1pt] (7.686446523329714,-3.8898608233004777)-- (-2.1089294063040342,6.607463870020379);
+ \draw [line width=1pt] (2.428567522062273,-8.877128299431872) circle (7.246939248430825cm);
+ \draw [line width=1pt] (-3.1937593138204754,-4.304648729115588)-- (0.46549660012814614,-1.9011351066381876);
+ \draw [line width=1pt] (0.46549660012814614,-1.9011351066381876)-- (7.686446523329714,-3.8898608233004777);
+ \draw [line width=1pt] (-1.7444815716887268,-2.9522831764272994)-- (6.601616615813272,-14.801973422436443);
+ \draw [line width=1pt] (2.2463436047546192,-4.0972547762080325)-- (2.7046432503354554,-16.11880701798226);
+ \draw [line width=1pt] (0.46549660012814614,-1.9011351066381876)-- (2.7046432503354554,-16.11880701798226);
+ \draw [line width=1pt] (-2.1089294063040342,6.607463870020379)-- (6.601616615813272,-14.801973422436443);
+ \draw [line width=1pt] (7.686446523329714,-3.8898608233004777)-- (6.601616615813272,-14.801973422436443);
+ \draw [line width=1pt] (-3.1937593138204754,-4.304648729115588)-- (6.601616615813272,-14.801973422436443);
+ \draw [line width=1pt] (-1.7444815716887268,-2.9522831764272994)-- (7.686446523329714,-3.8898608233004777);
+ \draw [line width=1pt] (-1.7444815716887268,-2.9522831764272994)-- (-3.1937593138204754,-4.304648729115588);
+ \begin{scriptsize}
+ \draw [fill=ududff] (-2.1089294063040342,6.607463870020379) circle (2.5pt);
+ \draw[color=ududff] (-1.7254607548777698,7.5922975735286045) node {$A$};
+ \draw [fill=ududff] (-3.1937593138204754,-4.304648729115588) circle (2.5pt);
+ \draw[color=ududff] (-2.8252870951821243,-3.3059816167599907) node {$B$};
+ \draw [fill=ududff] (7.686446523329714,-3.8898608233004777) circle (2.5pt);
+ \draw[color=ududff] (8.072992095106478,-2.906044765740226) node {$C$};
+ \draw [fill=uuuuuu] (-1.7444815716887268,-2.9522831764272994) circle (2pt);
+ \draw[color=uuuuuu] (-1.3755160102354753,-2.056178957323225) node {$H$};
+ \draw [fill=uuuuuu] (0.5516826167789406,-4.161860620324407) circle (2pt);
+ \draw[color=uuuuuu] (0.9241208831281746,-3.2559895103825203) node {$D$};
+ \draw [fill=uuuuuu] (0.46549660012814614,-1.9011351066381876) circle (2pt);
+ \draw[color=uuuuuu] (0.8241366703732333,-1.006344723396342) node {$X$};
+ \draw [fill=uuuuuu] (2.2463436047546192,-4.0972547762080325) circle (2pt);
+ \draw[color=uuuuuu] (2.623852499962177,-3.2059974040050494) node {$M$};
+ \draw [fill=uuuuuu] (6.601616615813272,-14.801973422436443) circle (2pt);
+ \draw[color=uuuuuu] (6.973165754802124,-13.904308168783759) node {$N$};
+ \draw [fill=uuuuuu] (2.7046432503354554,-16.11880701798226) circle (2pt);
+ \draw[color=uuuuuu] (3.0737814573594124,-15.204102934597996) node {$T$};
+ \draw [fill=uuuuuu] (2.4285675220622727,-8.87712829943187) circle (2pt);
+ \draw[color=uuuuuu] (2.8238209254720594,-7.9552475098647575) node {$L$};
+ \end{scriptsize}
+ 
+ \end{tikzpicture}
+ \end{center}
+ 
+  \begin{proof}[\textbf{Solusi.}]
+  Notasikan $\measuredangle$ sebagai sudut berarah atau \textit{directed angle} $\mod 180^\circ$.
+  Perhatikan karena $H$ titik tinggi $\triangle ABC$ dan $BHCN$ siklis, maka $$\measuredangle BNC = \measuredangle BHC = \measuredangle HBC + \measuredangle BCH = \measuredangle CAH + \measuredangle HAB = \measuredangle CAB.$$ Lalu, karena $M$ titik tengah $BC$, maka diperoleh bahwa $N$ adalah hasil pencerminan $A$ terhadap $M$. Dari sini $\triangle ABC \cong \triangle NCB$ sehingga $\measuredangle BCN = \measuredangle CBA$ yang menyebabkan
+ $$\measuredangle HCN = \measuredangle HCB + \measuredangle BCN = \measuredangle HCB + \measuredangle CBA = 90^\circ.$$
+ Berarti didapat bahwa $HN$ merupakan diameter lingkaran $\Gamma$. 
+ 
+ Sekarang, perhatikan bahwa panjang  busur $BT$ sama dengan panjang busur $TC$ karena $XC$ merupakan garis bagi $\angle BXC$, yang berarti $BT=TC$. Namun, kita tahu bahwa $BM=MC$. Oleh karena itu, didapat $TM \perp BC$.
+ 
+ Padahal, karena $BC$ adalah tali busur $\Gamma$, maka haruslah $MT$ berhimpit dengan diameter lingkaran $\Gamma$ yang dengan kata lain, $MT$ melalui titik pusat lingkaran $\Gamma$ yang juga merupakan titik tengah $HN$. Terbukti bahwa $HL = LN$.
+ \end{proof}
+
+
+\end{document}

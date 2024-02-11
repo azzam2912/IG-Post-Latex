@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage[a4paper, total={4in, 8in}]{geometry}
+\usepackage[document]{ragged2e}
+\addtolength{\topmargin}{1in}
+\addtolength{\textheight}{2in} 
+\usepackage{amsmath, amsthm}
+\usepackage{amssymb}
+\usepackage{ulsy}
+
+\setlength{\parindent}{4em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.3}
+
+\usepackage{collectbox}
+
+\makeatletter
+\newcommand{\sqbox}{%
+	\collectbox{%
+		\@tempdima=\dimexpr\width-\totalheight\relax
+		\ifdim\@tempdima<\z@
+		\fbox{\hbox{\hspace{-.5\@tempdima}\BOXCONTENT\hspace{-.5\@tempdima}}}%
+		\else
+		\ht\collectedbox=\dimexpr\ht\collectedbox+.2\@tempdima\relax
+		\dp\collectedbox=\dimexpr\dp\collectedbox+.5\@tempdima\relax
+		\fbox{\BOXCONTENT}%
+		\fi
+	}%
+}
+\makeatother
+
+
+\begin{document}
+	
+	Sebuah operasi biner $*$ memenuhi $$a*(b*c) = (a*b)\times c \text{  dan  } a*a = 1$$
+	untuk seluruh bilangan real non-negatif $a$, $b$, dan $c$ (dengan $\times$ menotasikan perkalian antar dua bilangan real). Tentukan nilai $x$ yang memenuhi $$2016*(6*x)=100.$$\\
+	\newpage
+	$\textbf{Solusi.}$ Substitusi $c$ dan $b$ dengan $a$ pada persamaan di soal, kita punya
+			$$a*1 = a*(a*a)=(a*a)\times a = 1 \times a = a$$
+			Selanjutnya substitusi $c$ dengan $b$ pada soal dan kalikan dengan $\frac{1}{b}$ didapat
+			$$ a*b= \frac{1}{b}\times((a*b)\times b) = \frac{1}{b}\times(a*(b*b))= \frac{1}{b}\times(a*1)=\frac{1}{b}\times a=\frac{a}{b}$$
+			Berarti kita dapat
+			$$100 = 2016*(6*x) = \dfrac{2016}{\dfrac{6}{x}}=\frac{2016x}{6} \implies \sqbox{$ x= \dfrac{25}{84}$} \qed$$
+	
+	
+\end{document}

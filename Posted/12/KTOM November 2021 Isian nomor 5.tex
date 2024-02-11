@@ -1,0 +1,44 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage{graphicx,amsmath,amssymb,amsthm,amsfonts,babel}
+\usepackage{tikz, tkz-euclide}
+\usepackage{lipsum}
+\usepackage{setspace}
+\usetikzlibrary{calc,through,intersections}
+\usepackage[paperwidth=16cm, paperheight=16cm,margin=1.5cm]{geometry}
+
+\title{KTOM November 2021 Isian Nomor 5}
+\author{Edisi Kontes Akhir Tahun (Bagian 1)}
+\date{Official solution by Azzam L. H.}
+
+\setstretch{1.25}
+
+\usepackage{etoolbox}
+\newcommand{\zerodisplayskips}{%
+  \setlength{\abovedisplayskip}{5pt}%
+  \setlength{\belowdisplayskip}{5pt}%
+  \setlength{\abovedisplayshortskip}{5pt}%
+  \setlength{\belowdisplayshortskip}{5pt}}
+\appto{\normalsize}{\zerodisplayskips}
+\appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
+
+\begin{document}
+\maketitle
+\pagestyle{plain}
+\noindent
+
+  \textbf{Soal.} Diberikan polinomial $p(x)=x^3-ax^2+bx-c$ mempunyai tiga akar bulat positif berbeda dan $p(2021)=2020$. Misalkan $q(x)=x^2-2x+2021$. Diketahui pula bahwa $p(q(x))$ tidak mempunyai akar real. Tentukan jumlah semua nilai yang memenuhi $a$.
+  \newpage
+  	 \begin{proof}[\textbf{Solusi.}]
+  	 Misalkan $p(x)=(x-x_1)(x-x_2)(x-x_3)$ dengan $x_1,x_2,x_3$ adalah akar-akar bulat positif yang berbeda.  Sekarang, amati bahwa
+  	 \begin{align*}
+  	 p(q(x))&=p(x^2-2x+2021)\\
+  	 &=(x^2-2x+2021-x_1)(x^2-2x+2021-x_2)(x^2-2x+2021-x_3).
+  	 \end{align*}
+  	  Karena $p(q(x))$ tak mempunyai akar real, maka  untuk setiap $i=1,2,3$, persamaan kuadrat $x^2-2x+2021-x_i \neq 0$ yang berarti persamaan kuadrat tersebut tak pernah mempunyai akar real atau mempunyai diskriminan $(-2)^2-4(1)(2021-x_i) < 0 \implies x_i < 2020$. Sekarang, dari $p(2021)=2020$ kita punya $$(2021-x_1)(2021-x_2)(2021-x_3)=2020=2\cdot 5 \cdot 202=2\cdot 10 \cdot 101=4\cdot 5 \cdot 101.$$  Misalkan $2021-x_i = y_i$ maka kita punya $y_1y_2y_3=2\cdot 5 \cdot 202=2\cdot 10 \cdot 101=4\cdot 5 \cdot 101$. WLOG $x_3 < x_2 < x_1$, maka $y_1 < y_2<y_3$. Karena $x_i < 2020$ maka $1 < 2021 - x_i = y_i$ sehingga haruslah $(y_1,y_2,y_3)=(2,5,202),(2,10,101),(4,5,101)$.
+  	Oleh karena itu, dari Teorema Vieta didapat $$a=x_1+x_2+x_1=-(y_1+y_2+y_3-6063)$$ sehingga jumlah seluruh $a$ yang memenuhi adalah $-(2+5+202-6063)-(2+10+101-6063)-(4+5+101-6063)=\boxed{17757}$.
+  	\end{proof}
+
+
+\end{document}

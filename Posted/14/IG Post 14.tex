@@ -1,0 +1,74 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage{graphicx,amsmath,amssymb,amsthm,amsfonts,babel}
+\usepackage{tikz, tkz-euclide}
+\usepackage{lipsum}
+\usepackage{setspace}
+\graphicspath{ {./} }
+\usetikzlibrary{calc,through,intersections}
+\usepackage[paperwidth=16cm, paperheight=16cm,margin=1cm]{geometry}
+
+\title{}
+\author{Ineq 1, 2, 3, 4}
+\date{}
+
+\setstretch{1.5}
+
+\usepackage{etoolbox}
+\newcommand{\zerodisplayskips}{%
+  \setlength{\abovedisplayskip}{5pt}%
+  \setlength{\belowdisplayskip}{5pt}%
+  \setlength{\abovedisplayshortskip}{5pt}%
+  \setlength{\belowdisplayshortskip}{5pt}}
+\appto{\normalsize}{\zerodisplayskips}
+\appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
+\setlength\parindent{10pt}
+
+\begin{document}
+\maketitle
+\pagestyle{plain}
+
+\section{Soal}
+Misalkan $x,y,z \ge 0$ dan $x+y+z=1$. Tentukan nilai maksimum yang mungkin dari 
+$$x(x+y)^2(y+z)^3(z+x)^4.$$
+
+\textit{Source: AoPS}
+
+\newpage
+\section{Hint}
+\includegraphics[width=\linewidth]{am gm meme.jpg}
+\newpage
+\section{Solusi}
+Kita akan mencari nilai maksimum yang mungkin untuk $$S={\color{blue}x}{\color{red}(x+y)^2}(y+z)^3{\color{red}(z+x)^4}.$$
+Jika dilihat, karena $S$ merupakan bentuk "perkalian". Berarti kita dapat mencoba menggunakan ketaksamaan AM-GM untuk mencari nilai maksimumnya. Sadari bahwa suku ${\color{blue}x}$ (yang diwarnai biru) di $S$ berderajat 1 dan hanya "sendiri". Oleh karena itu mungkin menjadi sebuah ide yang bagus apabila setelah dilakukan manipulasi, variabel akhirnya dalam bentuk $x$ saja, agar proses kalkulasi menjadi semakin mudah. 
+
+Di lain sisi, karena kita punya tiga variabel dan terdapat batasan $x+y+z=1$, kita dapat membuat variabelnya "lebih sedikit" sehingga $x+y=1-z$, $y+z=1-x$, dan $z+x=1-y$. Namun, dapat dilihat dari penjabaran barusan bahwa kita tidak bisa menjadikan semua suku di $S$ langsung menjadi satu variabel $x$ saja. Setidaknya kita harus membuat $S$ dalam bentuk dua variabel dulu.
+
+Lalu, bagaimana cara yang mungkin bagus dalam memilih dua variabel yang disederhanakan? Pertama, lihat bahwa $(y+z)^3$ dan $x$ sama-sama berpangkat ganjil sehingga dapat dijadikan "teman" :) dan dapat disederhanakan menjadi satu variabel dalam $x$ saja.
+\begin{align*}
+S&={\color{blue}x(y+z)^3}{\color{red}(x+y)^2(z+x)^4}\\
+S&={\color{blue}x(1-x)^3}{\color{red}(x+y)^2(1-y)^4}
+\end{align*}
+Kita akan menggunakan $AM-GM$ terlebih dahulu pada ekspresi berwarna merah. Tentu saja agar sederhana, ${\color{red}(x+y)^2(1-y)^4}$, haruslah kita paksa menjadi satu variabel saja. Oleh karena itu
+\allowdisplaybreaks
+\begin{align*}
+S&= {\color{blue}x(1-x)^3}\cdot\frac{1}{2^2}\cdot{2^2\color{red}(x+y)^2(1-y)^4}\\
+&= \frac{1}{2^2}\cdot{\color{blue}x(1-x)^3}\left({\color{red}(2x+2y)^{\color{teal}2}(1-y)^{\color{teal}4}}\right)\\
+&\overset{AM-GM}{\le} \frac{1}{2^2}\cdot{\color{blue}x(1-x)^3}\left({\color{red}\dfrac{{\color{teal}2}(2x+2y)+{\color{teal}4}(1-y)}{6}}\right)^6\\
+&=\frac{1}{2^2}\cdot{\color{blue}x(1-x)^3}\left({\color{red}\dfrac{2x+2}{3}}\right)^6\\
+&=\frac{1}{2^2}\cdot{\color{blue}x(1-x)^3}\cdot2^6\cdot\left({\color{red}\dfrac{x+1}{3}}\right)^6\\
+&=16\cdot{\color{blue}x(1-x)^3}\left({\color{red}\dfrac{x+1}{3}}\right)^6
+\end{align*}
+\newpage
+Dari sini, karena sudah dalam satu variabel, kita dapat mengaplikasikan $AM-GM$ lagi, kali ini langsung tanpa trik yang aneh-aneh :p
+\begin{align*}
+16x^{\color{red}1}(1-x)^{\color{red}3}\left(\dfrac{x+1}{3}\right)^{\color{red}6}
+&\overset{AM-GM}{\le} 16\left(\dfrac{{\color{red}1}\cdot x + {\color{red}3}(1-x) + {\color{red}6} \left(\dfrac{x+1}{3}\right)}{10}\right)^{10}\\
+&=16\cdot\left(\dfrac{5}{10}\right)^{10}\\
+&= \dfrac{1}{64}.
+\end{align*}
+
+Berarti dapat disimpulkan $S \le \dfrac{1}{64}$ dengan kesamaan terjadi saat $x=\frac{1}{2}$, $y=0$, dan $z=\frac{1}{2}$. Oleh karena itu, nilai maksimum yang mungkin untuk $S$ adalah $\boxed{\dfrac{1}{64}}$. $\square$
+
+\end{document}

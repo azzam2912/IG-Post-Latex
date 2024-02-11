@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+
+\begin{document}
+	$$ \int \frac{\ln x}{(1+\ln x)^2} \,dx$$
+	\\
+	\\
+	\\
+	\\
+	\\
+	\begin{align*}
+		\int \frac{\ln x}{(1+\ln x)^2} \,dx 
+		&= \int \frac{u}{(1+u)^2} \,e^udu \qquad \qquad (u = \ln x)\\
+		&= \int ue^u \,\frac{du}{(1+u)^2} \\
+		&= -\frac{ue^u}{1+u} + \int \frac{1}{1+u} \,(e^u+ue^u)du \\
+		&= -\frac{ue^u}{1+u} + \int e^u \,du \\
+		&= -\frac{ue^u}{1+u} + e^u + C \\
+		&=   \frac{e^u}{1+u} + C \\
+		&= \frac{x}{1 +\ln x} + C 
+		\qquad \qed
+	\end{align*}
+\end{document}

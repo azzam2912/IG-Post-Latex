@@ -1,0 +1,53 @@
+\documentclass{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[vcentering,dvips]{geometry}
+\geometry{papersize={12cm,12cm},total={10cm,10.5cm}}
+%\graphicspath{{./Rigan/}}
+\renewcommand{\baselinestretch}{1.5}
+%\addtolength{\oddsidemargin}{1in}
+%\addtolength{\evensidemargin}{1.5in}
+%\addtolength{\textwidth}{1.9in}
+
+\addtolength{\topmargin}{0in}
+\addtolength{\textheight}{-0.5in} 
+
+\setlength{\parindent}{0em}
+
+\title{Soal Seleksi KNMIPA 2021 Tingkat UI}
+\date{}
+\begin{document}
+	\maketitle
+
+	%\begin{enumerate}
+		 \textbf{Soal. }Diketahui $G$ adalah grup dengan elemen identitas $e$.\\ Diketahui juga untuk setiap $a,b,c \in G \backslash \{e\}$ berlaku $abc=cba$. Buktikan bahwa $G$ abelian.
+	%\end{enumerate}
+	
+	\newpage
+	
+	\textbf{Soal. }Diketahui $G$ adalah grup dengan elemen identitas $e$.\\ Diketahui juga untuk setiap $a,b,c \in G \backslash \{e\}$ berlaku $abc=cba$. Buktikan bahwa $G$ abelian.\\
+	
+	\textbf{Solusi. } Misalkan $x,y \in G$. Misalkan $x^{-1},y^{-1}\in G$ adalah invers dari $x$ dan $y$ sehingga $xx^{-1} = x^{-1}x=e$ dan $yy^{-1}=y^{-1}y=e$ Misalkan pula $e$ adalah elemen identitas di $G$.
+	 \begin{itemize}
+	 	\item Jika salah satu dari $x$ atau $y$ sama dengan $e$, maka jelas dari properti grup bahwa $xy = yx$ karena $xy = xe = ex = yx$ (untuk $y=e$) atau $xy = ey = ye = yx$ (untuk $x=e$). 
+	 	\item Jika $x \neq e$ dan $y \neq e$, kita punya dua kasus:
+	 	\begin{itemize}
+	 		\item Kasus I. $xy = e$\\ Maka $yx = yxe = yxyy^{-1} = yey^{-1} = yy^{-1} = e = xy$, berarti $xy = yx$.
+	 		\item Kasus II. $xy \neq e$\\Pada $abc = cba$ untuk setiap $a,b,c \in G\backslash\{e\}$, ganti $a$ dengan $xc^{-1}$, $b$ dengan $c$, $c$ dengan $y$ Kita punya \begin{align*}
+	 			abc &= cba\\
+	 			xc^{-1}cy &= ycxc^{-1}\\
+	 			xey &= ycxc^{-1}\\
+	 			xy &= ycxc^{-1}.
+	 		\end{align*}
+ 		Selanjutnya ganti $c$ dengan $y^{-1}$, maka
+ 		\begin{align*}
+ 			xy &= yy^{-1}x(y^{-1})^{-1}\\
+ 			xy &= exy\\
+ 			xy &= yx
+ 		\end{align*}
+	 	\end{itemize}
+	 \end{itemize}
+	Karena $xy = yx$ untuk sembarang $x,y\in G$, maka berlaku sifat komutatif di $G$ yang berarti membuktikan bahwa $G$ abelian. $\square$
+\end{document}

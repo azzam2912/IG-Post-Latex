@@ -1,0 +1,78 @@
+\documentclass[a4paper, 12pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage{amsmath,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage[paperwidth=16cm, paperheight=16cm,margin=1cm]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usepackage{array,multirow}
+\usetikzlibrary{angles}
+\usepackage{adjustbox}
+%--------------------------
+%-------------------------
+\usepackage{systeme}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[symbol]{footmisc}
+\usetikzlibrary{calc}
+\pagestyle{empty}
+\let \ds \displaystyle
+%-------
+\newcommand\kunci{%
+ \tikz[overlay]\draw[red] (-2ex,.7ex) circle (1.7ex);%
+ }
+ \newcommand\ralat{%
+ \tikz[overlay]\draw[blue] (-2ex,.7ex) circle (1.7ex);%
+ }
+%-----------
+\newcommand{\siku}[4][.21cm]
+	{
+	\coordinate (tempa) at ($(#3)!#1!(#2)$);
+	\coordinate (tempb) at ($(#3)!#1!(#4)$);
+	\coordinate (tempc) at ($(tempa)!0.5!(tempb)$);%midpoint
+	\draw[black] (tempa) -- ($(#3)!2!(tempc)$) -- (tempb);
+	}
+	\usetikzlibrary{calc,positioning,intersections} %----------
+%-------------------------TRIGON
+ \renewcommand{\baselinestretch}{1.3}
+
+\makeatother
+%-
+\ihead{\footnotesize }
+\ohead{\footnotesize }
+\title{Piramida Emas Siskacohl}
+\author{}
+\date{}
+\let \ds \displaystyle
+\pagestyle{empty}
+\let \measureangle \mda
+\parindent0cm
+
+\usepackage{pagecolor}% http://ctan.org/pkg/{pagecolor,lipsum}
+
+
+\begin{document}
+\maketitle
+\vspace{-3cm}
+\section{Soal}
+Siskacohl adalah seseorang \textit{influencer} yang sangat tajir melintir tujuh turunan. Dia ingin melakukan sebuah permainan memakai sebuah piramida emas 24 karat dengan alas segi-2022 karena ia tidak tahu lagi cara membuang waktu dan uangnya. Ia meminta Anzhing, jelmaan kucing \textit{chonky} yang sangat pintar, untuk menjadi teman bermainnya dalam permainan tersebut.
+\vspace{0.2cm}
+\\Mereka bermain bergantian dimana pada setiap giliran, seorang pemain mewarnai rusuk piramida tersebut (yang sebelumnya belum diwarnai) dengan salah satu dari $k$ warna berbeda sedemikian sehingga tidak ada dua rusuk berwarna sama yang tersambung sebuah \textit{common vertex}. Permainan tersebut berhenti setelah semua rusuk diwarnai. Sebagai pemilik dari piramida emas tersebut, Siskacohl berhak bermain lebih dulu. Carilah nilai minimal $k$ sehingga Anzhing dapat selalu mewarnai rusuk di piramida tersebut tidak peduli rusuk manapun yang Siskacohl warnai.
+
+\newpage
+\section{Solusi}
+
+Misalkan titik sudut puncak adalah $T$, lalu misalkan beri label secara berurutan searah jarum jam titik sudut alas dengan $T_1,T_2,T_3,\dots,T_{2022}$.
+
+\vspace{0.2cm}
+Perhatikan bahwa $k \ge 2022$, karena jika $k < 2022$, menurut PHP akan ada dua rusuk berwarna sama diantara rusuk $TT_1,TT_2,\dots,TT_{2022}$ yang kontradiksi dengan asumsi tidak ada dua rusuk tersambung sebuah \textit{common vertex} yang berwarna sama.
+
+\vspace{0.2cm}
+Akan ditunjukkan bahwa $k = 2022$ memenuhi. Perhatikan bahwa untuk $1 \le i \le 2022$, setiap Siskacohl mewarnai rusuk $T_{i}T_{i+1}$, maka Anzhing dapat mewarnai rusuk $TT_{2023-i}$ dengan warna yang sama. Sedangkan jika Siskacohl mewarnai rusuk $TT_{2023-i}$, maka Anzhing dapat mewarnai rusuk $T_{i}T_{i+1}$ dengan warna yang sama. Strategi tersebut dapat menjamin Anzhing dapat terus bermain setelah seluruh 2016 giliran yang dibuat Siskacohl, dimana di setiap giliran, Siskacohl memilih warna yang berbeda dari seluruh giliran sebelumnya.
+
+\vspace{0.2cm}
+Berarti, dari algoritma tersebut, terbukti bahwa $k=2022$ memenuhi. \qed
+
+\end{document} 
