@@ -1,0 +1,116 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage{graphicx,amsmath,amssymb,amsthm,amsfonts,babel}
+\usepackage{tikz, tkz-euclide}
+\usepackage{lipsum}
+\usepackage{setspace}
+\graphicspath{ {./} }
+\usetikzlibrary{calc,through,intersections}
+\usepackage[paperwidth=16cm, paperheight=16cm,margin=1cm]{geometry}
+%\usepackage[rightcaption]{sidecap}
+\usepackage{caption}
+\captionsetup[figure]{font=small, labelformat=empty}
+\colorlet{EvanRed}{Red!50!Purple}
+\definecolor{officegreen}{rgb}{0.0, 0.5, 0.0}
+
+
+\newcommand{\siku}[4][.2cm]
+	{
+	\coordinate (tempa) at ($(#3)!#1!(#2)$);
+	\coordinate (tempb) at ($(#3)!#1!(#4)$);
+	\coordinate (tempc) at ($(tempa)!0.5!(tempb)$);%midpoint
+	\draw[black] (tempa) -- ($(#3)!2!(tempc)$) -- (tempb);
+	}
+	\usetikzlibrary{calc,positioning,intersections}
+
+\setstretch{1.5}
+
+\usepackage{etoolbox}
+\newcommand{\zerodisplayskips}{%
+  \setlength{\abovedisplayskip}{5pt}%
+  \setlength{\belowdisplayskip}{5pt}%
+  \setlength{\abovedisplayshortskip}{5pt}%
+  \setlength{\belowdisplayshortskip}{5pt}}
+\appto{\normalsize}{\zerodisplayskips}
+\appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
+\setlength\parindent{10pt}
+
+\title{Random Geometry Problem}
+\author{Azzam, haxuv.world}
+\date{last update: \today}
+
+
+\begin{document}
+\maketitle
+\pagestyle{plain}
+\section{Soal}
+Diberikan persegi panjang $ABCD$. Titik $P$ adalah perpotongan garis $BC$ dengan garis yang melalui $A$ dan tegak lurus $AC$. Titik $Q$ pada segmen $CD$. Garis $PQ$ memotong garis $AD$ di $R$. Garis $BR$ memotong garis $AQ$ di $X$. Buktikan bahwa jika titik $Q$ bergerak sepanjang segmen $CD$, maka besar $\angle BXC$ konstan.
+
+\newpage
+\section{Solusi}
+\begin{proof}[.] 
+.
+\begin{center}
+    \begin{asy}
+        import olympiad;
+        import geometry;
+        size(340);
+
+        pair A,B,C,D,P,Q,R,X,S;
+        A = (-4,3);
+        B = (4,3);
+        C = (4,-3);
+        D = (-4,-3);
+        line l = perpendicular(A, line(A,C));
+        P = intersectionpoint(l, line(B,C));
+        Q = C/3+2*D/3;
+        R = intersectionpoint(line(P,Q),line(A,D));
+        X = intersectionpoint(line(B,R),line(A,Q));
+        S = foot(A,P,R);
+        dot("$A$", A, NW);
+        dot("$B$", B, NE);
+        dot("$C$", C, SE);
+        dot("$D$", D, SW);
+        dot("$P$", P, N);
+        dot("$Q$", Q, SE);
+        dot("$Q'$", Q, NW);
+        dot("$R$", R, NW);
+        dot("$X$", X, SW);
+        dot("$X'$", X, SE);
+        dot("$S$", S, SE);
+        draw(A--C);
+        draw(A--P);
+        draw(A--S--B);
+        draw(B--P--R--A);
+        draw(A--X--C);
+        draw(rightanglemark(A,X,C,10), red);
+        draw(rightanglemark(A,S,Q,10), red);
+        draw(rightanglemark(A,D,C,10), red);
+        draw(rightanglemark(A,B,P,10), red);
+        draw(B--R);
+        draw(A--B--C--D--A);
+        draw(circumcircle(triangle(A,B,C)), red);
+        draw(circumcircle(triangle(A,B,S)), blue);
+        draw(circumcircle(triangle(A,D,Q)));
+        draw(circumcircle(triangle(B,S,Q)), dashed+blue);
+        draw(B--S--Q--X--B, orange);
+    \end{asy}
+\end{center}
+Akan dibuktikan bahwa $ABCXD$ siklis. 
+
+Misalkan $X'$ adalah perpotongan $BR$ dengan lingkaran $(ABCD)$. Misalkan pula $Q'$ perpotongan $AX'$ dengan $CD$.
+
+Definisikan $S$ sebagai proyeksi $A$ ke $PQ$. Karena $\angle ASQ = \angle ADQ = 90^\circ$ maka $ASQD$ siklis.
+
+Berarti dengan \textit{power of a point}
+$$RX'\cdot RB = RD\cdot DA = RQ\cdot QS.$$
+yang menunjukkan bahwa $X'BSQ$ siklis. Berarti $\angle QX'B = \angle PSB$.
+
+Sadari bahwa karena $\angle ABP = \angle PAC$ dan $\angle BCA = \angle PCA$ maka $\triangle BAP \sim \triangle BCA$ yang langsung mengakibatkan $\angle PAB = \angle ACB$.
+Sekarang karena $\angle ASP = \angle ABP = 90^\circ$ maka $ASBP$ siklis, sehingga didapat $$\angle PSB = \angle PAB = \angle ACB = \angle AX'B = \angle Q'X'B.$$
+
+Dari kedua fakta tersebut didapat $\angle QX'B = \angle Q'X'B$ yang menunjukkan $Q = Q'$ yang mengakibatkan $X = X'$. Soal terbukti.
+\end{proof}
+
+\end{document}

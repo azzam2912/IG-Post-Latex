@@ -1,0 +1,116 @@
+\documentclass{article}
+\usepackage[document]{ragged2e}
+
+\usepackage{enumitem}
+\renewcommand{\baselinestretch}{1.5}
+\addtolength{\oddsidemargin}{-1in}
+\addtolength{\evensidemargin}{-1.5in}
+\addtolength{\textwidth}{1.9in}
+
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{3in} 
+
+\usepackage{amsmath, amsthm}
+\usepackage{amssymb}
+
+\renewcommand{\qed}{\unskip\nobreak\quad\qedsymbol}% As suggested by egreg
+
+\makeatletter
+\newtheoremstyle{indented}
+{10pt}% space before
+{10pt}% space after
+{\addtolength{\@totalleftmargin}{3.5em}
+	\addtolength{\linewidth}{-3.5em}
+	\parshape 1 5em \linewidth}% body font
+{}% indent
+{\bfseries}% header font
+{.}% punctuation
+{.5em}% after theorem header
+{}% header specification (empty for default)
+\makeatother
+
+\theoremstyle{indented}
+
+\newtheorem*{lemma}{Lemma}
+
+
+\begin{document}
+	Didefinisikan barisan $(x_n)$ dan $(y_n)$ dimana $x_1 = 3, y_1 = 2,$ serta $$x_{n+1}=x_n+2y_n, \; \; y_{n+1}=x_n+y_n, \; \; \forall n \in \mathbb{N}.$$
+	
+	Misalkan sebuah barisan $(z_n)$ didefinisikan dengan $$z_n = \frac{x_n}{y_n}, \; \; \forall n \in \mathbb{N}.$$
+	
+	\begin{enumerate}
+		\item[ a.] Buktikan bahwa $|z_{n+1}-\sqrt{2}| < \frac12|z_n - \sqrt{2}| \forall n \in \mathbb{N}$
+		\item[ b.] Carilah $\lim (z_n)$
+	\end{enumerate}
+
+	(Seleksi KNMIPA 2021 tingkat UI)\\
+	\newpage
+	$\textbf{Solusi. }$
+	
+	\begin{enumerate}
+		\item[a.] Perhatikan bahwa untuk $n>0$,
+		$$
+		z_{n+1} = \frac{x_{n+1}}{y_{n+1}} 
+		= \frac{x_n +  2y_n}{x_n+y_n} 
+		= 1 + \frac{y_n}{x_n+y_n} 
+		= 1 + \frac{1}{1+\frac{x_n}{y_n}} 
+		= 1 + \frac{1}{1 + z_n}$$
+		Sekarang, perhatikan lemma berikut
+		 
+		 \begin{lemma} $z_n > 1$ untuk $\forall n \in \mathbb{N}$.
+		 		
+		 		\begin{proof}[Bukti.]
+		 			Untuk $n=1$, didapat $z_1 = \dfrac{x_1}{y_1} = \dfrac{3}{2} > 1$.\\
+		 			Asumsikan pernyataan benar untuk $n=k > 0$. Maka untuk $n = k+1$, didapat 
+		 			\begin{align*}
+		 				z_{k+1}
+		 				= 1 + \frac{1}{1 + z_k}
+		 				> 1 + 0 = 1
+		 			\end{align*}
+		 			Sehingga, berdasarkan prinsip induksi, terbukti bahwa $z_n > 1, \; \forall n \in \mathbb{N}$.
+		 		\end{proof}
+		 		
+		 	\end{lemma}
+		 
+		
+		dari lemma tersebut, untuk $\forall n \in \mathbb{N}$, kita punya
+		\begin{align*}
+			\left|z_{n+1} - \sqrt{2}\right| 
+			&= \left|1 - \sqrt{2} + \frac{1}{1+z_n}\right|  \\
+			&= \left|\frac{z_n-\sqrt{2}z_n+2-\sqrt{2}}{z_n+1}\right| \\
+			&= \frac{1}{\left|z_n+1\right|}\left|1-\sqrt{2}\right|\left|z_n-\sqrt{2}\right| \\
+			&< \frac{1}{1+1}\cdot1\cdot\left|z_n-\sqrt{2}\right| \\
+			&= \frac12\left|z_n-\sqrt{2}\right|
+		\end{align*}
+	soal bagian (a) terbukti. \qed
+	\newpage
+	\item[b.] Akan ditunjukkan bahwa $\lim (z_n) = \sqrt{2}$
+	\begin{lemma}
+		$\left|z_{n} - \sqrt{2}\right| \le \frac{1}{2^{n-1}}\left|z_1-\sqrt{2}\right|$ untuk $n \ge 1$
+		\begin{proof}
+			Untuk $n=2$, didapat $\left|z_{1} - \sqrt{2}\right|
+			\le \frac{1}{2^{1-1}}\left|z_1-\sqrt{2}\right|$ (benar).\\
+			Asumsikan pernyataan benar untuk $n=k$. Maka untuk $n = k+1$, didapat 
+			\begin{align*}
+				\left|z_{k+1} - \sqrt{2}\right|
+				< \frac12\left|z_k-\sqrt{2}\right| <\frac12 \cdot \frac{1}{2^{k-1}}\left|z_1-\sqrt{2}\right| = \frac{1}{2^{k}}\left|z_1-\sqrt{2}\right|
+			\end{align*}
+			Sehingga, berdasarkan prinsip induksi, pernyataan terbukti.
+		\end{proof}
+	\end{lemma}
+	
+	dari lemma tersebut kita punya $$0 \le \left|z_{n} - \sqrt{2}\right| \le \frac{1}{2^{n-1}}\left|z_1-\sqrt{2}\right|.$$
+	
+	Padahal karena $$\lim\limits_{n \rightarrow \infty}\frac{1}{2^{n-1}}\left|z_1-\sqrt{2}\right| = 0,$$
+	
+	dengan teorema Squeeze, kita mendapatkan
+	$$\lim\limits_{n \rightarrow \infty} 0 = 0\le \lim\limits_{n \rightarrow \infty}\left|z_n-\sqrt{2}\right| \le \lim\limits_{n \rightarrow \infty} \frac{1}{2^{n-1}}\left|z_1-\sqrt{2}\right| = 0$$
+	$$\implies \lim\limits_{n \rightarrow \infty}\left|z_n-\sqrt{2}\right| = 0$$
+	$$ \implies \lim\limits_{n \rightarrow \infty}z_n = \sqrt2$$
+	
+	sehingga terbukti bahwa $\lim (z_n) = \sqrt{2}$. \qed
+	\end{enumerate}
+	
+	
+\end{document}
