@@ -1,0 +1,36 @@
+\begin{center}
+\begin{asy}
+import olympiad;
+import geometry;
+unitsize(1.3cm);
+pair A,B,C,D,S,O,E,F;
+A = (-3,0);
+B = (3,0);
+C = (-1,5);
+D = foot(C,A,B);
+O = circumcenter(A,B,C);
+S = rotate(180,O)*C;
+E = intersectionpoints(line(A,C),Circle(A,abs(A-D)))[0];
+F = intersectionpoints(line(B,C),Circle(B,abs(B-D)))[0];
+draw(A--B--C--cycle);
+draw(C--D);
+draw(C--S);
+draw(E--D--F);
+draw(A--S--B);
+draw(E--S--F, dashed+red);
+draw(Circle(O,0.05),red);
+draw(circumcircle(triangle(A,B,C)));
+draw(rightanglemark(B,D,C,12), purple);
+draw(rightanglemark(S,A,C,12), blue);
+draw(rightanglemark(C,B,S,12), blue);
+
+label("$A$", A, SW);
+label("$B$", B, SE);
+label("$C$", C, N);
+label("$D$", D, S);
+label("$O$", O, NE);
+label("$E$", E, NW);
+label("$F$", F, NE);
+label("$S$", S, SE);
+\end{asy}
+\end{center}
