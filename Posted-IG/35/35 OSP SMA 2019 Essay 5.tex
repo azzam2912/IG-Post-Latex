@@ -1,0 +1,117 @@
+\section{Soal}
+Diberikan segitiga $ABC$, dengan $AC > BC$, dan lingkaran luarnya yang berpusat di $O$. Misalkan $M$ adalah titik pada lingkaran luar segitiga $ABC$ sehingga $CM$ adalah garis bagi $\angle ACB$. Misalkan $\Gamma$ adalah lingkaran berdiameter $CM$. Garis bagi $\angle BOC$ dan garis bagi $\angle AOC$ memotong $\Gamma$ berturut-turut di $P$ dan $Q$. Jika $K$ adalah titik tengah $CM$, buktikan bahwa $P, Q, O, K$ terletak pada satu lingkaran.
+
+\begin{center}
+    \begin{asy}
+         /* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+        import graph; size(7cm); 
+        real labelscalefactor = 0.5; /* changes label-to-point distance */
+        pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+        pen dotstyle = black; /* point style */ 
+        real xmin = -4.352519447087224, xmax = 3.552760055534491, ymin = -3.0445572732895303, ymax = 4.992008009921388;  /* image dimensions */
+        pen uququq = rgb(0.25098039215686274,0.25098039215686274,0.25098039215686274); pen xdxdff = rgb(0.49019607843137253,0.49019607843137253,1); pen sqsqsq = rgb(0.12549019607843137,0.12549019607843137,0.12549019607843137); pen dcrutc = rgb(0.8627450980392157,0.0784313725490196,0.23529411764705882); 
+        
+        draw((2.4042410270498236,-1.1644052342944715)--(-2.4019878497618183,-1.1690461220151036)--(-1.550148326865037,2.1756044287782377)--cycle, linewidth(0.8) + xdxdff); 
+         /* draw figures */
+        draw(circle((0,0), 2.6713693989790994), linewidth(0.8) + uququq); 
+        draw((2.4042410270498236,-1.1644052342944715)--(-2.4019878497618183,-1.1690461220151036), linewidth(0.8) + xdxdff); 
+        draw((-2.4019878497618183,-1.1690461220151036)--(-1.550148326865037,2.1756044287782377), linewidth(0.8) + xdxdff); 
+        draw((-1.550148326865037,2.1756044287782377)--(2.4042410270498236,-1.1644052342944715), linewidth(0.8) + xdxdff); 
+        draw((-2.4019878497618183,-1.1690461220151036)--(0,0), linewidth(0.8)); 
+        draw((0,0)--(-1.550148326865037,2.1756044287782377), linewidth(0.8)); 
+        draw((2.4042410270498236,-1.1644052342944715)--(0,0), linewidth(0.8)); 
+        draw((-1.9760680883134274,0.503279153381567)--(0,0), linewidth(1.2) + sqsqsq); 
+        draw((0,0)--(0.42704635009239345,0.5055995972418831), linewidth(1.2) + sqsqsq); 
+        draw((-1.550148326865037,2.1756044287782377)--(0.0025794692635643696,-2.6713681536134763), linewidth(0.8)); 
+        draw(circle((-0.7737844288007363,-0.24788186241761934), 2.544803863921903), linewidth(0.8) + red); 
+        draw(circle((-1.1077922994432452,2.126410325179262), 2.39767067165921), linewidth(0.8) + linetype("4 4")); 
+        draw((-3.0977839336674546,0.7889657672807343)--(-1.9760680883134274,0.503279153381567), linewidth(0.8) + dcrutc); 
+        draw((-0.7737844288007363,-0.24788186241761934)--(-3.0977839336674546,0.7889657672807343), linewidth(0.8) + dcrutc); 
+        draw((0.42704635009239345,0.5055995972418831)--(1.1739566194197653,1.3899006368504454), linewidth(0.8) + dcrutc); 
+        draw((1.1739566194197653,1.3899006368504454)--(-0.7737844288007363,-0.24788186241761934), linewidth(0.8) + dcrutc); 
+         /* dots and labels */
+        dot((0,0),linewidth(4pt) + dotstyle); 
+        label("$O$", (0.03617664689493816,0.07816879358239026), NE * labelscalefactor); 
+        dot((-2.4019878497618183,-1.1690461220151036),dotstyle); 
+        label("$B$", (-2.36447762673633,-1.0752705644513822), NE * labelscalefactor); 
+        dot((2.4042410270498236,-1.1644052342944715),dotstyle); 
+        label("$A$", (2.4462084762825786,-1.0752705644513822), NE * labelscalefactor); 
+        dot((-1.550148326865037,2.1756044287782377),dotstyle); 
+        label("$C$", (-1.5111200529064652,2.2725168405734695), NE * labelscalefactor); 
+        dot((0.0025794692635643696,-2.6713681536134763),linewidth(4pt) + dotstyle); 
+        label("$M$", (0.03617664689493816,-2.594434596983668), NE * labelscalefactor); 
+        dot((-0.7737844288007363,-0.24788186241761934),linewidth(4pt) + dotstyle); 
+        label("$K$", (-0.7327829251275774,-0.17502521183965736), NE * labelscalefactor); 
+        dot((-3.0977839336674546,0.7889657672807343),linewidth(4pt) + dotstyle); 
+        label("$P$", (-3.0584167527078683,0.8658834771176496), NE * labelscalefactor); 
+        dot((1.1739566194197653,1.3899006368504454),linewidth(4pt) + dotstyle); 
+        label("$Q$", (1.208371116441456,1.4660470455254662), NE * labelscalefactor); 
+        clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+         /* end of picture */
+    \end{asy}
+\end{center}
+
+\newpage
+\section{Solusi.}
+    \begin{center}
+    \begin{asy}
+         /* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+        import graph; size(8.796147299477068cm); 
+        real labelscalefactor = 0.5; /* changes label-to-point distance */
+        pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+        pen dotstyle = black; /* point style */ 
+        real xmin = -4.352519447087224, xmax = 4.443627852389844, ymin = -3.7572515107738127, ymax = 4.992008009921388;  /* image dimensions */
+        pen uququq = rgb(0.25098039215686274,0.25098039215686274,0.25098039215686274); pen xdxdff = rgb(0.49019607843137253,0.49019607843137253,1.); pen sqsqsq = rgb(0.12549019607843137,0.12549019607843137,0.12549019607843137); pen dcrutc = rgb(0.8627450980392157,0.0784313725490196,0.23529411764705882); 
+
+        draw((2.4042410270498236,-1.1644052342944715)--(-2.4019878497618183,-1.1690461220151036)--(-1.550148326865037,2.1756044287782377)--cycle, linewidth(0.8) + xdxdff); 
+        /* draw figures */
+        draw(circle((0.,0.), 2.6713693989790994), linewidth(0.8) + uququq); 
+        draw((2.4042410270498236,-1.1644052342944715)--(-2.4019878497618183,-1.1690461220151036), linewidth(0.8) + xdxdff); 
+        draw((-2.4019878497618183,-1.1690461220151036)--(-1.550148326865037,2.1756044287782377), linewidth(0.8) + xdxdff); 
+        draw((-1.550148326865037,2.1756044287782377)--(2.4042410270498236,-1.1644052342944715), linewidth(0.8) + xdxdff); 
+        draw((-2.4019878497618183,-1.1690461220151036)--(0.,0.), linewidth(0.8)); 
+        draw((0.,0.)--(-1.550148326865037,2.1756044287782377), linewidth(0.8)); 
+        draw((2.4042410270498236,-1.1644052342944715)--(0.,0.), linewidth(0.8)); 
+        draw((-1.9760680883134274,0.503279153381567)--(0.,0.), linewidth(1.2) + sqsqsq); 
+        draw((0.,0.)--(0.42704635009239345,0.5055995972418831), linewidth(1.2) + sqsqsq); 
+        draw((-1.550148326865037,2.1756044287782377)--(0.0025794692635643696,-2.6713681536134763), linewidth(0.8)); 
+        draw(circle((-0.7737844288007363,-0.24788186241761934), 2.544803863921903), linewidth(0.8) + red); 
+        draw(circle((-1.1077922994432452,2.126410325179262), 2.39767067165921), linewidth(0.8) + linetype("4 4")); 
+        draw((-3.0977839336674546,0.7889657672807343)--(-1.9760680883134274,0.503279153381567), linewidth(0.8) + dcrutc); 
+        draw((-1.9760680883134274,0.503279153381567)--(-0.7737844288007363,-0.24788186241761934), linewidth(0.8) + dcrutc); 
+        draw((-0.7737844288007363,-0.24788186241761934)--(-3.0977839336674546,0.7889657672807343), linewidth(0.8) + dcrutc); 
+        draw((-0.7737844288007363,-0.24788186241761934)--(0.42704635009239345,0.5055995972418831), linewidth(0.8) + dcrutc); 
+        draw((0.42704635009239345,0.5055995972418831)--(1.1739566194197653,1.3899006368504454), linewidth(0.8) + dcrutc); 
+        draw((1.1739566194197653,1.3899006368504454)--(-0.7737844288007363,-0.24788186241761934), linewidth(0.8) + dcrutc); 
+        /* dots and labels */
+        dot((0.,0.),linewidth(3.pt) + dotstyle); 
+        label("$O$", (0.00617664689493816,-0.01816879358239026), S * labelscalefactor); 
+        dot((-2.4019878497618183,-1.1690461220151036),dotstyle); 
+        label("$B$", (-2.56447762673633,-1.2752705644513822), SW * labelscalefactor); 
+        dot((2.4042410270498236,-1.1644052342944715),dotstyle); 
+        label("$A$", (2.4462084762825786,-1.0752705644513822), SE * labelscalefactor); 
+        dot((-1.550148326865037,2.1756044287782377),dotstyle); 
+        label("$C$", (-1.6111200529064652,2.3725168405734695), N * labelscalefactor); 
+        dot((-1.9760680883134274,0.503279153381567),linewidth(3.pt) + dotstyle); 
+        label("$D$", (-1.9924876176995836,0.5751792486701134), NW * labelscalefactor); 
+        dot((0.42704635009239345,0.5055995972418831),linewidth(3.pt) + dotstyle); 
+        label("$E$", (0.46754421168805665,0.5845568044264855), SE * labelscalefactor); 
+        dot((0.0025794692635643696,-2.6713681536134763),linewidth(3.pt) + dotstyle); 
+        label("$M$", (0.00617664689493816,-2.694434596983668), SE * labelscalefactor); 
+        dot((-0.7737844288007363,-0.24788186241761934),linewidth(3.pt) + dotstyle); 
+        label("$K$", (-0.7527829251275774,-0.35502521183965736), W * labelscalefactor); 
+        dot((-3.0977839336674546,0.7889657672807343),linewidth(3.pt) + dotstyle); 
+        label("$P$", (-3.2584167527078683,0.9658834771176496), SW * labelscalefactor); 
+        dot((1.1739566194197653,1.3899006368504454),linewidth(3.pt) + dotstyle); 
+        label("$Q$", (1.208371116441456,1.5660470455254662), SE * labelscalefactor); 
+        clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+        /* end of picture */
+    \end{asy}
+\end{center}
+
+    Misalkan $D$ dan $E$ berturut-turut adalah perpotongan $OP$ dengan $BC$ dan $OQ$ dengan $AC$. Dari sini didapat $D$ dan $E$ berturut-turut adalah titik tengah $AB$ dan $AC$.
+
+    Dikarenakan $K,D,E$ berturut-turut adalah titik tengah busur $AM, BC, CA$ dari lingkaran luar $\triangle ABC$, maka $\dangle OKC = \dangle ODC = \dangle OEC = 90^\circ$. Fakta tersebut langsung mengakibatkan $C,E,O,K,D$ konsiklis.
+    Oleh karena itu, didapat $\dangle KDE = \dangle KCE = \dangle DCK = \dangle DEK$ yang berarti $DK=KE$.
+    Dengan menggabungkan fakta $DK = KE$, $PK=QK$ (karena merupakan jari-jari $\Gamma$), fakta $\angle KDO = \angle KEO \implies \angle KDP = \angle KEQ$ (karena $KDEO$ siklis) maka $\triangle PDK \sim \triangle QEK$ (ini merupakan kasus khusus kesebangunan segitiga $SSA (Side Side Angle)$).
+    Fakta tersebut menyebabkan $\dangle KPO = \dangle KPD = \dangle KQE = \dangle KQO$ yang menunjukkan bahwa $K,P,Q,O$ konsiklis. Terbukti.

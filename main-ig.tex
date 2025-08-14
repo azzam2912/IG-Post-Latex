@@ -1,0 +1,50 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[hagavi]{azzam}
+\usepackage[paperwidth=15cm, paperheight=15cm,margin=0.6cm]{geometry}
+% 4:5, 17:21,25
+%\usepackage[rightcaption]{sidecap}
+\usepackage{caption}
+\captionsetup[figure]{font=small, labelformat=empty}
+\colorlet{EvanRed}{Red!50!Purple}
+\definecolor{officegreen}{rgb}{0.0, 0.5, 0.0}
+
+\newcommand{\siku}[4][.2cm]
+	{
+	\coordinate (tempa) at ($(#3)!#1!(#2)$);
+	\coordinate (tempb) at ($(#3)!#1!(#4)$);
+	\coordinate (tempc) at ($(tempa)!0.5!(tempb)$);%midpoint
+	\draw[black] (tempa) -- ($(#3)!2!(tempc)$) -- (tempb);
+	}
+	\usetikzlibrary{calc,positioning,intersections}
+
+
+\usepackage{etoolbox}
+\newcommand{\zerodisplayskips}{%
+  \setlength{\abovedisplayskip}{5pt}%
+  \setlength{\belowdisplayskip}{5pt}%
+  \setlength{\abovedisplayshortskip}{5pt}%
+  \setlength{\belowdisplayshortskip}{5pt}}
+\appto{\normalsize}{\zerodisplayskips}
+\appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
+\setlength\parindent{10pt}
+
+% %japanese
+% \usepackage{CJKutf8}
+% \begin{CJK*}{UTF8}{min}
+% \title{簡単な不等式 - 償還}
+% \end{CJK*}
+
+\title{Ketaksamaan yang Ngga Biasa}
+\author{\small By Azzam L.H. IG: haxuv.world}
+
+% \author{Azzam L. H.}
+% \begin{CJK*}{UTF8}{min}
+\begin{document}
+\maketitle
+\pagestyle{plain}
+\vspace{-1.5cm}
+\input{Posted-IG/38/38 - ketaksamaan mantap}
+\end{document}
+% \end{CJK*}
+

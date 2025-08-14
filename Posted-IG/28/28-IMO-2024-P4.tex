@@ -1,0 +1,100 @@
+%page 1
+\section*{This is how I solved International Mathematical Olympiad 2024 Problem 4 (in Bahasa Indonesia and English)}
+\subsubsection*{by Azzam L. H.}
+\input{Posted-IG/28/28-IMO-2024-P4-asymptote}
+
+\newpage
+\renewcommand*\contentsname{Daftar Isi / Content}
+\tableofcontents
+
+\newpage
+
+\section{Soal / Problems}
+Let $ABC$ be a triangle with $AB < AC < BC$. Let the incenter and incircle of triangle $ABC$ be $I$ and $\omega$, respectively. Let $X$ be the point on line $BC$ different from $C$ such that the line through $X$ parallel to $AC$ is tangent to $\omega$. Similarly, let $Y$ be the point on line $BC$ different from $B$ such that the line through $Y$ parallel to $AB$ is tangent to $\omega$. Let $AI$ intersect the circumcircle of triangle $ABC$ at $P \ne A$. Let $K$ and $L$ be the midpoints of $AC$ and $AB$, respectively.
+Prove that $\angle KIL + \angle YPX = 180^{\circ}$.
+
+(Proposed by Dominik Burek, Poland)
+\newline
+\newline
+Misalkan $ABC$ adalah sebuah segitiga dengan $AB < AC < BC$. Misalkan pusat lingkaran dalam dan lingkaran dalam segitiga $ABC$ berturut-turut adalah $I$ dan $\omega$. Definisikan $X$ sebagai titik pada garis $BC$ yang berbeda dari $C$ sedemikian sehingga garis yang melalui $X$ sejajar dengan $AC$ dan menyinggung $\omega$. Demikian pula, misalkan $Y$ adalah titik pada garis $BC$ yang berbeda dari $B$ sedemikian sehingga garis yang melalui $Y$ sejajar dengan $AB$ dan menyinggung $\omega$. Misalkan $AI$ memotong lingkaran luar segitiga $ABC$ di $P \ne A$. Misalkan $K$ dan $L$ adalah titik-titik tengah dari $AC$ dan $AB$ secara berurutan.
+Buktikan bahwa $\angle KIL + \angle YPX = 180^{\circ}$.
+
+(Diajukan oleh Dominik Burek, Polandia)
+\newpage
+\section{Solusi (Bahasa Indonesia)}
+\input{Posted-IG/28/28-IMO-2024-P4-asymptote}
+Notasikan $\dangle$ sebagai sudut berarah (\textit{directed angle}).
+Misalkan garis singgung $\omega$ yang melewati $X$ dan sejajar $AC$ memotong $AB$ di $E$ dan garis singgung $\omega$ yang melewati $Y$ dan sejajar $AB$ memotong $AC$ di $F$. Lalu, misalkan pula $D$ sebagai perpotongan garis $EX$ dan $FY$.
+
+\begin{komentar*}
+    Jadi hal pertama dalam langkahku untuk nemu solusi adalah "iseng-iseng" nyambung garis singgung yang lewat $X$ dan $Y$. Kenapa? Karena kayaknya bakal dapet hal bagus kalo itu "disambung". Ternyata bener, kalo gambarnya bagus, bisa dapet $AEDF$ belah ketupat. Ingat, hal bagus ini juga bukan tanpa alasan: $AEDF$ menyinggung lingkaran dalam, yang berarti banyak ruas-ruas garis yang panjangnya sama. Berarti bisa dong cari sebuah kesimetrian.
+\end{komentar*}
+\begin{lemmarev}
+    $AEDF$ adalah belah ketupat
+    \begin{buktilemma}
+        Perhatikan karena $AF \parallel DE$ dan $AE \parallel DF$, maka $AEDF$ adalah jajar genjang. Namun, perhatikan karena keempat sisi $AEDF$ menyinggung $\omega$ dengan $r$ adalah jari-jarinya, maka
+        \begin{align*}
+            DE \times 2r = [AEDF] = FD \times 2r \implies AF =DE = FD = AE 
+        \end{align*}
+        terbukti bahwa $AEDF$ belah ketupat.
+    \end{buktilemma}
+\end{lemmarev}
+
+\begin{komentar*}
+    Nah, sekarang adalah salah satu bagian paling krusial. Kelihatannya agak jelek ya ngebandingin $\angle KIL$ dan $\angle YPX$ langsung. Jujur aja pas awal baca soal dan lihat gambar, aku agak bingung ini "jauh amat" dua sudut yang mau dibuktiin. Eh yaudah, kepikiranlah buat "mendekatkan" dua sudut tersebut. Oke, berarti jangan-jangan ada dua segitiga sebangun hasil "pergeseran" homothety? Yes, bener ternyata ada kalau jeli melihat gambar. Nah sekarang gimana cara buktiinnya? Ingat bahwa kita udah buktiin $AEDF$ belah ketupat, yang berarti banyak kesimetrian! Titik tengah, garis yang sama panjang, wah dapet nih!
+\end{komentar*}
+
+Sekarang karena fakta bahwa $AEDF$ belah ketupat dengan keempat sisinya menyinggung $\omega$, jelas $I$ adalah titik tengah diagonal $AD$ dari $AEDF$. Sadari juga bahwa $K$ dan $L$ masing-masing adalah titik tengah dari $AB$ dan $AC$.
+
+Oleh karena itu, terdapat sebuah homothety/dilatasi dengan pusat $A$ dan skala 2 yang memetakan $\triangle LKI$ ke $\triangle CBI$ (dengan kata lain, $\triangle LKI \sim \triangle CBI)$. Dari sini $\dangle LIK = \dangle CDB$. 
+
+\begin{komentar*}
+    Oke, sekarang sentuhan terakhir. Kita udah mendekatkan $\angle KIL$ dengan $\angle YPX$ menjadi $\angle CDB$. Nah berarti tinggal cari nih gimana cara hubungin dua sudut, $\angle CDB$ dan $\angle YPX$. Nah, karena kayaknya ini "kelihatannya" bisa di \textit{angle chasing} yaudah gaskan. Eh ternyata beneran dong bisa di \textit{angle chasing}. Malahan nemu segiempat yang siklis disitu.
+\end{komentar*}
+Sekarang observasi bahwa
+\begin{align*}
+    \dangle BXD = \dangle YXD = \dangle BXE = \dangle BCA = \dangle BPA = \dangle BPD
+\end{align*}
+yang menunjukkan segiempat $BXDP$ siklis. Dengan cara serupa didapat juga bahwa segiempat $CYDP$ siklis. Karena fakta-fakta tersebut bisa didapatkan bahwa
+\begin{align*}
+    \dangle XPY &= \dangle XPD + \dangle DPY = \dangle XBD +\dangle DCY = \dangle CDB = \dangle LIK
+\end{align*}
+atau $\angle XPY = 180^\circ - \angle KIL$ yang membuktikan bahwa $\angle XPY + \angle KIL = 180^\circ$.
+
+\newpage
+\section{Solution (English)}
+\input{Posted-IG/28/28-IMO-2024-P4-asymptote}
+Let $\dangle$ denote a directed angle.
+Let the tangent line to $\omega$ passing through $X$ and parallel to $AC$ intersect $AB$ at $E$, and the tangent line to $\omega$ passing through $Y$ and parallel to $AB$ intersect $AC$ at $F$. Also, let $D$ be the intersection of lines $EX$ and $FY$.
+\begin{comment*}
+    So the first thing in my approach to finding the solution was to "mess around" by connecting the tangent lines passing through $X$ and $Y$. Why? Because it seemed like we'd get something good if we "connected" them. Turns out, I was right - if you draw it well, you can see that $AEDF$ is a rhombus. Remember, this good thing didn't come out of nowhere: $AEDF$ is tangent to the incircle, which means many line segments have the same length. So we should be able to find some symmetry here.
+\end{comment*}
+\begin{lemmarev}
+    $AEDF$ is a rhombus
+    \begin{buktilemma}
+        Notice that since $AF \parallel DE$ and $AE \parallel DF$, $AEDF$ is a parallelogram. However, note that because all four sides of $AEDF$ are tangent to $\omega$ with $r$ as its radius, we have
+        \begin{align*}
+            DE \times 2r = [AEDF] = FD \times 2r \implies AF =DE = FD = AE 
+        \end{align*}
+        proving that $AEDF$ is a rhombus.
+    \end{buktilemma}
+\end{lemmarev}
+\begin{comment*}
+    Now, here's one of the most crucial parts. It looks pretty ugly to compare $\angle KIL$ and $\angle YPX$ directly. To be honest, when I first read the problem and looked at the figure, I was a bit confused - these two angles we need to prove something about seem so "far apart". So I thought, why not try to "bring them closer"? Okay, so maybe there are two similar triangles resulting from a homothety "shift"? Yes, turns out there are if you look at the figure carefully. Now, how do we prove it? Remember that we've already proved $AEDF$ is a rhombus, which means there's a lot of symmetry! Midpoints, lines of equal length - we're onto something here!
+\end{comment*}
+Now because $AEDF$ is a rhombus with all four sides tangent to $\omega$, clearly $I$ is the midpoint of diagonal $AD$ of $AEDF$. Also notice that $K$ and $L$ are the midpoints of $AB$ and $AC$ respectively.
+Therefore, there's a homothety/dilation with center $A$ and scale 2 that maps $\triangle LKI$ to $\triangle CBI$ (in other words, $\triangle LKI \sim \triangle CBI)$. From this, we get $\dangle LIK = \dangle CDB$. 
+\begin{comment*}
+    Okay, now for the final touch. We've already brought $\angle KIL$ closer to $\angle YPX$ by relating it to $\angle CDB$. So now we just need to find a way to connect these two angles, $\angle CDB$ and $\angle YPX$. Well, since it "looks like" we might be able to do some angle chasing here, let's give it a shot. And you know, it actually works out! We even find a cyclic quadrilateral in there.
+\end{comment*}
+Now observe that
+\begin{align*}
+    \dangle BXD = \dangle YXD = \dangle BXE = \dangle BCA = \dangle BPA = \dangle BPD
+\end{align*}
+which shows that quadrilateral $BXDP$ is cyclic. Similarly, we can show that quadrilateral $CYDP$ is cyclic. Because of these facts, we can conclude that
+\begin{align*}
+    \dangle XPY &= \dangle XPD + \dangle DPY = \dangle XBD +\dangle DCY = \dangle CDB = \dangle LIK
+\end{align*}
+or $\angle XPY = 180^\circ - \angle KIL$ which proves that $\angle XPY + \angle KIL = 180^\circ$.
+
+

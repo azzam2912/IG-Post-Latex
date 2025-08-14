@@ -7,10 +7,13 @@
 \graphicspath{ {./} }
 \usetikzlibrary{calc,through,intersections}
 \usepackage[paperwidth=16cm, paperheight=16cm,margin=1cm]{geometry}
-
+%\usepackage[rightcaption]{sidecap}
+\usepackage{caption}
+\captionsetup[figure]{font=small, labelformat=empty}
 \colorlet{EvanRed}{Red!50!Purple}
+\definecolor{officegreen}{rgb}{0.0, 0.5, 0.0}
 
-\newcommand{\siku}[4][.5cm]
+\newcommand{\siku}[4][.2cm]
 	{
 	\coordinate (tempa) at ($(#3)!#1!(#2)$);
 	\coordinate (tempb) at ($(#3)!#1!(#4)$);
@@ -32,23 +35,21 @@
 \appto{\footnotesize}{\zerodisplayskips}
 \setlength\parindent{10pt}
 
-\title{Suatu Soal Ketaksamaan Sederhana}
-\author{}
-\date{}
+%japanese
+\usepackage{CJKutf8}
+\begin{CJK*}{UTF8}{min}
+\title{簡単な不等式 - 償還}
+\end{CJK*}
+\author{Simple Inequality - Redemption}
+\date{Azzam Labib}
 
-
+\begin{CJK*}{UTF8}{min}
 \begin{document}
 \maketitle
-\pagestyle{plain}
+
+%\pagestyle{plain}
 \vspace{-1.5cm}
-\section{Soal}
-Misalkan $a,b,c > 0$ dan memenuhi $a+b+c=1$. Tunjukkan bahwa
-\begin{align*}
-\dfrac{ab}{1+c}+\dfrac{bc}{1+a}+\dfrac{ca}{1+b} \ge \dfrac{1}{4}.
-\end{align*}
-
-\newpage
-\section{Observasi}
-Jika dilihat pada setiap suku, penyebut dan pembilang memiliki "derajat" yang berbeda, dengan pembilang memiliki derajat 2 dan penyebut memiliki derajat 1. Contohnya pada $\frac{ab}{1+c}$, ekspresi $ab$ memiliki derajat 2, dan ekspresi $1+c$ memiliki derajat 1. Oleh karena
-
+\input{1/simple-inequality}
 \end{document}
+\end{CJK*}
+

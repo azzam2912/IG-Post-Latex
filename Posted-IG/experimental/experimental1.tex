@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+
+\geometry{a4paper, margin=1in}
+
+\newtheoremstyle{mystyle}
+  {} % Space above
+  {} % Space below
+  {\itshape} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+\theoremstyle{mystyle}
+\newtheorem{problem}{Soal}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\begin{problem}[HMMT 2017]
+Misalkan $P(x)$ dan $Q(x)$ adalah polinomial tak konstan dengan koefisien-koefisien real. Buktikan bahwa jika
+\[ \lfloor P(y) \rfloor = \lfloor Q(y) \rfloor \]
+untuk semua bilangan real $y$, maka $P(x) = Q(x)$ untuk semua bilangan real $x$.
+\end{problem}
+
+\section*{Solusi}
+\noindent
+Akan ditunjukkan bahwa $P(x)=Q(x)$ untuk semua $x \in \mathbb{R}$.
+
+\paragraph{Langkah 1: Membuktikan $|P(x) - Q(x)| < 1$}
+Pertama, kita klaim bahwa $|P(x) - Q(x)| < 1$ untuk semua $x \in \mathbb{R}$. \\
+Kita akan buktikan dengan kontradiksi. Andaikan, tanpa mengurangi keumuman (WLOG), terdapat suatu $y_0$ sehingga $P(y_0) \ge Q(y_0) + 1$. Maka, dengan mengambil fungsi floor di kedua sisi, kita peroleh:
+\[ \lfloor P(y_0) \rfloor \ge \lfloor Q(y_0) + 1 \rfloor \]
+Berdasarkan properti fungsi floor, $\lfloor z+1 \rfloor = \lfloor z \rfloor + 1$. Jadi,
+\[ \lfloor P(y_0) \rfloor \ge \lfloor Q(y_0) \rfloor + 1 \]
+Hal ini kontradiksi dengan hipotesis awal bahwa $\lfloor P(y) \rfloor = \lfloor Q(y) \rfloor$ untuk semua bilangan real $y$. Dengan argumen yang sama untuk kasus $Q(y_0) \ge P(y_0) + 1$, kita dapat menyimpulkan bahwa tidak mungkin $|P(x) - Q(x)| \ge 1$. Jadi, haruslah $|P(x) - Q(x)| < 1$ untuk semua $x \in \mathbb{R}$.
+
+\paragraph{Langkah 2: Menunjukkan $P(x)-Q(x)$ adalah konstan}
+Misalkan $R(x) = P(x) - Q(x)$. Karena $P(x)$ dan $Q(x)$ adalah polinomial, maka $R(x)$ juga merupakan polinomial. Dari Langkah 1, kita tahu bahwa $|R(x)| < 1$ untuk semua $x \in \mathbb{R}$. Sebuah polinomial yang terbatas (bounded) di seluruh domainnya haruslah merupakan polinomial konstan. Jadi,
+\[ P(x) - Q(x) = C \]
+untuk suatu konstanta real $C$, dengan $|C| < 1$.
+
+\paragraph{Langkah 3: Membuktikan $C=0$}
+Kita akan buktikan bahwa $C=0$ dengan kontradiksi. Andaikan $C \neq 0$. Tanpa mengurangi keumuman, asumsikan $C>0$. \\
+Karena $Q(x)$ adalah polinomial tak konstan, rangenya adalah $(-\infty, \infty)$. Karena $Q(x)$ kontinu, berdasarkan Teorema Nilai Antara, kita dapat menemukan suatu $x_0 \in \mathbb{R}$ sehingga $Q(x_0) = k - C$ untuk suatu bilangan bulat $k$.
+
+Sekarang kita periksa nilai floor dari $P(x_0)$ dan $Q(x_0)$:
+\[ \lfloor P(x_0) \rfloor = \lfloor Q(x_0) + C \rfloor = \lfloor (k-C) + C \rfloor = \lfloor k \rfloor = k \]
+\[ \lfloor Q(x_0) \rfloor = \lfloor k-C \rfloor \]
+Karena kita mengasumsikan $C>0$, maka $k-C < k$. Akibatnya, $\lfloor k-C \rfloor \le k-1$, yang berarti $\lfloor k-C \rfloor < k$.
+Ini menunjukkan bahwa $\lfloor Q(x_0) \rfloor < \lfloor P(x_0) \rfloor$, yang sekali lagi bertentangan dengan hipotesis awal.
+
+Karena pengandaian $C \neq 0$ membawa kita ke sebuah kontradiksi, maka haruslah $C=0$.
+
+\paragraph{Kesimpulan}
+Karena $P(x) - Q(x) = C$ dan $C=0$, maka $P(x)-Q(x)=0$, yang berarti $P(x)=Q(x)$ untuk semua bilangan real $x$.
+
+\end{document}

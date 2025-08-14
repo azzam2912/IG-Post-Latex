@@ -1,0 +1,25 @@
+\section{Problem}
+Let $a,b,c > 0$ satisfying $a+b+c=1$. Show that
+\begin{align*}
+\dfrac{ab}{1+c}+\dfrac{bc}{1+a}+\dfrac{ca}{1+b} \le \dfrac{1}{4}.
+\end{align*}
+
+\newpage
+\section{Motivation - Walkthrough}
+Oh yeah, where did the motivation to find the solution come from? Well, use $1=a+b+c$. In the question there's $\frac{ab}{1+c}$ right? The number 1 is a bit "disruptive", isn't it? So that's why, try substituting $1=a+b+c$ into the denominator and try breaking it down so you can see the "symmetry".
+
+\newpage
+\section{Solution}
+
+    Observe that, using Cauchy-Schwarz Inequality, we have
+    \begin{align*}
+        \cycsum \dfrac{ab}{1+c} &= \cycsum \dfrac{ab}{a+b+2c}\\
+        &= \cycsum \dfrac{ab}{(c+a)+(b+c)}\\
+        &\le \cycsum \dfrac{ab}{(1+1)^2}\left(\dfrac{1}{a+c} + \dfrac{1}{b+c}\right)\\
+        &= \dfrac{1}{4} \cycsum \left(\dfrac{ab}{a+c} + \dfrac{ab}{b+c}\right)\\
+        &= \dfrac{1}{4}\cycsum \left(\dfrac{ab}{b+c}+\dfrac{ca}{b+c}\right)\\
+        &= \dfrac{1}{4}\cycsum \dfrac{a(b+c)}{b+c}\\
+        &= \dfrac{1}{4}\cycsum a\\
+        &= \dfrac{1}{4}.
+    \end{align*}
+    where equality happens when $a=b=c$. Q.E.D.

@@ -1,0 +1,82 @@
+\section*{Random Aja Soalnya Aku Lagi Gabut Terus Udah Mau OSK Juga Kan}
+\subsection*{Azzam L. H.}
+
+\section{Problem / Soal}
+\subsection*{English}
+Positive integers $x$ and $y$ satisfy the equation
+$$
+x - y - \dfrac{x}{y} + \dfrac{x^5}{y^5} = 2024.
+$$
+Determine the smallest value of \( x \) that satisfies this condition.
+
+
+\subsection*{Bahasa Indonesia}
+Bilangan bulat positif $x$ dan $y$ memenuhi persamaan
+\begin{align*}
+    x-y-\dfrac{x}{y}+\dfrac{x^5}{y^5}=2024.
+\end{align*}
+Tentukan nilai $x$ terkecil yang memenuhi.
+
+\newpage
+\renewcommand*\contentsname{Daftar Isi / Content}
+\tableofcontents
+
+\newpage
+\section{Solution (English)}
+Positive integers \( x \) and \( y \) satisfy the equation
+
+Let \( x = da \) and \( y = db \), where \( a, b, d \in \ZZ^+ \) and \( \gcd(a, b) = 1 \). The equation in the problem becomes
+\begin{align*}
+    da - db - \dfrac{da}{db} + \dfrac{d^5a^5}{d^5b^5} &= 2024 \\
+    dab^5 - db^6 - ab^4 + a^5 &= 2024b^5 \\
+    a^5 &= b^4(-dab + db^2 + a + 2024b).
+\end{align*}
+
+From the last equation, \( b^4 \mid a^5 \). However, since \( \gcd(a, b) = 1 \), it must be that \( b^4 = 1 \iff b = 1 \). Therefore, we obtain
+\begin{align*}
+    a^5 &= -da + d + a + 2024 \\
+    a^5 + da - a - d + 1 &= 2025 \\
+    a^5 + (d-1)(a-1) &= 2025.
+\end{align*}
+
+Note that \( 1 \le a \le 4 \). If we assume \( a \ge 5 \), then
+\begin{align*}
+    2025 = a^5 + (d-1)(a-1) \ge 5^5 + 0 = 3125 > 2025,
+\end{align*}
+
+which is a contradiction. Now, check each value of \( a = 1, 2, 3, 4 \) one by one.
+\begin{itemize}
+    \item If \( a = 1 \), then \( 1^5 + (d-1)(1-1) = 2025 \), which clearly does not hold.
+    \item If \( a = 2 \), we get \( d = 1994 \). This implies \( x = da = 3998 \).
+    \item If \( a = 3 \), we get \( d = 892 \). This implies \( x = da = 2676 \).
+    \item If \( a = 4 \), \( d \) is not an integer, so it does not satisfy the condition.
+\end{itemize}
+
+We conclude that the smallest value of \( x \) that satisfies the equation is \( \boxed{2676} \).
+
+\section{Solusi (Bahasa Indonesia)}
+    Misalkan $x=da$, $y=db$ dimana $a,b,d \in \ZZ^+$, dengan $gcd(a,b)=1$. Persamaan di soal akan menjadi
+    \begin{align*}
+        da-db-\dfrac{da}{db}+\dfrac{d^5a^5}{d^5b^5} &= 2024\\
+        dab^5-db^6-ab^4+a^5 &= 2024b^5\\
+        a^5 &= b^4(-dab+db^2+a+2024b).
+    \end{align*}
+    Pada persamaan terakhir, $b^4 \mid a^5$. Namun, karena $gcd(a,b)=1$, maka haruslah $b^4=1 \iff b=1$. Oleh karena itu didapat
+    \begin{align*}
+        a^5 &= -da+d+a+2024\\
+        a^5 + da - a - d + 1 &= 2025\\
+        a^5 + (d-1)(a-1) &= 2025.
+    \end{align*}
+    Perhatikan bahwa haruslah $1 \le a \le 4$. Karena jika $a\ge 5$, maka
+    \begin{align*}
+        2025 = a^5 + (d-1)(a-1) \ge 5^5 + 0 = 3125 > 2025,
+    \end{align*}
+    kontradiksi.
+    Sekarang, cek satu persatu nilai $a=1,2,3,4$.
+    \begin{itemize}
+        \item Jika $a=1$, maka $1^5+(d-1)(1-1) = 2025$, jelas tidak memenuhi.
+        \item Jika $a=2$, didapat $d=1994$. Ini berakibat $x=da=3998$.
+        \item Jika $a=3$, didapat $d=892$. Ini berakibat $x=da=2676$.
+        \item Jika $a=4$, didapat $d$ tidak bulat, berarti tidak memenuhi.
+    \end{itemize}
+    Dapat disimpulkan bahwa $x$ terkecil yang memenuhi adalah $\boxed{2676}$.

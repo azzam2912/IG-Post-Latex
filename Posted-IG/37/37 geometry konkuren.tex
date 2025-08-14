@@ -1,0 +1,179 @@
+\section{Soal}
+Diberikan $\triangle ABC$ dimana $A',B',C'$ berturut-turut adalah pencerminan $A,B,C$ terhadap $BC,CA,AB$. Perpotongan lingkaran luar $\triangle ABB'$ dan $\triangle ACC'$ adalah $A_1$. Definisikan $B_1$ dan $C_1$ secara serupa. Buktikan bahwa $AA_1,BB_1,$ dan $CC_1$ konkuren (bertemu di satu titik).
+\begin{center}
+    \begin{tikzpicture}[scale=0.9, dot/.style={circle, fill, inner sep=0.3pt, outer sep=0pt}]
+
+    % Definisikan titik-titik A, B, C (contoh segitiga sama sisi)
+    \tkzDefPoint(0,0){C}
+    \tkzDefPoint(2,0){B}
+    \tkzDefPoint(0.5,1.7){A}
+    
+    % lingkaran luar (circumcircle)
+    \tkzDefTriangleCenter[circum](A,B,C)\tkzGetPoint{O}
+    \tkzDrawCircle[thin](O,A)
+    \tkzDrawPoint(O)
+    \tkzLabelPoints(O)
+    
+    % Definisikan titik A', B', C'
+    \tkzDefPointBy[reflection = over B--C](A)
+    \tkzGetPoint{Ap}
+    \tkzDefPointBy[reflection = over C--A](B)
+    \tkzGetPoint{Bp}
+    \tkzDefPointBy[reflection = over A--B](C)
+    \tkzGetPoint{Cp}
+
+    % definisikan circumcircle lain
+    \tkzDefTriangleCenter[circum](A,B,Bp)
+    \tkzGetPoint{ABBp}
+    \tkzDefTriangleCenter[circum](A,C,Cp)
+    \tkzGetPoint{ACCp}
+
+    \tkzInterCC(ABBp,A)(ACCp,A) 
+    \tkzGetPoints{A2}{A1}
+    \tkzDrawPoints(A1)
+    \tkzLabelPoint[below](A1){$A_1$}
+    
+    \tkzDefTriangleCenter[circum](B,C,Cp)
+    \tkzGetPoint{BCCp}
+    \tkzDefTriangleCenter[circum](B,A,Ap)
+    \tkzGetPoint{BAAp}
+    
+    \tkzInterCC(BCCp,B)(BAAp,B)
+    \tkzGetPoints{B2}{B1}
+    \tkzDrawPoints(B1)
+    \tkzLabelPoint[below](B1){$B_1$}
+    
+    \tkzDefTriangleCenter[circum](C,A,Ap)
+    \tkzGetPoint{CAAp}
+    \tkzDefTriangleCenter[circum](C,B,Bp)
+    \tkzGetPoint{CBBp}
+    
+    \tkzInterCC(CAAp,C)(CBBp,C)
+    \tkzGetPoints{C2}{C1}
+    \tkzDrawPoints(C1)
+    \tkzLabelPoint[below](C1){$C_1$}
+
+    \tkzDrawCircles[thin, red](ABBp,A ACCp,A)
+    \tkzDrawCircles[thin, orange](BAAp,B BCCp,B)
+    \tkzDrawCircles[thin, cyan](CAAp,C CBBp,C)
+
+    \tkzDrawPolygon(A,B,C)
+    \tkzDrawSegments[thin, dashed, red](A,A1 B,B1 C,C1)
+
+    \tkzDrawPoints(A,B,C,Ap,Bp,Cp)
+    \tkzLabelPoints[above](A)
+    \tkzLabelPoints[below](B,C)
+    \tkzLabelPoint[right](Ap){$A'$}
+    \tkzLabelPoint[left](Bp){$B'$}
+    \tkzLabelPoint[below](Cp){$C'$}
+
+    \end{tikzpicture}
+\end{center}
+
+\section{Solusi}
+\begin{center}
+    \begin{tikzpicture}[scale=1.2, dot/.style={circle, fill, inner sep=0.3pt, outer sep=0pt}]
+
+    % Definisikan titik-titik A, B, C (contoh segitiga sama sisi)
+    \tkzDefPoint(0,0){C}
+    \tkzDefPoint(2,0){B}
+    \tkzDefPoint(0.5,1.7){A}
+    
+    % lingkaran luar (circumcircle)
+    \tkzDefTriangleCenter[circum](A,B,C)\tkzGetPoint{O}
+    \tkzDrawCircle[thin](O,A)
+    \tkzDrawPoint(O)
+    \tkzLabelPoints(O)
+    
+    % Definisikan titik A', B', C'
+    \tkzDefPointBy[reflection = over B--C](A)
+    \tkzGetPoint{Ap}
+    \tkzDefPointBy[reflection = over C--A](B)
+    \tkzGetPoint{Bp}
+    \tkzDefPointBy[reflection = over A--B](C)
+    \tkzGetPoint{Cp}
+
+    % definisikan circumcircle lain
+    \tkzDefTriangleCenter[circum](A,B,Bp)
+    \tkzGetPoint{ABBp}
+    \tkzDefTriangleCenter[circum](A,C,Cp)
+    \tkzGetPoint{ACCp}
+
+    \tkzInterCC(ABBp,A)(ACCp,A) 
+    \tkzGetPoints{A2}{A1}
+    \tkzDrawPoints(A1)
+    \tkzLabelPoint[below](A1){$A_1$}
+    
+    \tkzDefTriangleCenter[circum](B,C,Cp)
+    \tkzGetPoint{BCCp}
+    \tkzDefTriangleCenter[circum](B,A,Ap)
+    \tkzGetPoint{BAAp}
+    
+    \tkzInterCC(BCCp,B)(BAAp,B)
+    \tkzGetPoints{B2}{B1}
+    \tkzDrawPoints(B1)
+    \tkzLabelPoint[below](B1){$B_1$}
+    
+    \tkzDefTriangleCenter[circum](C,A,Ap)
+    \tkzGetPoint{CAAp}
+    \tkzDefTriangleCenter[circum](C,B,Bp)
+    \tkzGetPoint{CBBp}
+    
+    \tkzInterCC(CAAp,C)(CBBp,C)
+    \tkzGetPoints{C2}{C1}
+    \tkzDrawPoints(C1)
+    \tkzLabelPoint[below](C1){$C_1$}
+
+    \tkzDrawCircles[thin, red](ABBp,A ACCp,A)
+    \tkzDrawCircles[thin, dotted, orange](BAAp,B BCCp,B)
+    \tkzDrawCircles[thin, dotted, cyan](CAAp,C CBBp,C)
+
+    % A_B, A_C, dll
+    \tkzInterLC[common=A](A,C)(ABBp,A)
+    \tkzGetFirstPoint{Ab}
+    \tkzLabelPoint(Ab){$A_B$}
+    \tkzInterLC[common=A](A,B)(ACCp,A)
+    \tkzGetFirstPoint{Ac}
+    \tkzLabelPoint(Ac){$A_C$}
+    
+    \tkzInterLC[common=B](B,C)(BAAp,B)
+    \tkzGetFirstPoint{Ba}
+    \tkzLabelPoint(Ba){$B_A$}
+    \tkzInterLC[common=B](B,A)(BCCp,B)
+    \tkzGetFirstPoint{Bc}
+    \tkzLabelPoint[above](Bc){$B_C$}
+
+    \tkzInterLC[common=C](C,A)(CBBp,C)
+    \tkzGetFirstPoint{Cb}
+    \tkzLabelPoint(Cb){$C_B$}
+    \tkzInterLC[common=C](C,B)(CAAp,C)
+    \tkzGetFirstPoint{Ca}
+    \tkzLabelPoint(Ca){$C_A$}
+
+    \tkzDrawPolygon(A,B,C)
+    \tkzDrawSegments[thin, green](C,Ab C,Ba  A,Bc A,Cb B,Ca B,Ac)
+    \tkzDrawSegments[thin, blue](A,A B,Bp C,Cp)
+    \tkzDrawSegments[thin, dashed, red](A,A1 B,B1 C,C1)
+
+    \tkzDrawSegments[thick](Ab,Ac Ab,B Ac,C)
+
+    \tkzInterLL(C,Ac)(B,Ab)
+    \tkzGetPoint{Ha}
+    \tkzLabelPoint(Ha){$H_A$}
+    \tkzDrawPoints(A,B,C,Ap,Bp,Cp)
+    \tkzLabelPoints[above](A)
+    \tkzLabelPoints[below](B,C)
+    \tkzLabelPoint[right](Ap){$A'$}
+    \tkzLabelPoint[left](Bp){$B'$}
+    \tkzLabelPoint[below](Cp){$C'$}
+
+    \end{tikzpicture}
+\end{center}
+    
+Misalkan $AC$ berpotongan dengan lingkaran $(ABB')$ untuk kedua kalinya di $A_B$ dan misalkan $AB$ berpotongan dengan lingkaran $(ACC')$ untuk kedua kalinya di $A_C$. Perhatikan karena $B'$ adalah hasil pencerminan $B$ terhadap $AA_B$, maka $AA_B$ adalah diameter lingkaran $(ABA_BB')$ sehingga  $BA_B \perp AB$. Dengan cara yang serupa dapat diperoleh bahwa juga bahwa $AA_C$ adalah diameter lingkaran $(ACA_CC')$ sehingga $CA_C \perp AC$.
+
+Dari fakta-fakta tersebut, didapat $\angle A_BA_1A = \angle AA_1A_C = 90^\circ$, maka $A_B, A_1, A_C$ segaris dan juga didapat bahwa $AA_1$ adalah garis tinggi $\triangle AA_BA_C$.
+
+Sekarang, misalkan $H_A$ adalah perpotongan antara $CA_C$ dan $BA_B$, maka $\angle ACH_A = \angle H_ABA = 90^\circ$ yang mengakibatkan $H_A$ adalah titik tinggi $\triangle AA_CA_B$ sekaligus $AH_A$ menjadi diameter lingkaran luar $\triangle ABC$. Karena $AA_1$ adalah garis tinggi $\triangle AA_BA_C$, maka $H_A$ berada di garis $AA_1$.
+
+Definisikan $H_B$ dan $H_C$ secara serupa dengan definisi $H_A$, maka didapat pula bahwa $H_B$ dan $H_C$ berturut-turut berada di garis $BB_1$ dan $CC_1$. Oleh karena itu, $AH_A$, $BH_B$, dan $CH_C$ adalah diameter lingkaran luar $\triangle ABC$, maka didapat $AH_A$, $BH_B$, dan $CH_C$ berpotongan di satu titik yaitu pusat lingkaran. Karena $A_1,B_1,C_1$ berturut-turut ada di garis $AH_A$, $BH_B$, $CH_C$ maka hal ini berakibat $AA_1$, $BB_1$, dan $CC_1$ berpotongan di satu titik. \qed

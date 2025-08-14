@@ -1,0 +1,47 @@
+
+\section{Soal}
+Sebuah bilangan palindrom 6 digit dengan digit terakhir 4 merupakan hasil perkalian antara dua atau lebih bilangan asli berurutan. Hitunglah hasil penjumlahan digit-digit palindrom tersebut.
+
+\newpage
+\section{Motivasi Solusi}
+\begin{motivasi*}
+    Soal seperti ini cuma butuh "coba-coba" aja di awal. Nah setelah beberapa percobaan harusnya keliatan nih "pola" atau ini idenya mau diapain sih. 
+    
+    Misal, kalau bilangan tersebut adalah perkalian 5 atau lebih bilangan berurutan. Nanti rasanya bilangan tersebut jadi kerasa besar kan? nah dari situ bisa dikembagin lagi, karena digit terakhirnya 4, maka digit awalnya 4. Nah perkalian bilangan berurutan apa yang pasti menghasilkan digit terakhir 4 dan awal 4?
+\end{motivasi*}
+\section{Solusi}
+    Akan dibuktikan bahwa bilangan palindrom yang memenuhi soal hanyalah $474474$.
+    
+    Misalkan bilangan palindrom 6 digit tersebut adalah $x=\overline{4bccb4}$ dimana $b,c$ adalah bilangan bulat non-negatif. 
+    
+    Misalkan $x = i(i+1)\dots(i+k)$ (perkalian $k+1$ bilangan asli berurutan) untuk suatu $k,i \in \NN$. 
+    
+    \begin{lemma}
+        $x$ merupakan hasil perkalian 3 atau 4 bilangan asli berurutan.
+        
+        \textbf{Bukti Lemma.}   Akan ditunjukkan bahwa $3 \ge k \ge 2$. 
+        
+        Jika $k = 1$ maka $x = i(i+k) \equiv 0, 2, 6 \mod 10 \not \equiv 4 \mod 10$, $k=1$ tidak memenuhi.
+        
+        Jika $k \ge 4$ maka $x$ adalah perkalian 5 atau lebih bilangan asli berurutan sehingga $120 = 5! \mid x \implies x \equiv 0 \mod 10 \not \equiv 4 \mod 10$, $k \ge 4$ tidak memenuhi. 
+        
+        Dari kedua fakta tersebut terbukti bahwa $x$ merupakan hasil perkalian 3 atau 4 bilangan asli berurutan. \qed
+    \end{lemma}
+    
+    Perhatikan bahwa $11 \mid x$ karena $11 \mid 4-b+c-c+b-4$. Di sisi lain, karena $x$ merupakan perkalian 3 atau 4 bilangan asli berurutan, maka kita juga punya $3 \mid x$. 
+    
+    Dikarenakan $x \equiv 4 \mod 10$ dengan $x=i(i+1)(i+2)(i+3)$ atau $x=i(i+1)(i+2)$ maka masing-masing dari $i, i+1, i+2, i+3$  tidak boleh memiliki digit terakhir 0 atau 5. 
+
+    Sekarang akan dilihat berdasarkan kasus $k=3,4$:
+    \begin{itemize}
+        \item Jika $k=3$ (yang berarti $x=i(i+1)(i+2)(i+3)$), karena $400000 < x < 500000$ maka haruslah $160000 = 20^4 < x=i(i+1)(i+2)(i+3) < 30^4 = 810000$ yang menunjukkan $i=21,26$.
+        \begin{itemize}
+            \item Jika $i=21$ maka $x=255024$, tidak memenuhi syarat palindrom. 
+            \item Jika $i=26$, maka $11 \nmid x=26\cdot27\cdot28\cdot29$, tidak memenuhi syarat $11 \mid x$. 
+        \end{itemize}
+        \item Sekarang jika $k=2$ atau $x=i(i+1)(i+2)$. Perhatikan bahwa $343000 = 70^3 < x < 80^3 = 512000$. Karena $11\mid x$ maka $i=76,77$. Coba satu-satu, ditemukan bahwa $i=77$ memenuhi.
+    \end{itemize}
+    Oleh karena $i=77$ dengan $k=2$ maka $x=77\cdot78\cdot79=474474$ dengan penjumalahan digit-digitnya adalah $4+7+4+4+7+4=\boxed{30}$.
+
+    
+

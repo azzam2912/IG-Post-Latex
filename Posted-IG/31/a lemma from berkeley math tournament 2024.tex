@@ -1,0 +1,210 @@
+\section*{One Funny Lemma That Almost Caught Me Offguard}
+\subsection*{Sebuah Lemma dari Berkeley Math Tournament 2024}
+\textbf{Sedikit keluh kesah:} Jadi, aku dapet soal ini dari Wildan. Awalnya aku nemu caranya pake Inversi. Terus mikir dong, masa soal "selucu ini" ngga ada cara biasanya (non projective solution)? Tapi, malah nyari pake cara biasa malah lama banget ngga ketemu-temu (aku nyoba beberapa minggu lalu). Akhirnya semalem setelah nyoba sekali lagi, bisa ketemu :D
+
+\section{Soal}
+Lingkaran dalam segitiga sembarang tak sama kaki $\triangle ABC$ menyinggung sisi $\overline{BC}, \overline{AC},$ dan $\overline{AB}$ masing-masing di titik $D, E,$ dan $F$. Garis $EF$ memotong garis $BC$ di titik $P$ dan garis $AD$ di titik $Q$. Lingkaran luar segitiga $\triangle AEF$ memotong kembali garis $AP$ di titik $R \neq A$. Jika $I$ adalah titik pusat lingkaran dalam segitiga $\triangle ABC$, buktikan bahwa titik-titik $I, Q, R$ terletak pada satu garis lurus.
+
+\begin{center}
+\begin{asy}
+     /* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(11cm); 
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+pen dotstyle = black; /* point style */ 
+real xmin = -3.8048017537954872, xmax = 4.904435194643199, ymin = -4.7284032416091915, ymax = 1.4786253185252536;  /* image dimensions */
+pen rvwvcq = rgb(0.08235294117647059,0.396078431372549,0.7529411764705882); pen wewdxt = rgb(0.43137254901960786,0.42745098039215684,0.45098039215686275); 
+
+draw((0.07,0.32)--(0.39464100642049366,-3.942826189467176)--(4.632877695137314,-3.8943337788411254)--cycle, linewidth(0.95pt) + rvwvcq); 
+ /* draw figures */
+draw((0.07,0.32)--(0.39464100642049366,-3.942826189467176), linewidth(0.95pt) + rvwvcq); 
+draw((0.39464100642049366,-3.942826189467176)--(4.632877695137314,-3.8943337788411254), linewidth(0.95pt) + rvwvcq); 
+draw((4.632877695137314,-3.8943337788411254)--(0.07,0.32), linewidth(0.95pt) + rvwvcq); 
+draw(circle((0.800849720896661,-1.1908575612338104), 1.6783420047392321), linewidth(0.95pt) + wewdxt); 
+draw((0.07,0.32)--(-2.125305755440876,-3.971658532280236), linewidth(0.95pt) + wewdxt); 
+draw((0.07,0.32)--(1.5457491041937632,-3.929655616266108), linewidth(0.95pt) + wewdxt); 
+draw((-0.8519772284193484,-1.4823965131541994)--(1.5316994417933227,-2.7017151224676206), linewidth(0.95pt) + wewdxt); 
+draw(circle((1.531699441793322,-2.701715122467621), 1.2280208668111616), linewidth(0.95pt) + wewdxt); 
+draw((-2.125305755440876,-3.971658532280236)--(4.632877695137314,-3.8943337788411254), linewidth(0.95pt) + wewdxt); 
+draw((2.3649027071313777,-1.7996022869788229)--(-2.125305755440876,-3.971658532280236), linewidth(0.95pt) + wewdxt); 
+ /* dots and labels */
+dot((0.07,0.32),dotstyle); 
+label("$A$", (0.11338502478940035,0.4214907668773558), NE * labelscalefactor); 
+dot((0.39464100642049366,-3.942826189467176),dotstyle); 
+label("$B$", (0.4334349349213342,-3.8458413682150754), NE * labelscalefactor); 
+dot((4.632877695137314,-3.8943337788411254),dotstyle); 
+label("$C$", (4.671671623638156,-3.797348957589025), NE * labelscalefactor); 
+dot((1.5316994417933227,-2.7017151224676206),linewidth(0.7pt) + dotstyle); 
+label("$I$", (1.568157343570918,-2.6238326204386064), NE * labelscalefactor); 
+dot((1.5457491041937632,-3.929655616266108),linewidth(0.7pt) + dotstyle); 
+label("$D$", (1.5875543078213383,-3.855539850340285), NE * labelscalefactor); 
+dot((2.3649027071313777,-1.7996022869788229),linewidth(0.7pt) + dotstyle); 
+label("$E$", (2.402226806338988,-1.7218737827940698), NE * labelscalefactor); 
+dot((0.30722428444437794,-2.794966601592164),linewidth(0.7pt) + dotstyle); 
+label("$F$", (0.3461485957944432,-2.720817441690707), NE * labelscalefactor); 
+dot((-2.125305755440876,-3.971658532280236),linewidth(0.7pt) + dotstyle); 
+label("$P$", (-2.0881704176332962,-3.8943337788411254), NE * labelscalefactor); 
+dot((1.030256733789818,-2.445212874065518),linewidth(0.7pt) + dotstyle); 
+label("$Q$", (1.073534755185202,-2.3716720851831448), NE * labelscalefactor); 
+dot((-0.8519772284193484,-1.4823965131541994),linewidth(0.7pt) + dotstyle); 
+label("$R$", (-0.8176692592307709,-1.4018238726621375), NE * labelscalefactor); 
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+ /* end of picture */
+ \end{asy}
+\end{center}
+
+\newpage
+\section{Solusi 1, Synthetic - Euclid Solution}
+    \begin{remark*}[Motivasi]
+        Karena nemu solusi 2 duluan, jadi kepikiran, emang jangan-jangan ini soal banyak yang siklisnya biar bisa di \textbf{angle chasing} atau dihajar pake \textbf{power of a point}. Terus berkali-kali konstruksi titik yang pas akhirnya nemu kalau jika dikonstruksi titik $H$, maka ada 5 segiempat siklis yang berguna untuk angle chasing di akhir :).
+    \end{remark*}
+    Misalkan $I$ adalah titik pusat lingkaran dalam $\triangle ABC$. Lalu, misalkan $H$ adalah perotongan $AI$ dengan $FE$ dan $G$ adalah titik di $AD$ sehingga $IG \perp AD$.
+
+    \begin{center}
+    \begin{asy}
+        /* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+       import graph; size(14cm); 
+       real labelscalefactor = 0.5; /* changes label-to-point distance */
+       pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+       pen dotstyle = black; /* point style */ 
+       real xmin = -2.5261824506241877, xmax = 3.6003383378585045, ymin = -3.4895051907846297, ymax = 0.87683634944367;  /* image dimensions */
+       pen rvwvcq = rgb(0.08235294117647059,0.396078431372549,0.7529411764705882); pen wewdxt = rgb(0.43137254901960786,0.42745098039215684,0.45098039215686275); pen ffqqtt = rgb(1.,0.,0.2); pen qqwwzz = rgb(0.,0.4,0.6); 
+       
+       draw((-0.6363594864428966,0.37624011380478484)--(-0.5847715561111524,-2.3923131347934885)--(3.0693735090540706,-2.366519160427666)--cycle, linewidth(1.pt) + rvwvcq); 
+        /* draw figures */
+       draw((-0.6363594864428966,0.37624011380478484)--(-0.5847715561111524,-2.3923131347934885), linewidth(1.pt) + rvwvcq); 
+       draw((-0.5847715561111524,-2.3923131347934885)--(3.0693735090540706,-2.366519160427666), linewidth(1.pt) + rvwvcq); 
+       draw((3.0693735090540706,-2.366519160427666)--(-0.6363594864428966,0.37624011380478484), linewidth(1.pt) + rvwvcq); 
+       draw(circle((-0.16057944501622975,-0.54633917734222), 1.0380362210796263), linewidth(1.pt) + wewdxt); 
+       draw((-0.6363594864428966,0.37624011380478484)--(-2.383697782803491,-2.4050114420992523), linewidth(1.pt) + wewdxt); 
+       draw((-0.6363594864428966,0.37624011380478484)--(0.32167351327140564,-2.3859146967274776), linewidth(1.pt) + wewdxt); 
+       draw((-1.1982313596457344,-0.5180955879989007)--(0.31520059641043696,-1.4689184684892247), linewidth(1.pt) + wewdxt); 
+       draw((0.31520059641043696,-1.4689184684892247)--(-2.383697782803491,-2.4050114420992523), linewidth(1.pt) + wewdxt); 
+       draw(circle((0.3107786251765811,-0.8424727671277754), 1.543480381680652), linewidth(1.pt) + wewdxt); 
+       draw(circle((0.3184370548409219,-1.9274165826083507), 0.45850953677537326), linewidth(1.pt) + wewdxt); 
+       draw(circle((0.3152005964104369,-1.4689184684892247), 0.9170190735507474), linewidth(1.pt) + wewdxt); 
+       draw((-0.6363594864428966,0.37624011380478484)--(0.31520059641043696,-1.4689184684892247), linewidth(1.pt) + wewdxt); 
+       draw((-2.383697782803491,-2.4050114420992523)--(3.0693735090540706,-2.366519160427666), linewidth(1.pt) + wewdxt); 
+       draw((0.8607494049801038,-0.7318292752947456)--(-2.383697782803491,-2.4050114420992523), linewidth(1.pt) + wewdxt); 
+       draw(circle((-0.3597757381095323,-0.4211928881918809), 0.8440367068531726), linewidth(1.pt) + ffqqtt); 
+       draw(circle((0.11600430331713463,-1.3437721793388857), 0.23524616228583445), linewidth(1.pt) + qqwwzz); 
+        /* dots and labels */
+       dot((-0.6363594864428966,0.37624011380478484),dotstyle); 
+       label("$A$", (-0.6090863018896259,0.4470246040774467), NW * labelscalefactor); 
+       dot((-0.5847715561111524,-2.3923131347934885),dotstyle); 
+       label("$B$", (-0.5545070521035885,-2.322873310504881), S * labelscalefactor * 4); 
+       dot((3.0693735090540706,-2.366519160427666),dotstyle); 
+       label("$C$", (3.0954802773376593,-2.295583675878454), NE * labelscalefactor); 
+       dot((0.31520059641043696,-1.4689184684892247),linewidth(1.pt) + dotstyle); 
+       label("$I$", (0.3392281631427731,-1.4154929591761873), NE * labelscalefactor); 
+       dot((0.32167351327140564,-2.3859146967274776),linewidth(1.pt) + dotstyle); 
+       label("$D$", (0.3460505693660278,-2.3296957191614878), S * labelscalefactor * 4); 
+       dot((0.8607494049801038,-0.7318292752947456),linewidth(1.pt) + dotstyle); 
+       label("$E$", (0.8850206610031466,-0.6786728242626617), NE * labelscalefactor); 
+       dot((-0.6016593201398317,-1.486002808666865),linewidth(1.pt) + dotstyle); 
+       label("$F$", (-0.5749742707733525,-1.4291377764894007), NE * labelscalefactor); 
+       dot((-2.383697782803491,-2.4050114420992523),linewidth(1.pt) + dotstyle); 
+       label("$P$", (-2.355622295042821,-2.3501629451313075), SW * labelscalefactor); 
+       dot((-0.08319198977616798,-1.2186258901885467),linewidth(1.pt) + dotstyle); 
+       label("$Q$", (-0.05647139780599767,-1.1630638388817387), N * labelscalefactor * 0.5); 
+       dot((-1.1982313596457344,-0.5180955879989007),linewidth(1.pt) + dotstyle); 
+       label("$R$", (-1.1685236121965086,-0.4603557472512468), W * labelscalefactor); 
+       dot((0.037078210261320965,-1.5653831644121856),linewidth(1.pt) + dotstyle); 
+       label("$G$", (0.06633191421258637,-1.5110066803686815), N * labelscalefactor * 0.5); 
+       dot((0.12954504242013595,-1.108916041980805),linewidth(1.pt) + dotstyle); 
+       label("$H$", (0.15502319511489707,-1.0539053003760313), N * labelscalefactor * 0.5); 
+       clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+        /* end of picture */
+    \end{asy}
+\end{center}
+    
+    Perhatikan bahwa $\dangle AFI = \dangle AEI = 90^\circ$ sehingga $A,F,I,E$ konsiklis dengan $AI$ sebagai diameternya. 
+    Selanjutnya, karena $\dangle DGI = 90^\circ$ maka $D,G,I$ konsiklis dengan $DI$ sebagai diameternya. Di lain sisi, karena $\dangle IGA = 90^\circ = \dangle IFA$, maka $A,I,F,G$ konsiklis. 
+    Lebih jauh, garis $IG$ merupakan \textit{radical axis} dari lingkaran $(AFGI)$ dan $(EGI)$.
+    
+    Selanjutnya, karena $DI \perp BC$ maka $(D,G,I)$ menyinggung $BC$ di $D$. Namun, karena $(DEF)$ juga menyinggung $BC$ di $D$ maka $BC$ merupakan \textit{radical axis} dari $(DEF)$ dan $(DGI)$.
+
+    Di lain pihak, kita juga punya $EF$ merupakan \textit{radical axis} dari $(AEF)$ dan $(DEF)$.
+
+    Perhatikan bahwa ketiga \textit{radical axis} $EF, BC, IG$ konkuren di suatu \textit{radical point}. Dari definisi di soal, karena $P$ adalah perpotongan $EF$ dan $BC$, maka didapat $P$ merupakan \textit{radical center} dari $(AEF), (DEF), (DGI)$.
+
+    Misalkan $\Gamma$ adalah lingkaran yang melalui $A$ dan menyinggung $BC$ di $D$. Dari \textit{power of a point}, kita punya
+    \begin{align*}
+        PR \cdot PA = PF \cdot PE = PG \cdot PI = PD^2,
+    \end{align*}
+    sehingga didapat $R$ berada di $\Gamma$.
+
+    Sekarang, jelas bahwa $EF \perp AI$ sehingga $\dangle QHI = 90^\circ = \dangle QGI$ yang menunjukkan $Q,H,I,G$ konsiklis. Oleh karena itu, dari \textit{power of a point} kita punya
+    \begin{align*}
+        PR \cdot PA = PG \cdot PI = PQ \cdot PH,
+    \end{align*}
+    sehingga didapat $A,R,Q,H$ konsiklis dengan $\dangle QRA = \dangle QHA = 90^\circ$. 
+    Padahal kita juga tahu bahwa $A,R,F,I,E$ konsiklis dengan $AI$ sebagai diameternya yang langsung menyebabkan $\dangle IRA = 90^\circ$. Dari sini didapat $I,Q,R$ segaris. Terbukti.
+
+\newpage
+\section{Solusi 2, Inversi - Projective Geometry}
+    Kita akan memakai konfigurasi gambar dari solusi 1.
+        \begin{center}
+    \begin{asy}
+        /* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+       import graph; size(14cm); 
+       real labelscalefactor = 0.5; /* changes label-to-point distance */
+       pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+       pen dotstyle = black; /* point style */ 
+       real xmin = -2.5261824506241877, xmax = 3.6003383378585045, ymin = -3.4895051907846297, ymax = 0.87683634944367;  /* image dimensions */
+       pen rvwvcq = rgb(0.08235294117647059,0.396078431372549,0.7529411764705882); pen wewdxt = rgb(0.43137254901960786,0.42745098039215684,0.45098039215686275); pen ffqqtt = rgb(1.,0.,0.2); pen qqwwzz = rgb(0.,0.4,0.6); 
+       
+       draw((-0.6363594864428966,0.37624011380478484)--(-0.5847715561111524,-2.3923131347934885)--(3.0693735090540706,-2.366519160427666)--cycle, linewidth(1.pt) + rvwvcq); 
+        /* draw figures */
+       draw((-0.6363594864428966,0.37624011380478484)--(-0.5847715561111524,-2.3923131347934885), linewidth(1.pt) + rvwvcq); 
+       draw((-0.5847715561111524,-2.3923131347934885)--(3.0693735090540706,-2.366519160427666), linewidth(1.pt) + rvwvcq); 
+       draw((3.0693735090540706,-2.366519160427666)--(-0.6363594864428966,0.37624011380478484), linewidth(1.pt) + rvwvcq); 
+       draw(circle((-0.16057944501622975,-0.54633917734222), 1.0380362210796263), linewidth(1.pt) + wewdxt); 
+       draw((-0.6363594864428966,0.37624011380478484)--(-2.383697782803491,-2.4050114420992523), linewidth(1.pt) + wewdxt); 
+       draw((-0.6363594864428966,0.37624011380478484)--(0.32167351327140564,-2.3859146967274776), linewidth(1.pt) + wewdxt); 
+       draw((-1.1982313596457344,-0.5180955879989007)--(0.31520059641043696,-1.4689184684892247), linewidth(1.pt) + wewdxt); 
+       draw((0.31520059641043696,-1.4689184684892247)--(-2.383697782803491,-2.4050114420992523), linewidth(1.pt) + wewdxt); 
+       draw(circle((0.3107786251765811,-0.8424727671277754), 1.543480381680652), linewidth(1.pt) + wewdxt); 
+       
+       draw(circle((0.3152005964104369,-1.4689184684892247), 0.9170190735507474), linewidth(1.pt) + wewdxt); 
+       draw((-0.6363594864428966,0.37624011380478484)--(0.31520059641043696,-1.4689184684892247), linewidth(1.pt) + wewdxt); 
+       draw((-2.383697782803491,-2.4050114420992523)--(3.0693735090540706,-2.366519160427666), linewidth(1.pt) + wewdxt); 
+       draw((0.8607494049801038,-0.7318292752947456)--(-2.383697782803491,-2.4050114420992523), linewidth(1.pt) + wewdxt); 
+       dot((-0.6363594864428966,0.37624011380478484),dotstyle); 
+       label("$A$", (-0.6090863018896259,0.4470246040774467), NW * labelscalefactor); 
+       dot((-0.5847715561111524,-2.3923131347934885),dotstyle); 
+       label("$B$", (-0.5545070521035885,-2.322873310504881), S * labelscalefactor * 4); 
+       dot((3.0693735090540706,-2.366519160427666),dotstyle); 
+       label("$C$", (3.0954802773376593,-2.295583675878454), NE * labelscalefactor); 
+       dot((0.31520059641043696,-1.4689184684892247),linewidth(1.pt) + dotstyle); 
+       label("$I$", (0.3392281631427731,-1.4154929591761873), NE * labelscalefactor); 
+       dot((0.32167351327140564,-2.3859146967274776),linewidth(1.pt) + dotstyle); 
+       label("$D$", (0.3460505693660278,-2.3296957191614878), S * labelscalefactor * 4); 
+       dot((0.8607494049801038,-0.7318292752947456),linewidth(1.pt) + dotstyle); 
+       label("$E$", (0.8850206610031466,-0.6786728242626617), NE * labelscalefactor); 
+       dot((-0.6016593201398317,-1.486002808666865),linewidth(1.pt) + dotstyle); 
+       label("$F$", (-0.5749742707733525,-1.4291377764894007), NE * labelscalefactor); 
+       dot((-2.383697782803491,-2.4050114420992523),linewidth(1.pt) + dotstyle); 
+       label("$P$", (-2.355622295042821,-2.3501629451313075), SW * labelscalefactor); 
+       dot((-0.08319198977616798,-1.2186258901885467),linewidth(1.pt) + dotstyle); 
+       label("$Q$", (-0.05647139780599767,-1.1630638388817387), N * labelscalefactor * 0.5); 
+       dot((-1.1982313596457344,-0.5180955879989007),linewidth(1.pt) + dotstyle); 
+       label("$R$", (-1.1685236121965086,-0.4603557472512468), W * labelscalefactor); 
+       dot((0.037078210261320965,-1.5653831644121856),linewidth(1.pt) + dotstyle); 
+       label("$G$", (0.06633191421258637,-1.5110066803686815), N * labelscalefactor * 0.5); 
+       dot((0.12954504242013595,-1.108916041980805),linewidth(1.pt) + dotstyle); 
+       label("$H$", (0.15502319511489707,-1.0539053003760313), N * labelscalefactor * 0.5); 
+       clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+        /* end of picture */
+    \end{asy}
+\end{center}
+    Observasi inversi terhadap lingkaran $(DEF)$. 
+    Karena $\triangle IFH \sim \triangle IAF$ maka $IH \cdot IA = IF^2$ dengan $IF$ adalah jari-jari lingkaran $(DEF)$, maka $EF$ dipetakan ke $(AEF)$.
+    Lalu, $\triangle IGD \sim \triangle IDP$ sehingga $IG \cdot IP = ID^2$ dengan $ID$ adalah jari-jari lingkaran $(DEF)$, maka $G$ dipetakan ke $P$.
+
+    Perhatikan bahwa $AD$ adalah \textit{polar} dari \textit{pole} $P$ karena $IG \perp AD$.
+    Misalkan $Q$ dipetakan ke $R'$ yang berada di $(AEF)$. Ingat bahwa $AI$ adalah diameter $(AEF)$ maka $IR' \perp AR'$. 
+    Lalu, $AR'$ adalah \textit{polar} dari \textit{pole} $Q$. 
+    Namun, perlu diingat bahwa karena $Q$ berada di \textit{polar} dari $P$, maka dari \textit{La Hire's theorem} didapat $P$ berada di \textit{polar} dari $Q$. Dari sini didapat $P$ berada di $AR'$.
+
+    Dikarenakan $R$ dan $R'$ berada di $(AEF)$ serta $A,R,R',P$ segaris, maka didapat $R=R'$. Terbukti bahwa $I,Q,R'=R$ segaris.

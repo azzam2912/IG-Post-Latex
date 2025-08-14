@@ -1,0 +1,47 @@
+\begin{center}
+    \begin{asy}
+        import olympiad;
+        import geometry;
+        size(11cm); 
+        pair A = dir(75); 
+        pair B = dir(340); 
+        pair C = dir(200); 
+        pair P = dir(270); 
+        filldraw(unitcircle, invisible); 
+        pair I = incenter(A, B, C); 
+        filldraw(incircle(A, B, C), invisible, blue); 
+        draw(A--B--C--cycle); 
+        pair EE = foot(I, C, A); 
+        pair FF = foot(I, A, B); 
+        pair D = 2*I-A; 
+        pair U = 2*I-EE; 
+        pair V = 2*I-FF; 
+        pair E = extension(U, D, A, B); 
+        pair F = extension(V, D, A, C); 
+        draw(A--E--D--F--cycle, deepgreen); 
+        draw(B--D--C, red); 
+        pair K = midpoint(A--B); 
+        pair L = midpoint(A--C); 
+        draw(K--L, grey);
+        draw(K--I--L, red); 
+        pair X = extension(U, D, B, C); 
+        pair Y = extension(V, D, B, C); 
+        draw(A--P, grey); 
+        draw(Y--P--X);
+        draw(B--P--C, grey);
+        draw(circumcircle(B, X, P), grey+dashed); 
+        draw(circumcircle(C, Y, P), grey+dashed);
+        dot("$A$", A, dir(A)); 
+        dot("$B$", B, dir(20)); 
+        dot("$C$", C, dir(160)); 
+        dot("$P$", P, dir(270)); 
+        dot("$I$", I, dir(300)); 
+        dot("$D$", D, dir(225)); 
+        dot("$K$", K, dir(K)); 
+        dot("$L$", L, dir(L)); 
+        dot("$X$", X, dir(310)); 
+        dot("$Y$", Y, dir(Y));
+        dot("$E$", E, dir(30)); 
+        dot("$F$", F, dir(120));
+    \end{asy}
+\end{center}
