@@ -1,0 +1,317 @@
+\section{Soal - Kompetisi Sains Ruangguru 2021 Nomor 1}
+Diberikan segitiga sama kaki $ABC$ dengan $AB=AC$. Titik $D$ dan $E$ berturut-turut merupakan titik tengah $AC$ dan $BC$, dan $M$ titik tengah $DE$. Jika $AM$ memotong $BC$ pada $F$, buktikan bahwa $DF$ menyinggung lingkaran luar $ADM$.
+\usetikzlibrary{decorations.markings, arrows.meta} % Untuk tanda segmen yang sama panjang
+
+% Definisi untuk tanda segmen yang sama panjang (seperti di sketsa)
+\tikzset{
+    seg mark/.style={
+        decoration={markings, mark=at position 0.5 with {\draw[#1] (-2pt,-2pt) -- (2pt,2pt) (2pt,-2pt) -- (-2pt,2pt);}},
+        postaction={decorate}
+    },
+    seg mark half/.style={
+        decoration={markings, mark=at position 0.5 with {\draw[#1] (0pt,-2pt) -- (0pt,2pt);}},
+        postaction={decorate}
+    },
+    seg mark double/.style={
+        decoration={markings, mark=at position 0.5 with {\draw[#1] (-2pt,-2pt) -- (-2pt,2pt) (2pt,-2pt) -- (2pt,2pt);}},
+        postaction={decorate}
+    },
+    seg mark triple/.style={
+        decoration={markings, mark=at position 0.5 with {\draw[#1] (-4pt,-2pt) -- (-2pt,2pt) (0pt,-2pt) -- (0pt,2pt) (2pt,-2pt) -- (4pt,2pt);}},
+        postaction={decorate}
+    },
+}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    % 1. Definisikan segitiga sama kaki ABC (AB=AC)
+    \tkzDefPoint(0,0){B}
+    \tkzDefPoint(4,0){C}
+    \tkzDefPoint(2,4){A} % Titik A di tengah-tengah atas BC
+    
+    % Gambar segitiga ABC
+    \tkzDrawPolygon(A,B,C)
+
+    % 2. D adalah titik tengah AC, E adalah titik tengah BC, K titik tengah AB
+    \tkzDefMidPoint(A,C)\tkzGetPoint{D}
+    \tkzDefMidPoint(B,C)\tkzGetPoint{E}
+    
+    % 3. M adalah titik tengah DE
+    \tkzDefMidPoint(D,E)\tkzGetPoint{M}
+    
+    % 4. F adalah perpotongan AM dan BC
+    \tkzInterLL(A,M)(B,C)\tkzGetPoint{F}
+    
+    % Garis-garis yang menghubungkan titik-titik konstruksi
+    \tkzDrawSegments(A,D D,E A,M D,F M,F)
+    
+    % Gambar lingkaran luar ADM (yang akan disentuh oleh DF)
+    \tkzDefCircumCenter(A,D,M)\tkzGetPoint{O_ADM}
+    \tkzDrawCircle[blue](O_ADM,A) % Gambar lingkaran luar ADM
+    
+    % --- TANDA SEGMEN SAMA PANJANG ---
+    %\tkzDrawSegments[seg mark half=black](A,B A,C) % AB=AC
+    \tkzDrawSegments[seg mark=black](A,D D,C) % D midpoint AC
+    \tkzDrawSegments[seg mark half=black](B,E E,C) % E midpoint BC
+    \tkzDrawSegments[seg mark triple=black](D,M M,E) % M midpoint DE
+
+
+    % --- LABEL TITIK ---
+    \tkzDrawPoints[size=4, fill=black](A,B,C,D,E,M,F)
+    \tkzLabelPoints[above](A)
+    \tkzLabelPoints[below left](B)
+    \tkzLabelPoints[below right](C)
+    \tkzLabelPoints[right](D)
+    \tkzLabelPoints[below](E,F)
+    \tkzLabelPoints[right](M)
+        
+    % --- ANGKA DARI SKETSA (jika perlu) ---
+    % \tkzLabelSegment[below](B,E){3} % Contoh angka
+    % \tkzLabelSegment[below](E,F){1}
+    % \tkzLabelSegment[below](F,C){2}
+    % \tkzLabelSegment[left](N,M){2}
+    % \tkzLabelSegment[right](D,M){2}
+    
+\end{tikzpicture}
+\end{center}
+\newpage
+\section{Solusi 1}
+    \begin{center}
+\begin{tikzpicture}[scale=2]
+    % 1. Definisikan segitiga sama kaki ABC (AB=AC)
+    \tkzDefPoint(0,0){B}
+    \tkzDefPoint(4,0){C}
+    \tkzDefPoint(2,4){A} % Titik A di tengah-tengah atas BC
+    
+    % Gambar segitiga ABC
+    \tkzDrawPolygon(A,B,C)
+
+    % 2. D adalah titik tengah AC, E adalah titik tengah BC, K titik tengah AB
+    \tkzDefMidPoint(A,C)\tkzGetPoint{D}
+    \tkzDefMidPoint(B,C)\tkzGetPoint{E}
+    \tkzDefMidPoint(B,A)\tkzGetPoint{K}
+    \tkzDefMidPoint(K,D)\tkzGetPoint{J}
+    
+    % 3. M adalah titik tengah DE
+    \tkzDefMidPoint(D,E)\tkzGetPoint{M}
+    
+    % 4. F adalah perpotongan AM dan BC
+    \tkzInterLL(A,M)(B,C)\tkzGetPoint{F}
+
+    % 6. L as the intersection of AF and DK
+     \tkzInterLL(D,K)(F,A)\tkzGetPoint{L}
+    
+    % --- solusi ---
+    \tkzDefPointBy[projection=onto B--C](D)\tkzGetPoint{D_1}
+    \tkzDefPointBy[projection=onto B--C](L)\tkzGetPoint{L_1}
+    
+    % Garis-garis yang menghubungkan titik-titik konstruksi
+    \tkzDrawSegments(A,D D,E A,M D,F M,F D,K)
+    
+    % Gambar lingkaran luar ADM (yang akan disentuh oleh DF)
+    \tkzDefCircumCenter(A,D,M)\tkzGetPoint{O_ADM}
+    \tkzDrawCircle[blue](O_ADM,A) % Gambar lingkaran luar ADM
+    
+    % --- TANDA SEGMEN SAMA PANJANG ---
+    %\tkzDrawSegments[seg mark half=black](A,B A,C) % AB=AC
+    \tkzDrawSegments[seg mark=black](A,D D,C) % D midpoint AC
+    \tkzDrawSegments[seg mark=black](A,K K,B) % D midpoint AC
+    \tkzDrawSegments[seg mark half=black](B,E E,C) % E midpoint BC
+    \tkzDrawSegments[seg mark triple=black](D,M M,E) % M midpoint DE
+    \tkzDrawSegments[seg mark double=black](D,D_1 L,L_1 A,J J,E)
+
+    % --- LABEL TITIK ---
+    \tkzDrawPoints[size=4, fill=black](A,B,C,D,E,M,F,K,L,D_1,L_1)
+    \tkzLabelPoints[above](A)
+    \tkzLabelPoints[below left](B)
+    \tkzLabelPoints[below right](C)
+    \tkzLabelPoints[right](D)
+    \tkzLabelPoints[below](E,F)
+    \tkzLabelPoints[right](M)
+    \tkzLabelPoints[left](K)
+    \tkzLabelPoints[above right](L)
+    \tkzLabelPoint[below](L_1){$L_1$}
+    \tkzLabelPoint[below](D_1){$D_1$}
+        
+    % --- ANGKA DARI SKETSA (jika perlu) ---
+    % \tkzLabelSegment[below](B,E){3} % Contoh angka
+    % \tkzLabelSegment[below](E,F){1}
+    % \tkzLabelSegment[below](F,C){2}
+    % \tkzLabelSegment[left](N,M){2}
+    % \tkzLabelSegment[right](D,M){2}
+    
+\end{tikzpicture}
+\end{center}
+
+    Misalkan $K$ adalah titik tengah $AB$ dan $L$ adalah perpotongan $AF$ dan $KD$. Misalkan pula $L_1$ dan $D_1$ berturut-turut adalah proyeksi $L$ dan $D$ terhadap $BC$.
+
+    Karena $K$ dan $D$ berturut-turut titik tengah $AB$ dan $AC$, maka $KD \parallel BC$ sehingga $\dfrac{AL}{LF} = \dfrac{AK}{KB} = 1$. Lalu, karena $E$ titik tengah $BC$ serta $AB=AC$ maka jelas bahwa $AE \perp BC$. Karena $LL_1 \perp BC$ didapat $AE \parallel LL_1$ sehingga $\dfrac{FL_1}{L_1E} = \dfrac{FL}{LA} = 1$ .
+
+    Di lain sisi kita juga punya $DD_1 \perp BC$. Karena $\triangle AEC$ siku-siku di $\angle E$ dan $D$ titik tengah $AC$, maka $DE=DC$. Dari sini, jelas bahwa $D_1$ titik tengah $EC$.
+
+    Dari Menelaus pada segitiga $DEC$ dan garis transversal $\overline{AMF}$ didapat
+    \begin{align*}
+        \dfrac{DM}{ME}\cdot \dfrac{EF}{FC} \cdot \dfrac{CA}{AD} = 1 \implies
+        \dfrac{1}{1}\cdot \dfrac{EF}{FC} \cdot \dfrac{2}{1} = 1 \implies
+        \dfrac{EF}{FC} &= \dfrac{1}{2}
+    \end{align*}
+    Karena $E$ titik tengah $BC$, maka 
+    \begin{align*}
+        \dfrac{FC}{BC} = \dfrac{FC}{EC} \cdot \dfrac{EC}{BC} = \dfrac{2}{3} \times \dfrac{1}{2} = \dfrac{1}{3} \implies \dfrac{CF}{FB} = \dfrac{1}{2}.
+    \end{align*}
+    Selain itu, kita juga punya
+    \begin{align*}
+        \dfrac{EF}{ED_1} = \dfrac{EF}{\frac{1}{2}EC} = 2 \times \dfrac{1}{3} = \dfrac{2}{3}.
+    \end{align*}
+    dari sini didapat $FL_1 = EL_1 = FD_1$. Observasi bahwa $LDD_1L_1$ adalah persegi panjang. Berarti otomatis didapat $FL = FD$. Namun, ingat bahwa $FL = LA$ sehingga $FD = \dfrac{1}{2}AF$.
+
+    Selanjutnya, dengan Menelaus pada segitiga $FAC$ dan garis transversal $\overline{DME}$ didapat
+    \begin{align*}
+        \dfrac{FM}{MA} \cdot \dfrac{AD}{DC} \cdot \dfrac{CE}{EF} = 1 \implies \dfrac{FM}{MA} \cdot \dfrac{1}{1} \cdot \dfrac{3}{1} = 1 \implies FM = \dfrac{1}{3} MA \implies FM = \dfrac{1}{4} AF
+    \end{align*}
+
+    Dari fakta-fakta tersebut didapat
+    \begin{align*}
+        FD^2 = \left(\frac{1}{2}AF\right)^2 = \dfrac{1}{4} AF \cdot AF = FM \cdot AF.
+    \end{align*}
+    Dari \textit{power of a point} didapat bahwa $FD$ menyinggung lingkaran luar segitiga $ADM$. Terbukti.
+
+\newpage
+\section{Solusi 2 dan 3}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+    % 1. Definisikan segitiga sama kaki ABC (AB=AC)
+    \tkzDefPoint(0,0){B}
+    \tkzDefPoint(4,0){C}
+    \tkzDefPoint(2,4){A} % Titik A di tengah-tengah atas BC
+    
+    % Gambar segitiga ABC
+    \tkzDrawPolygon(A,B,C)
+
+    % 2. D adalah titik tengah AC, E adalah titik tengah BC
+    \tkzDefMidPoint(A,C)\tkzGetPoint{D}
+    \tkzDefMidPoint(B,C)\tkzGetPoint{E}
+    
+    % 3. M adalah titik tengah DE
+    \tkzDefMidPoint(D,E)\tkzGetPoint{M}
+    
+    % 4. F adalah perpotongan AM dan BC
+    \tkzInterLL(A,M)(B,C)\tkzGetPoint{F}
+
+    % 5. G adalah perpotongan BA dan DF
+    \tkzInterLL(D,F)(B,A)\tkzGetPoint{G}
+
+    % 6. Constructing N as intersection AE dan CM and T as FM and AB
+    \tkzInterLL(C,M)(E,A)\tkzGetPoint{N}
+    \tkzInterLL(F,N)(B,A)\tkzGetPoint{T}
+    
+    % --- GAMBAR OBJEK UTAMA ---
+    
+    % Garis-garis yang menghubungkan titik-titik konstruksi
+    \tkzDrawSegments(A,D D,E A,M D,F M,F)
+    \tkzDrawSegment[red](F,G)
+    \tkzDrawSegment[teal](F,T)
+    \tkzDrawSegment[teal](A,E)
+    \tkzDrawSegment[teal](C,N)
+    
+    % Gambar lingkaran luar ADM (yang akan disentuh oleh DF)
+    \tkzDefCircumCenter(A,D,M)\tkzGetPoint{O_ADM}
+    \tkzDrawCircle[blue](O_ADM,A) % Gambar lingkaran luar ADM
+    
+    % --- ELEMEN-ELEMEN DARI SKETSA (jika perlu) ---
+    % Garis-garis tambahan dari sketsa tangan
+    % % N pada AB
+    % \tkzDefPointOnLine[pos=0.6](A,B){N}
+    % \tkzDrawSegments(C,N B,D)
+    
+    % % Titik G (di luar segitiga)
+    % \tkzDefPointWith[linear, K=1.5](C,A)\tkzGetPoint{G}
+    % \tkzDrawSegments(B,G C,G)
+    
+    % --- TANDA SEGMEN SAMA PANJANG ---
+    %\tkzDrawSegments[seg mark half=black](A,B A,C) % AB=AC
+    \tkzDrawSegments[seg mark=black](A,D D,C) % D midpoint AC
+    \tkzDrawSegments[seg mark half=black](B,E E,C) % E midpoint BC
+    \tkzDrawSegments[seg mark triple=black](D,M M,E) % M midpoint DE
+    \tkzDrawSegments[seg mark double=black](A,G B,A) % A midpoint GB
+
+    % Sudut
+    \pic [fill=blue!20, angle eccentricity=1.5] {angle = F--D--C};
+    \pic [fill=blue!20, angle eccentricity=1.5] {angle = B--A--F};
+    \pic [draw=red, ->, angle radius=20pt] {angle = A--F--T};
+    \pic [draw=red, ->, angle radius=20pt] {angle = F--A--D};
+    \pic [draw=red, ->, angle radius=20pt] {angle = A--G--F};
+    \pic [draw=red, ->, angle radius=20pt] {angle = M--D--F};
+
+    % --- LABEL TITIK ---
+    \tkzDrawPoints[size=4, fill=black](A,B,C,D,E,M,F,G,N,T)
+    \tkzLabelPoints[above](A)
+    \tkzLabelPoints[below left](B)
+    \tkzLabelPoints[below right](C)
+    \tkzLabelPoints[right](D)
+    \tkzLabelPoints[below](E,F)
+    \tkzLabelPoints[left](M,N,T)
+    \tkzLabelPoints[left](N)
+    \tkzLabelPoints[above right](G)
+
+    % --- ANGKA DARI SKETSA (jika perlu) ---
+    % \tkzLabelSegment[below](B,E){3} % Contoh angka
+    % \tkzLabelSegment[below](E,F){1}
+    % \tkzLabelSegment[below](F,C){2}
+    % \tkzLabelSegment[left](N,M){2}
+    % \tkzLabelSegment[right](D,M){2}
+
+\end{tikzpicture}
+\end{center}
+Tanpa mengurangi keumuman, misalkan $A$ berada di antara $E$ dan $B$. Misalkan $M$ dan $N$ berturut-turut adalah perpotongan $BC$ dengan $DL$ dan $AD$ dengan $CL$.
+
+    Misalkan titik $G$ adalah perpotongan $AB$ dan $DF$.
+    Dari Menelaus pada segitiga $DEC$ dan garis transversal $\overline{AMF}$ didapat
+    \begin{align*}
+        \dfrac{DM}{ME}\cdot \dfrac{EF}{FC} \cdot \dfrac{CA}{AD} = 1 \implies
+        \dfrac{1}{1}\cdot \dfrac{EF}{FC} \cdot \dfrac{2}{1} = 1 \implies
+        \dfrac{EF}{FC} &= \dfrac{1}{2}
+    \end{align*}
+    Karena $E$ titik tengah $BC$, maka 
+    \begin{align*}
+        \dfrac{FC}{BC} = \dfrac{FC}{EC} \cdot \dfrac{EC}{BC} = \dfrac{2}{3} \times \dfrac{1}{2} = \dfrac{1}{3} \implies \dfrac{CF}{FB} = \dfrac{1}{2}.
+    \end{align*}
+    Dari fakta tersebut dengan Menelaus, diperoleh
+    \begin{align*}
+        \dfrac{AD}{DC} \cdot \dfrac{CF}{FB} \cdot \dfrac{BG}{GA} = 1 \implies
+        \dfrac{1}{1} \cdot \dfrac{1}{2} \cdot \dfrac{BG}{GA} = 1 \implies
+        \dfrac{BG}{GA} = 2 \implies
+        AC = BA = AG
+    \end{align*}
+
+    \textbf{Alternatif 2.} Karena $E$ dan $D$ berturut-turut adalah  titik tengah $CB$ dan $CA$, maka $DE \parallel AB$ dan $DE= \frac{1}{2}AB$. 
+
+    Di lain sisi, perhatikan bahwa $\angle DCF = \angle FBA$, $FC:FB=1:2$ dan $CD:BA= CD:CA = 1:2$. Ini menyebabkan $\triangle DFC \sim \triangle AFB$. Oleh karena itu, $\dfrac{DF}{FA} = \dfrac{FC}{FB} = \dfrac{1}{2}$. Namun, kita juga punya
+    \begin{align*}
+        \dfrac{DM}{DA} = \dfrac{\frac{1}{2}DE}{\frac{1}{2}{AC}} = \dfrac{DE}{AB} = \dfrac{1}{2}.
+    \end{align*}
+    Diperoleh bahwa $\triangle FMD \sim \triangle FDA$ sehingga $FM \cdot FA = FD^2$, dimana dengan \textit{power of a point} membuktikan bahwa $FD$ menyinggung lingkaran luar $\triangle ADM$.
+
+    \textbf{Alternatif 3.} Misalkan $N$ adalah perpotongan $MC$ dengan $AE$. Lalu misalkan $T$ adalah perpotongan $FN$ dengan $AB$. 
+
+    Dari dalil Ceva, didapat
+    \begin{align*}
+        \dfrac{EN}{NA} \cdot \dfrac{AD}{DC} \cdot \dfrac{CF}{FE} = 1 \implies \dfrac{EN}{NA} \cdot \dfrac{1}{1} \cdot \dfrac{CF}{FE} = 1 \implies \dfrac{EN}{NA} = \dfrac{EF}{FC} \implies NF \parallel AC \implies TF \parallel AC
+    \end{align*}
+    oleh karena itu
+    \begin{align*}
+        \dfrac{TA}{AG}=\dfrac{TA}{AB} = \dfrac{FC}{BC} = \dfrac{1}{3} \implies TA = \dfrac{1}{4} TG \text{ dan } AG = \dfrac{3}{4}TG
+    \end{align*}
+    dan
+    \begin{align*}
+        \dfrac{TF}{AG}=\dfrac{TF}{AC} = \dfrac{BF}{BC} = \dfrac{2}{3} \implies TF= \dfrac{2}{3}AG = \dfrac{2}{3} \cdot \dfrac{3}{4} \cdot TG = \dfrac{1}{2} TG.
+    \end{align*}
+    Dari fakta-fakta tersebut, dengan \textit{power of a point} didapat
+    \begin{align*}
+        TF^2 = \left(\dfrac{1}{2} TG\right)^2 = \dfrac{1}{4}TG \cdot TG = TA \cdot TG
+    \end{align*}
+    yang menunjukkan lingkaran luar $\triangle AGF$ menyinggung $TF$ di $F$. Dari \textit{alternate segment theorem} dan fakta $DE \parallel AB$ didapat 
+    \begin{align*}
+        \angle FAD = \angle AFT = \angle AGF = \angle MDF
+    \end{align*}
+    yang menunjukkan bahwa $DF$ menyinggung lingkaran luar $\triangle ADM$ di $D$. Terbukti.
