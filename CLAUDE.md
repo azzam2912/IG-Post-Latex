@@ -66,6 +66,24 @@ is no 04 or 17) — that is intentional; the numbers match the published posts.
 2. Compile from the repo root, e.g. `pdflatex main.tex`. All figures are now
    TikZ, so plain `pdflatex` is enough (no `--shell-escape`/Asymptote needed).
 
+### Build script (`scripts/build.js`)
+
+A dependency-free Node helper that wraps a body-only post with `preamble.tex`,
+compiles it, and can rasterize the result. Needs `pdflatex` on `PATH` to
+compile and `pdftoppm` (poppler-utils) on `PATH` for images.
+
+```bash
+node scripts/build.js compile 45                 # one post  -> pdfs/45.pdf
+node scripts/build.js compile Posted-Twitter/01  # explicit path also works
+node scripts/build.js compile-latest             # newest post by number (Posted-IG)
+node scripts/build.js compile-latest --dir Posted-Twitter
+node scripts/build.js to-images pdfs/45.pdf      # -> pdf-to-images/45/page-1.png, ...
+```
+
+npm aliases: `npm run compile -- 45`, `npm run latest`,
+`npm run to-images -- pdfs/45.pdf`. Image DPI via `PDF_DPI` (default 200).
+Output dirs `pdfs/` and `pdf-to-images/` are git-ignored generated artifacts.
+
 ## Writing a new post
 
 1. Copy `template.tex` to `Posted-IG/<number>.tex` and fill in the body.
