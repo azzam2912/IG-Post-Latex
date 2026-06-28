@@ -1,1 +1,19 @@
-\input{main-ig}
+% ============================================================
+%  main.tex  -  build driver
+%
+%  To render a post:
+%    1. point the \input below at the post you want
+%       (files live in Posted-IG/ and Posted-Twitter/), and
+%    2. compile this file.
+%
+%  Every post is a body-only fragment; the shared preamble lives
+%  in preamble.tex so it is never duplicated per post.
+% ============================================================
+\input{preamble}
+
+\begin{document}
+\pagestyle{plain}
+
+\input{Posted-IG/45}
+
+\end{document}

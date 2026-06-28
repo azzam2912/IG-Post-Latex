@@ -1,0 +1,89 @@
+% ============================================================
+%  preamble.tex
+%  Shared preamble for every IG / Twitter LaTeX post.
+%  Edit this ONCE; all posts pull it in through main.tex, so the
+%  preamble never has to be copy-pasted/regenerated per post.
+%
+%  Page format: Instagram 4:5 portrait (17 x 21.25 cm).
+% ============================================================
+\documentclass[12pt]{scrartcl}
+\usepackage[hagavi]{azzam}
+
+\usepackage[paperwidth=17cm, paperheight=21.25cm, margin=0.7cm]{geometry}
+
+% --- Extra packages used by individual posts ---------------------------
+% azzam.sty already loads: amsmath, amssymb, xcolor, graphicx, ulem,
+% mathtools, multicol, float, tcolorbox, pgfplots, mathrsfs, tkz-euclide,
+% enumitem, hyperref, amsthm, thmtools, mdframed, fancyhdr.  Only the
+% packages NOT covered by azzam.sty are added below.
+\usepackage{amsfonts}
+\usepackage{setspace}
+\usepackage{etoolbox}
+\usepackage{caption}
+\usepackage{lipsum}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{collectbox}
+\usepackage{systeme}
+\usepackage{ulsy}
+\usepackage{pagecolor}
+\usepackage{ragged2e}
+\usepackage{changepage}
+\usepackage{framed}
+\usepackage{fancybox}
+\usepackage[symbol]{footmisc}
+
+\usetikzlibrary{calc,through,intersections,positioning,angles,arrows}
+
+\captionsetup[figure]{font=small, labelformat=empty}
+\colorlet{EvanRed}{Red!50!Purple}
+\definecolor{officegreen}{rgb}{0.0, 0.5, 0.0}
+
+% --- Shared helper macros ---------------------------------------------
+% Right-angle mark in TikZ pictures.
+\newcommand{\siku}[4][.2cm]{%
+	\coordinate (tempa) at ($(#3)!#1!(#2)$);
+	\coordinate (tempb) at ($(#3)!#1!(#4)$);
+	\coordinate (tempc) at ($(tempa)!0.5!(tempb)$);% midpoint
+	\draw[black] (tempa) -- ($(#3)!2!(tempc)$) -- (tempb);
+}
+
+% Tighten the space around displayed equations.
+\newcommand{\zerodisplayskips}{%
+  \setlength{\abovedisplayskip}{5pt}%
+  \setlength{\belowdisplayskip}{5pt}%
+  \setlength{\abovedisplayshortskip}{5pt}%
+  \setlength{\belowdisplayshortskip}{5pt}}
+\appto{\normalsize}{\zerodisplayskips}
+\appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
+\setlength\parindent{10pt}
+
+\let\ds\displaystyle
+
+% Answer-key / errata circles.
+\newcommand\kunci{\tikz[overlay]\draw[red] (-2ex,.7ex) circle (1.7ex);}
+\newcommand\ralat{\tikz[overlay]\draw[blue] (-2ex,.7ex) circle (1.7ex);}
+
+% Centered bold title for a slide.
+\newcommand\progtitle[1]{{\vspace{0.2cm}\begin{center}\Large\bfseries #1 \end{center}\vspace{0.2cm}}}
+
+% Square \fbox around its content.
+\makeatletter
+\newcommand{\sqbox}{%
+	\collectbox{%
+		\@tempdima=\dimexpr\width-\totalheight\relax
+		\ifdim\@tempdima<\z@
+		\fbox{\hbox{\hspace{-.5\@tempdima}\BOXCONTENT\hspace{-.5\@tempdima}}}%
+		\else
+		\ht\collectedbox=\dimexpr\ht\collectedbox+.2\@tempdima\relax
+		\dp\collectedbox=\dimexpr\dp\collectedbox+.5\@tempdima\relax
+		\fbox{\BOXCONTENT}%
+		\fi
+	}%
+}
+\makeatother
+
+% Look for figures both at the repo root and inside the post folders.
+\graphicspath{{./}{./Posted-IG/}{./Posted-Twitter/}}

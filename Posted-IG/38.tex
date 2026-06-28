@@ -1,0 +1,38 @@
+\section{Soal}
+Misalkan $a, b, c, d$ adalah bilangan-bilangan real yang memenuhi
+\[
+2(a + b + c + d) \ge abcd.
+\]
+Buktikan bahwa
+\[
+a^2 + b^2 + c^2 + d^2 \ge abcd.
+\]
+(ARMO 2013 Grade 11 P6)
+
+\newpage
+\section{Solusi}
+\begin{remark*}
+    Motivasinya adalah... bagi kasus soalnya kan kalo pake AM-GM nanti ketemu kalo dia lebih dari atau kurang dari 16 agak susah kalo ngga dibagi kasus. Still, soal ini emang agak ngga natural aja sih.
+\end{remark*}
+
+
+
+Bagi kasus berdasarkan nilai $abcd$.
+
+\textbf{Kasus I.} $abcd \ge 16$\\
+Berarti $abcd \ge 16 \rightarrow \frac{abcd}{16} \ge 1$ sehingga
+\begin{align*}
+a^2+b^2+c^2+d^2 &\ge 4\left(\frac{a+b+c+d}{4}\right)^2 \hspace{0.5cm}\text{(CS atau QM-AM)}\\
+&\ge 4\left(\frac{abcd}{8}\right)^2 \\
+&= \frac{abcd}{16} \cdot abcd\\
+&\ge abcd
+\end{align*}
+
+
+\textbf{Kasus II.} $abcd < 16$
+\[ a^2+b^2+c^2+d^2 \stackrel{\text{AM-GM}}{\ge} 4\sqrt{abcd} > \sqrt{abcd}\sqrt{abcd} = abcd \]
+
+Dengan kesamaan terjadi saat $a=b=c=d=2$. Terbukti.
+
+
+\tiny (dah, gitu "doang") :)
