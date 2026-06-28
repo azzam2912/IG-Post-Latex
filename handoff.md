@@ -1,0 +1,57 @@
+# Handoff — repository refactor
+
+## Goal
+
+Make the repo easy to navigate and stop regenerating the LaTeX preamble for
+every post: flatten the per-post folders, rename everything by post number, and
+introduce a single shared template.
+
+## What was done
+
+### 1. Flattened the folder structure
+- Removed every per-post sub-folder under `Posted-IG/` and `Posted-Twitter/`.
+- Renamed posts by their number directly inside `Posted-IG/`:
+  `01.tex` … `45.tex` (numbers are non-contiguous by design).
+- Posts with multiple files use a descriptive suffix:
+  - `00-imo-2020.tex`, `00-integral.tex`, `00-suneung.tex`
+  - `16-imo-2022-p4.tex`, `16-ktom-maret-2022.tex`
+  - `18.tex`, `18-old.tex`
+  - `19.tex`, `19-draff.tex`
+  - `27.tex`, `27-asymptote.tex`
+  - `28.tex`, `28-asymptote.tex`
+  - `experimental-1.tex`, `experimental-2.tex`
+- Figures moved next to the posts with a numbered prefix (e.g.
+  `14-am-gm-meme.jpg`, `15-nomor-14-rev.png`, `22-kmo2023p1.png`). All
+  `\includegraphics` and `\input` references were updated to the new names.
+- Twitter post moved to `Posted-Twitter/01.tex`.
+
+### 2. Single shared template
+- Added `preamble.tex`: one preamble for all posts (azzam.sty `[hagavi]`,
+  4:5 Instagram page geometry, every extra package the posts use, plus shared
+  helper macros: `\siku`, `\zerodisplayskips`, `\progtitle`, `\kunci`,
+  `\ralat`, `\sqbox`, the `EvanRed`/`officegreen` colors, and `\graphicspath`).
+- Converted all 29 former standalone documents into **body-only fragments**
+  (stripped `\documentclass`/preamble/`document` env; `\title` turned into a
+  centered heading). The other 25 posts were already fragments.
+- `main.tex` is now a thin build driver: `\input{preamble}` + one post.
+- `template.tex` is a starter skeleton for new posts.
+- Removed the redundant `main-ig.tex`, `main-twitter.tex`, `template-4-to-5.tex`.
+
+### 3. Docs & hygiene
+- `README.md`: structure + build/authoring workflow.
+- `CLAUDE.md`: conventions for future work in this repo.
+- `.gitignore`: LaTeX/Asymptote build artifacts.
+
+## Things to verify / follow up
+
+- **No LaTeX was installed** in the working environment, so nothing was
+  compile-tested. Run `pdflatex main.tex` on a few posts (especially ones with
+  TikZ/Asymptote and the converted standalone docs: 02, 08, 20, 21) to confirm.
+  Asymptote posts need `--shell-escape`.
+- **Post 21** (`Posted-IG/21.tex`) referenced `soal/soal.tex` and
+  `solusi/solusi.tex` that were never in the repo; those `\input`s are commented
+  out. Restore the content if available.
+- **Unified page size**: old square (16×16) posts now use the 4:5 page, so their
+  layout reflows. If any specific post must keep its original aspect ratio, it
+  can override geometry locally — but the default is one shared format.
+- **No Word/non-LaTeX sources existed**, so nothing needed format conversion.

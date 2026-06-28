@@ -1,0 +1,39 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.xdv
+*.idx
+*.ilg
+*.ind
+
+# pdfLaTeX / build output
+main.pdf
+*.pdf
+
+# Asymptote intermediate files (generated from main.tex; keep geometry.asy/olympiad.asy)
+*.pre
+main-*.asy
+main+*.asy
+*.eps
+
+# Editor / OS cruft
+.DS_Store
+*.swp
+*~
+.vscode/
