@@ -42,12 +42,41 @@ introduce a single shared template.
 - `CLAUDE.md`: conventions for future work in this repo.
 - `.gitignore`: LaTeX/Asymptote build artifacts.
 
+## Round 2 — figures: photos relocated, Asymptote → TikZ
+
+### Photos
+- Moved every raster figure into a dedicated `0Figure/` folder (names
+  unchanged, e.g. `14-am-gm-meme.jpg`, `22-kmo2023p1.png`).
+- Updated the `\includegraphics` calls in the affected posts to the
+  `0Figure/<name>` path, and added `./0Figure/` to `\graphicspath`.
+
+### Asymptote → TikZ
+- Every Asymptote figure was migrated to TikZ. Posts now `\input` the TikZ
+  version; they no longer contain `\begin{asy}`.
+- New folders:
+  - `Asymptote/` — the original `.asy` sources, archived for reference
+    (`22, 24, 27, 28, 31, 35.tex`). Not referenced by any post.
+  - `TikzLatex/` — the converted TikZ figures, one file per figure:
+    `22, 24, 27, 28`, `31-soal, 31-sol1, 31-sol2`, `35-soal, 35-solusi`.
+- Conversion method:
+  - GeoGebra-exported figures (31, 35) had explicit coordinates → translated
+    mechanically (segments, circles, colors, dashes preserved).
+  - Constructive figures (22, 24, 27, 28) used Asymptote's computational
+    geometry (`circumcircle`, `foot`, `incenter`, `intersectionpoint`, …).
+    These were recomputed numerically in Python and emitted as
+    explicit-coordinate TikZ, so the geometry is exact and the figures need no
+    external tools to render.
+- Removed the old `Posted-IG/27-asymptote.tex` and `Posted-IG/28-asymptote.tex`.
+- Because nothing uses Asymptote anymore, plain `pdflatex main.tex` is now
+  sufficient (no `--shell-escape`).
+
 ## Things to verify / follow up
 
 - **No LaTeX was installed** in the working environment, so nothing was
-  compile-tested. Run `pdflatex main.tex` on a few posts (especially ones with
-  TikZ/Asymptote and the converted standalone docs: 02, 08, 20, 21) to confirm.
-  Asymptote posts need `--shell-escape`.
+  compile-tested. Run `pdflatex main.tex` on a few posts (especially the
+  converted standalone docs 02, 08, 20, 21 and the migrated figures 22, 24, 27,
+  28, 31, 35) to confirm. The converted figures are geometrically exact; only
+  the per-figure `scale=` (cosmetic sizing) may need small tweaks.
 - **Post 21** (`Posted-IG/21.tex`) referenced `soal/soal.tex` and
   `solusi/solusi.tex` that were never in the repo; those `\input`s are commented
   out. Restore the content if available.

@@ -24,11 +24,14 @@ Posted-IG/          One file per post, named by number: 01.tex .. 45.tex.
                     Multi-file posts use a descriptive suffix, e.g.
                       16-imo-2022-p4.tex, 16-ktom-maret-2022.tex
                       18.tex, 18-old.tex
-                      27.tex, 27-asymptote.tex
-                    Figures live alongside posts with a numbered prefix, e.g.
-                      14-am-gm-meme.jpg, 22-kmo2023p1.png
 
 Posted-Twitter/     Same convention for Twitter posts (01.tex).
+
+0Figure/            All raster figures (photos/screenshots), numbered by post:
+                      14-am-gm-meme.jpg, 22-kmo2023p1.png, ...
+TikzLatex/          TikZ figures \input by the posts (NN.tex / NN-<part>.tex).
+Asymptote/          The original Asymptote sources for those figures, kept for
+                    reference. Posts use the TikZ versions, NOT these.
 ```
 
 There are no per-post sub-folders. Post numbers are not contiguous (e.g. there
@@ -48,16 +51,20 @@ is no 04 or 17) — that is intentional; the numbers match the published posts.
 - **Page format** is Instagram 4:5 (17 × 21.25 cm), set in `preamble.tex`.
 - **Slides** within a post are separated by `\newpage` (each page = one carousel
   image). The usual sections are `Soal`, `Walkthrough`, `Solusi` (Indonesian).
-- **Figures** are referenced by their new prefixed basename only (e.g.
-  `\includegraphics{14-am-gm-meme}`); `\graphicspath` in `preamble.tex` covers
-  `./`, `./Posted-IG/`, and `./Posted-Twitter/`.
+- **Raster figures** live in `0Figure/` and are referenced as
+  `\includegraphics{0Figure/14-am-gm-meme}`; `\graphicspath` in `preamble.tex`
+  also covers `./0Figure/` so a bare basename still resolves.
+- **Vector figures use TikZ, not Asymptote.** Each figure is its own file in
+  `TikzLatex/` and is pulled into a post with `\input{TikzLatex/<name>}`. The
+  original Asymptote sources are archived in `Asymptote/` for reference only.
+  When adding a figure, prefer TikZ (pure LaTeX, no `--shell-escape`).
 
 ## Building
 
 1. In `main.tex`, set the `\input` line to the post you want, e.g.
    `\input{Posted-IG/45}` (Twitter: `\input{Posted-Twitter/01}`).
-2. Compile from the repo root, e.g. `pdflatex main.tex`. Posts using Asymptote
-   (`\begin{asy}`) need `--shell-escape` and Asymptote installed.
+2. Compile from the repo root, e.g. `pdflatex main.tex`. All figures are now
+   TikZ, so plain `pdflatex` is enough (no `--shell-escape`/Asymptote needed).
 
 ## Writing a new post
 
