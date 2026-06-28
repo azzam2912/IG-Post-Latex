@@ -32,6 +32,10 @@ main-*.asy
 main+*.asy
 *.eps
 
+# scripts/build.js generated output
+pdf-to-images/
+__build_*
+
 # Editor / OS cruft
 .DS_Store
 *.swp

@@ -50,6 +50,31 @@ never copy-pasted or regenerated per post.
 3. Compile `main.tex` (e.g. `pdflatex main.tex`). The page is sized for the
    Instagram 4:5 portrait format (17 × 21.25 cm).
 
+## Build script (`scripts/build.js`)
+
+A dependency-free Node helper that wraps a single post with `preamble.tex`,
+compiles it, and (optionally) rasterizes the result — handy for automation or a
+web back-end. Requires `pdflatex` on `PATH` for compiling and `pdftoppm`
+(poppler-utils) on `PATH` for image conversion.
+
+```bash
+# 1. Compile one post            -> pdfs/<name>.pdf
+node scripts/build.js compile 45
+node scripts/build.js compile Posted-Twitter/01
+
+# 2. Compile the newest post     -> pdfs/<name>.pdf
+node scripts/build.js compile-latest                 # newest in Posted-IG
+node scripts/build.js compile-latest --dir Posted-Twitter
+
+# 3. PDF pages -> images         -> pdf-to-images/<name>/page-1.png, ...
+node scripts/build.js to-images pdfs/45.pdf
+```
+
+Equivalent npm scripts: `npm run compile -- 45`, `npm run latest`,
+`npm run to-images -- pdfs/45.pdf`. Image resolution is configurable with
+`PDF_DPI` (default 200). Output folders `pdfs/` and `pdf-to-images/` are
+git-ignored as generated artifacts.
+
 ## Writing a new post
 
 1. Copy `template.tex` to `Posted-IG/<number>.tex`.

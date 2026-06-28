@@ -1,0 +1,18 @@
+{
+  "name": "ig-post-latex-build",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build helper: compile IG/Twitter LaTeX posts to PDF and rasterize PDFs to images.",
+  "bin": {
+    "ig-build": "scripts/build.js"
+  },
+  "scripts": {
+    "compile": "node scripts/build.js compile",
+    "latest": "node scripts/build.js compile-latest",
+    "to-images": "node scripts/build.js to-images",
+    "help": "node scripts/build.js help"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
