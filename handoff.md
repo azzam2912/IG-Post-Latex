@@ -1,5 +1,30 @@
 # Handoff — repository refactor
 
+## Round 3 — restore descriptive filenames + title comments
+
+The previous refactor stripped competition/problem titles from filenames
+(e.g. `45 - Iran MO 2018 Round 1.tex` → `45.tex`). This round restores them.
+
+### What was done
+- **Renamed** every numbered post in `Posted-IG/` and `Posted-Twitter/` from
+  `NN.tex` (or `NN-slug.tex`) to `NN - Title.tex`, e.g.:
+  - `45.tex` → `45 - Iran MO 2018 Round 1.tex`
+  - `16-imo-2022-p4.tex` → `16 - IMO 2022 P4.tex`
+  - `18-old.tex` → `18 - Ketaksamaan Sederhana (Old).tex`
+  - `Posted-Twitter/01.tex` → `01 - Symmetric Inequality.tex`
+- **Added `% Title` comment** as the very first line of every post file,
+  including the `00-*` and `experimental-*` files that weren't renamed.
+- **Updated `main.tex`**: `\input` now uses the full filename with spaces
+  (`\input{Posted-IG/45 - Iran MO 2018 Round 1}`).  Spaces in `\input{}`
+  work in pdflatex on modern TeX Live (2019+).
+- **Updated `scripts/build.js`**: `compile 45` still works — `resolvePost`
+  now does a numeric-prefix search when no exact match is found.
+- **Updated `CLAUDE.md`**: new naming convention documented.
+
+---
+
+
+
 ## Goal
 
 Make the repo easy to navigate and stop regenerating the LaTeX preamble for
@@ -11,19 +36,18 @@ introduce a single shared template.
 ### 1. Flattened the folder structure
 - Removed every per-post sub-folder under `Posted-IG/` and `Posted-Twitter/`.
 - Renamed posts by their number directly inside `Posted-IG/`:
-  `01.tex` … `45.tex` (numbers are non-contiguous by design).
-- Posts with multiple files use a descriptive suffix:
-  - `00-imo-2020.tex`, `00-integral.tex`, `00-suneung.tex`
-  - `16-imo-2022-p4.tex`, `16-ktom-maret-2022.tex`
-  - `18.tex`, `18-old.tex`
-  - `19.tex`, `19-draff.tex`
-  - `27.tex`, `27-asymptote.tex`
-  - `28.tex`, `28-asymptote.tex`
-  - `experimental-1.tex`, `experimental-2.tex`
+  `01 - AM-GM Optimization.tex` … `45 - Iran MO 2018 Round 1.tex`
+  (numbers are non-contiguous by design).
+- Posts with multiple files use different titles to distinguish them:
+  - `00-imo-2020.tex`, `00-integral.tex`, `00-suneung.tex` (pre-numbered slugs unchanged)
+  - `16 - IMO 2022 P4.tex`, `16 - KTOM Maret 2022.tex`
+  - `18 - Ketaksamaan Sederhana.tex`, `18 - Ketaksamaan Sederhana (Old).tex`
+  - `19 - OSK 2023.tex`, `19 - OSK 2023 Draff.tex`
+  - `experimental-1.tex`, `experimental-2.tex` (slugs unchanged)
 - Figures moved next to the posts with a numbered prefix (e.g.
   `14-am-gm-meme.jpg`, `15-nomor-14-rev.png`, `22-kmo2023p1.png`). All
   `\includegraphics` and `\input` references were updated to the new names.
-- Twitter post moved to `Posted-Twitter/01.tex`.
+- Twitter post moved to `Posted-Twitter/01 - Symmetric Inequality.tex`.
 
 ### 2. Single shared template
 - Added `preamble.tex`: one preamble for all posts (azzam.sty `[hagavi]`,

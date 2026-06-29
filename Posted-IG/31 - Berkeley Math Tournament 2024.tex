@@ -1,0 +1,56 @@
+% Berkeley Math Tournament 2024
+\section*{One Funny Lemma That Almost Caught Me Offguard}
+\subsection*{Sebuah Lemma dari Berkeley Math Tournament 2024}
+\textbf{Sedikit keluh kesah:} Jadi, aku dapet soal ini dari Wildan. Awalnya aku nemu caranya pake Inversi. Terus mikir dong, masa soal "selucu ini" ngga ada cara biasanya (non projective solution)? Tapi, malah nyari pake cara biasa malah lama banget ngga ketemu-temu (aku nyoba beberapa minggu lalu). Akhirnya semalem setelah nyoba sekali lagi, bisa ketemu :D
+
+\section{Soal}
+Lingkaran dalam segitiga sembarang tak sama kaki $\triangle ABC$ menyinggung sisi $\overline{BC}, \overline{AC},$ dan $\overline{AB}$ masing-masing di titik $D, E,$ dan $F$. Garis $EF$ memotong garis $BC$ di titik $P$ dan garis $AD$ di titik $Q$. Lingkaran luar segitiga $\triangle AEF$ memotong kembali garis $AP$ di titik $R \neq A$. Jika $I$ adalah titik pusat lingkaran dalam segitiga $\triangle ABC$, buktikan bahwa titik-titik $I, Q, R$ terletak pada satu garis lurus.
+
+\input{TikzLatex/31-soal}
+
+\newpage
+\section{Solusi 1, Synthetic - Euclid Solution}
+    \begin{remark*}[Motivasi]
+        Karena nemu solusi 2 duluan, jadi kepikiran, emang jangan-jangan ini soal banyak yang siklisnya biar bisa di \textbf{angle chasing} atau dihajar pake \textbf{power of a point}. Terus berkali-kali konstruksi titik yang pas akhirnya nemu kalau jika dikonstruksi titik $H$, maka ada 5 segiempat siklis yang berguna untuk angle chasing di akhir :).
+    \end{remark*}
+    Misalkan $I$ adalah titik pusat lingkaran dalam $\triangle ABC$. Lalu, misalkan $H$ adalah perotongan $AI$ dengan $FE$ dan $G$ adalah titik di $AD$ sehingga $IG \perp AD$.
+
+    \input{TikzLatex/31-sol1}
+    
+    Perhatikan bahwa $\dangle AFI = \dangle AEI = 90^\circ$ sehingga $A,F,I,E$ konsiklis dengan $AI$ sebagai diameternya. 
+    Selanjutnya, karena $\dangle DGI = 90^\circ$ maka $D,G,I$ konsiklis dengan $DI$ sebagai diameternya. Di lain sisi, karena $\dangle IGA = 90^\circ = \dangle IFA$, maka $A,I,F,G$ konsiklis. 
+    Lebih jauh, garis $IG$ merupakan \textit{radical axis} dari lingkaran $(AFGI)$ dan $(EGI)$.
+    
+    Selanjutnya, karena $DI \perp BC$ maka $(D,G,I)$ menyinggung $BC$ di $D$. Namun, karena $(DEF)$ juga menyinggung $BC$ di $D$ maka $BC$ merupakan \textit{radical axis} dari $(DEF)$ dan $(DGI)$.
+
+    Di lain pihak, kita juga punya $EF$ merupakan \textit{radical axis} dari $(AEF)$ dan $(DEF)$.
+
+    Perhatikan bahwa ketiga \textit{radical axis} $EF, BC, IG$ konkuren di suatu \textit{radical point}. Dari definisi di soal, karena $P$ adalah perpotongan $EF$ dan $BC$, maka didapat $P$ merupakan \textit{radical center} dari $(AEF), (DEF), (DGI)$.
+
+    Misalkan $\Gamma$ adalah lingkaran yang melalui $A$ dan menyinggung $BC$ di $D$. Dari \textit{power of a point}, kita punya
+    \begin{align*}
+        PR \cdot PA = PF \cdot PE = PG \cdot PI = PD^2,
+    \end{align*}
+    sehingga didapat $R$ berada di $\Gamma$.
+
+    Sekarang, jelas bahwa $EF \perp AI$ sehingga $\dangle QHI = 90^\circ = \dangle QGI$ yang menunjukkan $Q,H,I,G$ konsiklis. Oleh karena itu, dari \textit{power of a point} kita punya
+    \begin{align*}
+        PR \cdot PA = PG \cdot PI = PQ \cdot PH,
+    \end{align*}
+    sehingga didapat $A,R,Q,H$ konsiklis dengan $\dangle QRA = \dangle QHA = 90^\circ$. 
+    Padahal kita juga tahu bahwa $A,R,F,I,E$ konsiklis dengan $AI$ sebagai diameternya yang langsung menyebabkan $\dangle IRA = 90^\circ$. Dari sini didapat $I,Q,R$ segaris. Terbukti.
+
+\newpage
+\section{Solusi 2, Inversi - Projective Geometry}
+    Kita akan memakai konfigurasi gambar dari solusi 1.
+        \input{TikzLatex/31-sol2}
+    Observasi inversi terhadap lingkaran $(DEF)$. 
+    Karena $\triangle IFH \sim \triangle IAF$ maka $IH \cdot IA = IF^2$ dengan $IF$ adalah jari-jari lingkaran $(DEF)$, maka $EF$ dipetakan ke $(AEF)$.
+    Lalu, $\triangle IGD \sim \triangle IDP$ sehingga $IG \cdot IP = ID^2$ dengan $ID$ adalah jari-jari lingkaran $(DEF)$, maka $G$ dipetakan ke $P$.
+
+    Perhatikan bahwa $AD$ adalah \textit{polar} dari \textit{pole} $P$ karena $IG \perp AD$.
+    Misalkan $Q$ dipetakan ke $R'$ yang berada di $(AEF)$. Ingat bahwa $AI$ adalah diameter $(AEF)$ maka $IR' \perp AR'$. 
+    Lalu, $AR'$ adalah \textit{polar} dari \textit{pole} $Q$. 
+    Namun, perlu diingat bahwa karena $Q$ berada di \textit{polar} dari $P$, maka dari \textit{La Hire's theorem} didapat $P$ berada di \textit{polar} dari $Q$. Dari sini didapat $P$ berada di $AR'$.
+
+    Dikarenakan $R$ dan $R'$ berada di $(AEF)$ serta $A,R,R',P$ segaris, maka didapat $R=R'$. Terbukti bahwa $I,Q,R'=R$ segaris.

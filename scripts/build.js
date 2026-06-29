@@ -64,29 +64,47 @@ function leadingNumber(name) {
 }
 
 // Resolve a user-supplied post reference to an absolute .tex path.
-//   "45"                      -> Posted-IG/45.tex (searches POST_DIRS)
-//   "Posted-Twitter/01"       -> that exact file
-//   "Posted-IG/16-imo-2022-p4.tex" -> as given
+//   "45"                           -> Posted-IG/45 - Iran MO 2018 Round 1.tex
+//   "45 - Iran MO 2018 Round 1"    -> same
+//   "Posted-Twitter/01"            -> that exact file
+//   "Posted-IG/45 - Iran MO 2018 Round 1.tex" -> as given
 function resolvePost(ref) {
-  const candidates = [];
   const withTex = ref.endsWith('.tex') ? ref : `${ref}.tex`;
 
-  // Explicit path (relative to repo root or absolute).
-  candidates.push(path.resolve(REPO_ROOT, withTex));
-  // Bare name: look inside each posts directory.
+  // 1. Exact match (relative to repo root or absolute).
+  const exact = path.resolve(REPO_ROOT, withTex);
+  if (fs.existsSync(exact)) return exact;
+
+  // 2. Bare name inside each posts directory (exact filename match).
   for (const dir of POST_DIRS) {
-    candidates.push(path.join(REPO_ROOT, dir, path.basename(withTex)));
+    const p = path.join(REPO_ROOT, dir, path.basename(withTex));
+    if (fs.existsSync(p)) return p;
   }
 
-  for (const c of candidates) {
-    if (fs.existsSync(c)) return c;
+  // 3. Numeric prefix match: "45" finds "45 - Iran MO 2018 Round 1.tex".
+  //    The ref must be purely numeric (or numeric + space/dash suffix).
+  const base = path.basename(ref.replace(/\.tex$/, ''));
+  const numMatch = base.match(/^(\d+)/);
+  if (numMatch) {
+    const n = numMatch[1]; // e.g. "45"
+    const prefix = new RegExp(`^${n}[^0-9]`);
+    for (const dir of POST_DIRS) {
+      const abs = path.join(REPO_ROOT, dir);
+      if (!fs.existsSync(abs)) continue;
+      const found = fs.readdirSync(abs)
+        .filter((f) => f.endsWith('.tex') && prefix.test(f))
+        // Prefer canonical post (shorter name, no "(Old)" / "Draff")
+        .sort((a, b) => a.length - b.length);
+      if (found.length > 0) return path.join(abs, found[0]);
+    }
   }
+
   die(`could not find post "${ref}" (looked in ${POST_DIRS.join(', ')})`);
 }
 
-// Find the newest post in `dir` by highest leading number. Ties (e.g. 18.tex
-// and 18-old.tex) resolve to the plain "<n>.tex" when present, else the
-// shortest name, so "compile-latest" tracks the canonical published post.
+// Find the newest post in `dir` by highest leading number. Ties (e.g.
+// "18 - Ketaksamaan Sederhana.tex" and "18 - Ketaksamaan Sederhana (Old).tex")
+// resolve to the shortest name, so the canonical post wins over drafts/old versions.
 function findLatestPost(dir) {
   const abs = path.join(REPO_ROOT, dir);
   if (!fs.existsSync(abs)) die(`directory not found: ${dir}`);
@@ -101,10 +119,7 @@ function findLatestPost(dir) {
   const maxN = Math.max(...numbered.map((x) => x.n));
   const tied = numbered.filter((x) => x.n === maxN).map((x) => x.file);
 
-  const plain = `${maxN}.tex`;
-  const chosen = tied.includes(plain)
-    ? plain
-    : tied.sort((a, b) => a.length - b.length)[0];
+  const chosen = tied.sort((a, b) => a.length - b.length)[0];
 
   return path.join(abs, chosen);
 }

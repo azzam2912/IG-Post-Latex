@@ -1,11 +1,11 @@
-% CMO 2013 (Eksperimen)
-\begin{problem}[CMO 2013]
+% CMO 2013 Polynomial
+\section{Soal}
 Tentukan semua polinomial $P(x)$ dengan koefisien real sedemikian sehingga
 \[ (x+1)P(x-1) - (x-1)P(x) \]
 adalah polinomial konstan.
-\end{problem}
 
-\section*{Solusi}
+\newpage
+\section{Solusi}
 
 Misalkan $T(x) = (x+1)P(x-1) - (x-1)P(x)$. Dari soal diketahui bahwa $T(x)=c$ untuk suatu konstanta real $c$.
 
@@ -40,11 +40,11 @@ Agar $T(x)=c$ bisa menjadi konstan, maka suku yang mengandung $x$ haruslah nol a
 \[ (x^3-x) \left[ A(x-1) - A(x) \right] = c - 2k \]
 dengan sisi kanan, $c-2k$, adalah sebuah konstanta. Misalkan $d$ adalah derajat dari $A(x)$.
 
-\begin{lemma}[Well Known Lemma]
+\begin{lemma*}[Well Known Lemma]
 Untuk sebarang polinomial $P(x)$ berderajat $k \ge 1$ dan konstanta $a$, polinomial $P(x+a)-P(x)$ adalah polinomial berderajat $k-1$.
-\end{lemma}
+\end{lemma*}
 
-Jika $d \ge 1$, maka berdasarkan lemma selisih polinomial (lihat di bawah), derajat dari $A(x-1)-A(x)$ adalah $d-1$. Dengan demikian, derajat dari sisi kiri adalah $3 + (d-1) = d+2$. Karena $d \ge 1$, maka $d+2 \ge 3$. Ini berarti sisi kiri adalah polinomial non-konstan, yang menghasilkan kontradiksi.
+Jika $d \ge 1$, maka berdasarkan lemma well known tersebut tentant selisih polinomial, derajat dari $A(x-1)-A(x)$ adalah $d-1$. Dengan demikian, derajat dari sisi kiri adalah $3 + (d-1) = d+2$. Karena $d \ge 1$, maka $d+2 \ge 3$. Ini berarti sisi kiri adalah polinomial non-konstan, yang menghasilkan kontradiksi.
  
 Oleh karena itu, satu-satunya kemungkinan adalah $d < 1$, yang berarti $d=0$ berarti $A(x)=b$ untuk suatu konstanta real $b$.
 

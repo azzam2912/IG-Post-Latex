@@ -20,12 +20,18 @@ evan.sty            Evan Chen's style package.
 geometry.asy        Asymptote helper (do not treat as generated output).
 olympiad.asy        Asymptote helper (do not treat as generated output).
 
-Posted-IG/          One file per post, named by number: 01.tex .. 45.tex.
-                    Multi-file posts use a descriptive suffix, e.g.
-                      16-imo-2022-p4.tex, 16-ktom-maret-2022.tex
-                      18.tex, 18-old.tex
+Posted-IG/          One file per post, named "NN - Title.tex", e.g.
+                      45 - Iran MO 2018 Round 1.tex
+                    Each file starts with a "% Title" comment on line 1.
+                    Multi-file posts use different titles to distinguish them:
+                      16 - IMO 2022 P4.tex, 16 - KTOM Maret 2022.tex
+                      18 - Ketaksamaan Sederhana.tex
+                      18 - Ketaksamaan Sederhana (Old).tex
+                    Pre-numbered extras use a hyphenated slug: 00-imo-2020.tex,
+                      00-integral.tex, 00-suneung.tex.
 
-Posted-Twitter/     Same convention for Twitter posts (01.tex).
+Posted-Twitter/     Same convention for Twitter posts:
+                      01 - Symmetric Inequality.tex
 
 0Figure/            All raster figures (photos/screenshots), numbered by post:
                       14-am-gm-meme.jpg, 22-kmo2023p1.png, ...
@@ -62,7 +68,8 @@ is no 04 or 17) — that is intentional; the numbers match the published posts.
 ## Building
 
 1. In `main.tex`, set the `\input` line to the post you want, e.g.
-   `\input{Posted-IG/45}` (Twitter: `\input{Posted-Twitter/01}`).
+   `\input{Posted-IG/45 - Iran MO 2018 Round 1}` (Twitter: `\input{Posted-Twitter/01 - Symmetric Inequality}`).
+   Spaces in `\input{}` are fine in modern pdflatex (TeX Live 2019+).
 2. Compile from the repo root, e.g. `pdflatex main.tex`. All figures are now
    TikZ, so plain `pdflatex` is enough (no `--shell-escape`/Asymptote needed).
 
@@ -73,11 +80,11 @@ compiles it, and can rasterize the result. Needs `pdflatex` on `PATH` to
 compile and `pdftoppm` (poppler-utils) on `PATH` for images.
 
 ```bash
-node scripts/build.js compile 45                 # one post  -> pdfs/45.pdf
-node scripts/build.js compile Posted-Twitter/01  # explicit path also works
-node scripts/build.js compile-latest             # newest post by number (Posted-IG)
+node scripts/build.js compile 45                           # by number -> pdfs/45 - Iran MO 2018 Round 1.pdf
+node scripts/build.js compile "45 - Iran MO 2018 Round 1" # by full name also works
+node scripts/build.js compile-latest                       # newest post by number (Posted-IG)
 node scripts/build.js compile-latest --dir Posted-Twitter
-node scripts/build.js to-images pdfs/45.pdf      # -> pdf-to-images/45/page-1.png, ...
+node scripts/build.js to-images "pdfs/45 - Iran MO 2018 Round 1.pdf"
 ```
 
 npm aliases: `npm run compile -- 45`, `npm run latest`,

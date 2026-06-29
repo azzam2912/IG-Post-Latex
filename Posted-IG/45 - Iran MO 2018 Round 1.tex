@@ -1,0 +1,174 @@
+% Iran MO 2018 Round 1
+\begin{center}
+    \textbf{\Huge Iran Math Olympiad 2018 Round 1}
+    \textbf{\large Solution by Azzam L. H.}
+\end{center}
+
+\section{Soal} 
+Pada segiempat siklis $ABCD$, $\angle B = 110^{\circ}$. Perpotongan $AD$ dan $BC$ adalah $E$ dan perpotongan $AB$ dan $CD$ adalah $F$. Jika garis tegak lurus dari $E$ ke $AB$ memotong garis tegak lurus dari $F$ ke $BC$ di $P$, dengan titik $P$ terletak pada lingkaran luar segiempat tersebut, berapakah besar $\angle PDF$ dalam derajat?
+
+
+\definecolor{wewdxt}{rgb}{0.43137254901960786,0.42745098039215684,0.45098039215686275}
+\definecolor{rvwvcq}{rgb}{0.08235294117647059,0.396078431372549,0.7529411764705882}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,scale=0.55]
+\clip(-20,-14) rectangle (10,4);
+\draw [line width=0.8pt,color=wewdxt] (-8.076398786925322,-3.1894766854636476) circle (5.8548206158647265cm);
+\draw [line width=0.8pt,color=wewdxt] (-11.67393809543915,1.4296829099229913)-- (-13.42955703211615,-5.560683392163859);
+\draw [line width=0.8pt,color=wewdxt] (-13.42955703211615,-5.560683392163859)-- (-6.96252750313994,-8.93736457642959);
+\draw [line width=0.8pt,color=wewdxt] (-6.96252750313994,-8.93736457642959)-- (-3.8892179330336782,-7.281718240010234);
+\draw [line width=0.8pt,color=wewdxt] (-3.8892179330336782,-7.281718240010234)-- (-11.67393809543915,1.4296829099229913);
+\draw [line width=0.8pt,color=wewdxt] (-11.67393809543915,1.4296829099229913)-- (-7.030748568345458,2.576563606278843);
+\draw [line width=0.8pt,color=wewdxt] (-12.207622823051718,-7.338200875776395)-- (-3.8892179330336782,-7.281718240010234);
+\draw [line width=0.8pt,color=wewdxt] (-13.42955703211615,-5.560683392163859)-- (-2.6892436305490053,-5.48239704279896);
+\draw [line width=0.8pt,color=wewdxt] (-6.96252750313994,-8.93736457642959)-- (-7.030748568345458,2.576563606278843);
+\draw [line width=0.8pt,color=wewdxt] (-13.42955703211615,-5.560683392163859)-- (-12.207622823051718,-7.338200875776395);
+\draw [line width=0.8pt,color=wewdxt] (-3.8892179330336782,-7.281718240010234)-- (-2.6892436305490053,-5.48239704279896);
+\draw [line width=0.8pt,color=wewdxt] (-13.42955703211615,-5.560683392163859)-- (-7.030748568345458,2.576563606278843);
+\draw [line width=0.8pt,color=wewdxt] (-7.030748568345458,2.576563606278843)-- (-3.8892179330336782,-7.281718240010234);
+\draw [line width=0.8pt,color=wewdxt] (-15.422179473605063,-13.494729030866605)-- (-2.207872173254133,-6.375947479228405);
+\draw [line width=0.8pt,color=wewdxt] (-13.42955703211615,-5.560683392163859)-- (1.5728941752604186,-13.394031683343357);
+\draw [line width=0.8pt,color=wewdxt] (-15.422179473605063,-13.494729030866605)-- (-7.030748568345458,2.576563606278843);
+\draw [line width=0.8pt,color=wewdxt] (-11.67393809543915,1.4296829099229913)-- (-15.422179473605063,-13.494729030866605);
+\draw [line width=0.8pt,color=wewdxt] (-11.67393809543915,1.4296829099229913)-- (1.5728941752604186,-13.394031683343357);
+\draw [line width=0.8pt,color=wewdxt] (1.5728941752604186,-13.394031683343357)-- (-7.030748568345458,2.576563606278843);
+\begin{scriptsize}
+\draw [fill=rvwvcq] (-11.67393809543915,1.4296829099229913) circle (1pt);
+\draw[color=rvwvcq] (-11.381909210100085,2.1930002537678353) node {$D$};
+\draw [fill=rvwvcq] (-13.42955703211615,-5.560683392163859) circle (1pt);
+\draw[color=rvwvcq] (-13.13715530314428,-4.787164441826503) node {$A$};
+\draw [fill=rvwvcq] (-6.96252750313994,-8.93736457642959) circle (1pt);
+\draw[color=rvwvcq] (-6.687646403121424,-8.175197598167614) node {$B$};
+\draw [fill=rvwvcq] (-3.8892179330336782,-7.281718240010234) circle (1pt);
+\draw[color=rvwvcq] (-3.5853509828572663,-6.542410534870694) node {$C$};
+\draw [fill=wewdxt] (-15.422179473605063,-13.494729030866605) circle (2.0pt);
+\draw[color=wewdxt] (-15.137319455683013,-12.82864072856384) node {$E$};
+\draw [fill=wewdxt] (1.5728941752604186,-13.394031683343357) circle (2.0pt);
+\draw[color=wewdxt] (1.84366600260501,-12.706181698816572) node {$F$};
+\draw [fill=wewdxt] (-7.030748568345458,2.576563606278843) circle (2.0pt);
+\draw[color=wewdxt] (-6.728466079703847,3.254311844910834) node {$P$};
+\end{scriptsize}
+\end{tikzpicture}
+
+\section{Motivasi}
+Motivasinya "gampang": liat geogebra terus nyadar kalo banyak segitiga sama kaki dan segitiga yang saling kongruen dan sebangun (sudutnya terlihat sama dan bentuknya sama persis). Yang jadi masalah adalah buktiinnya :))))
+
+\section{Solusi}
+    \begin{center}
+\definecolor{wewdxt}{rgb}{0.43137254901960786,0.42745098039215684,0.45098039215686275}
+\definecolor{rvwvcq}{rgb}{0.08235294117647059,0.396078431372549,0.7529411764705882}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,scale=0.5]
+\clip(-20,-16) rectangle (10,4);
+\draw [line width=0.7pt,color=wewdxt] (-8.076398786925322,-3.1894766854636476) circle (5.8548206158647265cm);
+\draw [line width=0.7pt,color=wewdxt] (-11.67393809543915,1.4296829099229913)-- (-13.42955703211615,-5.560683392163859);
+\draw [line width=0.7pt,color=wewdxt] (-13.42955703211615,-5.560683392163859)-- (-6.96252750313994,-8.93736457642959);
+\draw [line width=0.7pt,color=wewdxt] (-6.96252750313994,-8.93736457642959)-- (-3.8892179330336782,-7.281718240010234);
+\draw [line width=0.7pt,color=wewdxt] (-3.8892179330336782,-7.281718240010234)-- (-11.67393809543915,1.4296829099229913);
+\draw [line width=0.7pt,color=wewdxt] (-11.67393809543915,1.4296829099229913)-- (-7.030748568345458,2.576563606278843);
+\draw [line width=0.7pt,color=wewdxt] (-12.207622823051718,-7.338200875776395)-- (-3.8892179330336782,-7.281718240010234);
+\draw [line width=0.7pt,color=wewdxt] (-13.42955703211615,-5.560683392163859)-- (-2.6892436305490053,-5.48239704279896);
+\draw [line width=0.7pt,color=wewdxt] (-6.96252750313994,-8.93736457642959)-- (-7.030748568345458,2.576563606278843);
+\draw [line width=0.7pt,color=wewdxt] (-13.42955703211615,-5.560683392163859)-- (-12.207622823051718,-7.338200875776395);
+\draw [line width=0.7pt,color=wewdxt] (-3.8892179330336782,-7.281718240010234)-- (-2.6892436305490053,-5.48239704279896);
+\draw [line width=0.7pt,color=wewdxt] (-13.42955703211615,-5.560683392163859)-- (-7.030748568345458,2.576563606278843);
+\draw [line width=0.7pt,color=wewdxt] (-7.030748568345458,2.576563606278843)-- (-3.8892179330336782,-7.281718240010234);
+\draw [line width=0.7pt,color=wewdxt] (-15.422179473605063,-13.494729030866605)-- (1.5728941752604186,-13.394031683343357);
+\draw [line width=0.7pt,dash pattern=on 4pt off 4pt,color=wewdxt] (-6.958753181775083,-7.687416265750767) circle (10.264232370183185cm);
+\draw [line width=0.7pt,dash pattern=on 8pt off 8pt,color=wewdxt] (-6.92464264917232,-13.444380357104986) circle (8.497685983345116cm);
+\draw [line width=0.7pt,color=wewdxt] (-3.8892179330336782,-7.281718240010234)-- (-1.7265007159592605,-7.269497915657851);
+\draw [line width=0.7pt,color=wewdxt] (-11.740105379540585,-6.442810121509668)-- (-2.207872173254133,-6.375947479228405);
+\draw [line width=0.7pt,color=wewdxt] (-15.422179473605063,-13.494729030866605)-- (-2.207872173254133,-6.375947479228405);
+\draw [line width=0.7pt,color=wewdxt] (-13.42955703211615,-5.560683392163859)-- (1.5728941752604186,-13.394031683343357);
+\draw [line width=0.7pt,color=wewdxt] (-15.422179473605063,-13.494729030866605)-- (-7.030748568345458,2.576563606278843);
+\draw [line width=0.7pt,color=wewdxt] (-11.67393809543915,1.4296829099229913)-- (-15.422179473605063,-13.494729030866605);
+\draw [line width=0.7pt,color=wewdxt] (-11.67393809543915,1.4296829099229913)-- (1.5728941752604186,-13.394031683343357);
+\draw [line width=0.7pt,color=wewdxt] (1.5728941752604186,-13.394031683343357)-- (-7.030748568345458,2.576563606278843);
+\begin{scriptsize}
+\draw [fill=rvwvcq] (-11.67393809543915,1.4296829099229913) circle (1pt);
+\draw[color=rvwvcq] (-11.437693961441914,2.36641368157636) node {$D$};
+\draw [fill=rvwvcq] (-13.42955703211615,-5.560683392163859) circle (1pt);
+\draw[color=rvwvcq] (-14.205137802169006,-5.96424880248248) node {$A$};
+\draw [fill=rvwvcq] (-6.96252750313994,-8.93736457642959) circle (1pt);
+\draw[color=rvwvcq] (-6.745933947875451,-9.338459771143283) node {$B$};
+\draw [fill=rvwvcq] (-3.8892179330336782,-7.281718240010234) circle (1pt);
+\draw[color=rvwvcq] (-3.8,-7.8) node {$C$};
+\draw [fill=wewdxt] (-15.422179473605063,-13.494729030866605) circle (0.9pt);
+\draw[color=wewdxt] (-16.197529040806819,-13.965949099592383) node {$E$};
+\draw [fill=wewdxt] (1.5728941752604186,-13.394031683343357) circle (0.9pt);
+\draw[color=wewdxt] (2.1,-13.869543071916361) node {$F$};
+\draw [fill=wewdxt] (-7.030748568345458,2.576563606278843) circle (0.9pt);
+\draw[color=wewdxt] (-7.288430390691822,3.36641368157636) node {$P$};
+\draw [fill=wewdxt] (-11.740105379540585,-6.442810121509668) circle (0.9pt);
+\draw[color=wewdxt] (-11,-5.92830907924271) node {$I$};
+\draw [fill=wewdxt] (-2.207872173254133,-6.375947479228405) circle (0.9pt);
+\draw[color=wewdxt] (-1.9899032491916389,-5.8319030515666865) node {$J$};
+\draw [fill=wewdxt] (-2.6892436305490053,-5.48239704279896) circle (0.9pt);
+\draw[color=wewdxt] (-2.3,-5.1) node {$K$};
+\draw [fill=wewdxt] (-12.207622823051718,-7.338200875776395) circle (0.9pt);
+\draw[color=wewdxt] (-12.3,-7.9) node {$L$};
+\draw [fill=wewdxt] (-11.271299531957888,-5.54495181205446) circle (0.9pt);
+\draw[color=wewdxt] (-10.5,-5.028519487599829) node {$G$};
+\draw [fill=wewdxt] (-11.67393809543915,1.4296829099229913) circle (0.9pt);
+\draw [fill=wewdxt] (-1.7265007159592605,-7.269497915657851) circle (0.9pt);
+\draw[color=wewdxt] (-1.5078731108115229,-6.731692643209567) node {$M$};
+\end{scriptsize}
+\end{tikzpicture}
+    \end{center}
+
+WLOG $AD < DC$. Misalkan garis $PE$ memotong $AB$ dan lingkaran $(ABCD)$ untuk kedua kalinya berturut-turut di $L$ dan $I$. Misalkan pula garis $PF$ memotong $BC$ dan lingkaran $(ABCD)$ untuk kedua kalinya berturut-turut di $K$ dan $J$. Lalu, misalkan $AK$ memotong $PL$ di $G$, dan misalkan $LC$ memotong $PF$ di $M$.
+
+Perhatikan bahwa
+\begin{align*}
+    \angle APC = \angle ADC = 180\dg - \angle CBA = \angle BIP + \angle PJB - \angle JBI = \angle LPK
+\end{align*}
+yang berarti
+\begin{align*}
+    \angle APL = \angle APC - \angle LPC = \angle LPK - \angle LPC = \angle CPK \implies \arc{CK} = \arc{AL} \implies CK = AL.
+\end{align*}
+Selanjutnya
+\begin{align*}
+    \angle JEP = 180\dg - \angle EPJ - \angle PJE = 180\dg - \angle IPF - \angle FIP = \angle PFI
+\end{align*}
+sehingga
+\begin{align*}
+    \angle BEA + \angle CFB &= (180\dg - \angle DCB - \angle ADC) + (180\dg - \angle ADC - \angle BAD)\\
+    &= 360^\circ - 2\angle ADC - (\angle DCB + \angle BAD)\\
+    &= 360\dg  - 2\angle LPK - 180\dg\\
+    \angle BEA + \angle CFB &= (180\dg - \angle LPK - 90\dg) + (180\dg - \angle LPK - 90\dg)
+\end{align*}
+\begin{align*}
+     (\angle JEP + \angle LEA) + (\angle PFI - \angle KFC)  &= \angle JEP + \angle PFI\\
+     \angle LEA - \angle KFC &= 0\\
+     \angle LEA &= \angle KFC
+\end{align*}
+
+Karena $AL = KC$ maka $LGKM$ adalah trapesium sama kaki yang jelas menunjukkan $AK \parallel CL$. Dari sini kita punya
+$\angle AGE = \angle CLP = 180\dg - \angle PKC = \angle CKF$.
+
+Karena $\angle GEA T= \angle KFC$ dan $\angle AGE = \angle CKF$ maka $\triangle AGE \sim \triangle CKF$.
+
+Di sisi lain, $\angle ALE = 180\dg - \angle PLA = 180\dg - \angle PKA = \angle AKF = \angle CMF$. Berarti didapat $\triangle ALE \sim \triangle CMF$.
+
+Dari dua hal tersebut, didapat $\angle GLA = \angle KMC$ dan $\angle AGL = \angle CKM$ sehingga didapat $\triangle AGL \sim \triangle CKM$.
+
+Namun, ingat bahwa $AI \perp GL$ dan $CJ \perp KM$. Hal ini mengakibatkan
+\begin{align*}
+    \dfrac{GI}{IL} = \dfrac{GI}{IA} \times \dfrac{IA}{IL} = \dfrac{KJ}{JC} \times \dfrac{JC}{JM} = \dfrac{KJ}{JM} \implies GK \parallel IJ \parallel LM
+\end{align*}
+
+Sekarang sadari karena $\angle PED = \angle PFD$ maka $DPFE$ siklis. Ini berarti
+\begin{align*}
+    \angle KAD = 180\dg - \angle DPK = 180\dg - \angle DPF = \angle FED \implies AK \parallel EF
+\end{align*}
+
+Dari fakta-faktar tersebut, didapat $IJ \parallel EF$. Akan tetapi, kita punya
+\begin{align*}
+    \angle JEI = \angle JEP = \angle PFI = \angle JFI 
+\end{align*}
+yang menunjukkan $IJFE$ siklis. Dua hal tersebut dapat disimpulkan bahwa $IJFE$ adalah trapesium sama kaki yang berarti $\angle FEI = \angle JME$. Oleh karena itu,
+\begin{align*}
+    \angle CBP = \angle CLP = \angle  FEI = \angle JFE = \angle PKA = \angle PBA.
+\end{align*}
+Dari sini dapat disimpulkan bahwa
+\begin{align*}
+    \angle PDF = \angle PDC = \angle PBC = \frac{1}{2}\angle ABC = \frac{1}{2} \times 110\dg = \boxed{55 \dg}.
+\end{align*}

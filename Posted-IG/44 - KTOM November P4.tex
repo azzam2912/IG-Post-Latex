@@ -1,0 +1,354 @@
+% KTOM November P4
+\section{Soal}
+Diberikan segitiga sama sisi $ABD$. Misalkan $C$ dan $O$ berturut-turut titik tengah $BD$ dan $AB$. Misalkan $I$ adalah pusat lingkaran dalam segitiga $ABC$ dan $N$ adalah pusat lingkaran luar segitiga $BIC$. Misalkan $\Gamma$ adalah lingkaran luar $ABC$. Lingkaran $\Omega$ menyinggung sisi $AC$, $BC$, dan menyinggung $\Gamma$ secara internal. Misalkan $M$ adalah titik pusat lingkaran $\Omega$. Misalkan $L$ adalah titik singgung lingkaran $\Omega$ dengan sisi $BC$ dan $X$ adalah titik singgung $\Omega$ dengan $\Gamma$. Buktikan bahwa garis $AB$, garis $CX$, lingkaran luar segitiga $BIC$, dan lingkaran luar segitiga $CNM$ berpotongan di satu titik.
+
+\section{Motivasi dan Cerita}
+    \begin{center}
+       \begin{tikzpicture}[scale=1]
+            % LANGKAH 1: Pengaturan Dasar
+            % Karena O ada di AB, maka AB adalah diameter dan segitiga ABC siku-siku di C.
+            \def\R{4} % Jari-jari lingkaran luar
+            \tkzDefPoint(0,0){O}
+            \tkzDefPoint(-\R,0){A}
+            \tkzDefPoint(\R,0){B}
+            \tkzDefPoint(60:\R){C}
+        
+            % Definisikan lingkaran luar Gamma
+            \tkzDefCircle[R](O,\R) 
+                \tkzGetPoint{gamma_pt}
+            \tkzDrawCircle[thick](O,A)
+            \tkzLabelCircle[above left=0.2 of A](O,gamma_pt)(180){$\Gamma$}
+        
+            % Gambar segitiga ABC
+            \tkzDrawPolygon(A,B,C)
+        
+            % LANGKAH 2: Tentukan titik I dan N dan circumcircle BIC
+            % I adalah pusat lingkaran dalam
+            \tkzDefTriangleCenter[in](A,B,C)
+                \tkzGetPoint{I}
+            % N adalah pusat lingkaran luar segitiga BIC
+            \tkzDefTriangleCenter[circum](B,I,C)
+                \tkzGetPoint{N}
+                \tkzLabelPoints[above right](N)
+            % circumcircle BIC
+            \tkzDrawCircle[teal](N,C)
+            \tkzDrawSegment[teal](C,N)
+            \tkzDrawSegment[teal, thick](I,N)
+            \tkzDrawSegment[teal](B,N)
+            \tkzDrawSegment[teal, thick](A,I)
+            
+            
+        
+            % LANGKAH 3: Konstruksi Titik M 
+            % 3.1. Buat garis melalui I tegak lurus CI, lalu temukan D dan E = L
+            \tkzDefLine[orthogonal=through I](C,I) \tkzGetPoint{p_perp}
+            \tkzInterLL(I,p_perp)(A,C)
+                \tkzGetPoint{D}
+                \tkzDrawPoints(D)
+            \tkzInterLL(I,p_perp)(B,C)
+                \tkzGetPoint{L}
+                \tkzDrawPoints(L)
+            % \tkzDrawSegment[green](I,p_perp)
+        
+            % 3.2. Temukan titik X
+            % Titik N (pusat lingkaran luar BIC) selalu terletak pada lingkaran Gamma.
+            % Garis ND memotong Gamma di N dan titik kedua, X.
+            \tkzInterLC(N,L)(O,A)
+                \tkzGetPoints{X}{N1}
+                \tkzDrawPoints[red](X)
+                \tkzLabelPoints[red](X)
+            \tkzDrawSegment[dashed](C,X)
+            
+            % 3.3. M adalah pusat lingkaran luar dari segitiga XDE (XDL)
+            \tkzDefTriangleCenter[circum](X,D,L)
+                \tkzGetPoint{M}
+        
+            % Gambar lingkaran Omega untuk verifikasi, seharusnya menyinggung AC, BC, dan Gamma
+            \tkzDefPointBy[projection=onto A--C](M)
+                \tkzGetPoint{P_ac}
+            \tkzDrawCircle[color=blue](M,P_ac)
+            \tkzLabelPoint[below=4 of D, color=blue](D){$\Omega$}
+            
+            % LANGKAH 4: Lingkaran luar MNC
+            % Definisikan pusat lingkaran luar MNC
+            \tkzDefTriangleCenter[circum](M,N,C)
+                \tkzGetPoint{O_mnc}
+            % Gambar lingkaran luar MNC (putus-putus)
+            \tkzDrawCircle[red, dashed](O_mnc,C)
+            
+        
+            % LANGKAH 5: Gambar Elemen Akhir dan Label
+            % Gambar segmen 
+            \tkzDrawSegments[red, thick, line cap=round](B,I O,L O,M)
+            \tkzDrawSegment[thick](C,M)
+        
+            % Gambar titik-titik
+            \tkzDrawPoints[size=4, fill=black](A,B,C,O,I,N,M,L)
+        
+            % Beri label pada semua titik
+            \tkzLabelPoints[below left](A,B)
+            \tkzLabelPoints[above right](C)
+            \tkzLabelPoints[below, yshift=-3pt](O)
+            \tkzLabelPoints[above right](I)
+            
+            \tkzLabelPoints[below right](M)
+            \tkzLabelPoints[below](L)
+        
+        \end{tikzpicture} 
+    \end{center}
+
+    \textit{To be frank}, Ini adalah salah satu soal yang aku \textit{propose} ke Pak Barra untuk dijadikan kandidat soal OSN SMA 2025 tingkat Semifinal-Final. Namun, karena sepertinya terlalu sulit dan materinya melibatkan materi \textit{alien} berupa \textit{mixtilinear circles}, kayaknya ngga dijadiin soal OSN dari awal wkwkwkwk. Yaudahlah karena sayang udah dibuat susah payah, aku jadiin soal KTOM aja hehe.
+
+    Anyway, aku kepikiran soal ini karena... baca bukunya Evan Chen dan kebayang beberapa properti yang bisa dimanipulasi pas ngerjain soal All Russian 2018 (kalo ngga salah). Intinya setelah main-main dengan Geogebra beberapa kali jadi deh soal ini. Ya intinya emang sih biar bisa nyadar beberapa properti harus paling ngga \textit{aware} kalo lingkaran \textit{mixti} itu \textit{exists} :).
+    
+    \newpage
+
+    \section{Solusi}
+    Jelas bahwa $\triangle ABC$ adalah segitiga siku-siku dengan $\angle ACB = 90^\circ$ dan $\angle ABC=60^\circ$. WLOG $AC > BC$. Perhatikan karena $O$ berada di $AB$ maka $AB$ adalah diameter lingkaran $\Gamma$ dengan $O$ adalah pusatnya.
+    
+    Misalkan $CM$ memotong $\Gamma$ untuk kedua kalinya di $T$. Definisikan $X$ sebagai titik singgung $\Gamma$ dan $\Omega$ serta $Y \neq X$ sebagai perpotongan $XM$ dengan $\Gamma$. Terakhir, misalkan $P$ dan $Q$ berturut-turut adalah titik singgung lingkaran dalam $\triangle ABC$ dengan sisi $BC$ dan $AC$.
+
+    Misalkan panjang jari-jari $\Omega$ adalah $x$, panjang jari-jari lingkaran luar $\triangle BIC$ adalah $R$, panjang jari-jari lingkaran dalam $\triangle ABC$ adalah $r$ dan panjang sisi $AB=c$, $BC=a$, $CA=b$.
+
+    \begin{center}
+        \begin{tikzpicture}[scale=1]
+            % LANGKAH 1: Pengaturan Dasar
+            % Karena O ada di AB, maka AB adalah diameter dan segitiga ABC siku-siku di C.
+            \def\R{4} % Jari-jari lingkaran luar
+            \tkzDefPoint(0,0){O}
+            \tkzDefPoint(-\R,0){A}
+            \tkzDefPoint(\R,0){B}
+            \tkzDefPoint(60:\R){C} %% B 60 degree
+        
+            % Definisikan lingkaran luar Gamma
+            \tkzDefCircle[R](O,\R) 
+                \tkzGetPoint{gamma_pt}
+            \tkzDrawCircle[thick](O,A)
+            \tkzLabelCircle[above left=0.2 of A](O,gamma_pt)(180){$\Gamma$}
+        
+            % Gambar segitiga ABC
+            \tkzDrawPolygon(A,B,C)
+        
+            % LANGKAH 2: Tentukan titik I dan N dan circumcircle BIC
+            % I adalah pusat lingkaran dalam
+            \tkzDefTriangleCenter[in](A,B,C)
+                \tkzGetPoint{I}
+            % N adalah pusat lingkaran luar segitiga BIC
+            \tkzDefTriangleCenter[circum](B,I,C)
+                \tkzGetPoint{N}
+                \tkzLabelPoints[above right](N)
+            % circumcircle BIC
+            \tkzDrawCircle[teal](N,C)
+            \tkzDrawSegment[teal, thick](C,N)
+            \tkzDrawSegment[teal, thick](I,N)
+            \tkzDrawSegment[teal, thick](B,N)
+            \tkzDrawSegment[teal, thick](A,I)
+            
+            % LANGKAH 3: Konstruksi Titik M 
+            % 3.1. Buat garis melalui I tegak lurus CI, lalu temukan D dan E = L
+            \tkzDefLine[orthogonal=through I](C,I) \tkzGetPoint{p_perp}
+            \tkzInterLL(I,p_perp)(A,C)
+                \tkzGetPoint{D}
+            \tkzInterLL(I,p_perp)(B,C)
+                \tkzGetPoint{L}
+                \tkzDrawPoints(L)
+            % \tkzDrawSegment[green](I,p_perp)
+        
+            % 3.2. Temukan titik X
+            % Titik N (pusat lingkaran luar BIC) selalu terletak pada lingkaran Gamma.
+            % Garis ND memotong Gamma di N dan titik kedua, X.
+            \tkzInterLC(N,L)(O,A)
+                \tkzGetPoints{X}{N1}
+                \tkzDrawPoints[red](X)
+                \tkzLabelPoints[red](X)
+            
+            % 3.3. M adalah pusat lingkaran luar dari segitiga XDE (XDL)
+            \tkzDefTriangleCenter[circum](X,D,L)
+                \tkzGetPoint{M}
+        
+            % Gambar lingkaran Omega untuk verifikasi, seharusnya menyinggung AC, BC, dan Gamma
+            \tkzDrawCircle[color=blue](M,D)
+            \tkzLabelPoint[below=4 of D, color=blue](D){$\Omega$}
+            
+            % LANGKAH 4: Lingkaran luar MNC
+            % Definisikan pusat lingkaran luar MNC
+            \tkzDefTriangleCenter[circum](M,N,C)
+                \tkzGetPoint{O_mnc}
+            % Gambar lingkaran luar MNC (putus-putus)
+            \tkzDrawCircle[red, dashed](O_mnc,C)
+
+            \tkzDrawSegment[teal](M,N)
+            
+        
+            % LANGKAH 5: Gambar Elemen Akhir dan Label
+            % Gambar segmen 
+            \tkzDrawSegment[red, line cap=round](B,I)
+            \tkzDrawSegment[red, thick, line cap=round](M,L)
+            \tkzDrawSegment[thick](C,M)
+
+            % CT perpotongan CM dengan Gamma
+            \tkzInterLC(C,M)(O,A)
+                \tkzGetPoints{T}{C}
+            \tkzLabelPoints[below right](T)
+            \tkzDrawSegment[thick](C,T)
+
+            % proyeksi I ke BC dan AC
+            \tkzDefPointBy[projection=onto B--C](I)
+                \tkzGetPoint{P}
+            \tkzDrawPoint[fill=black](P)
+            \tkzLabelPoints[right](P)
+            \tkzDrawSegment[thick, red](I,P)
+
+             \tkzDefPointBy[projection=onto A--C](I)
+                \tkzGetPoint{Q}
+            \tkzDrawPoint[fill=black](Q)
+            \tkzLabelPoints[left](Q)
+            \tkzDrawSegment[red](I,Q)
+
+            % AT = BT
+            \tkzDrawSegments[orange, thick](A,T B,T)
+
+            % XMO cuts Gamma at Y
+            \tkzInterLC(X,M)(O,A)
+                \tkzGetPoints{X}{Y}
+                \tkzDrawPoints[red](Y)
+                \tkzLabelPoints[above left, red](Y)
+            \tkzDrawSegment(X,Y)
+
+            % CX, OC, LK
+            \tkzInterLL(C,X)(B,A)
+                \tkzGetPoint{K}
+                \tkzDrawPoints(K)
+                \tkzLabelPoints[below](K)
+            \tkzDrawSegments(C,X L,K O,L O,C M,K)
+            \tkzDrawSegments[red, thick](O,K C,L C,D)
+
+            % N adalah pusat lingkaran luar segitiga BIC
+            \tkzDefTriangleCenter[circum](B,I,C)
+                \tkzGetPoint{N}
+                \tkzLabelPoints[above right](N)
+            % circumcircle BIC
+            \tkzDrawCircle[teal](N,C)
+
+            \tkzDrawSegments[](N,O O,D D,M)
+
+            % perpotongan CX OL
+            \tkzInterLL(O,L)(C,X)
+                \tkzGetPoint{J}
+                \tkzLabelPoints[above left](J)
+                \tkzDrawPoints(J)
+                
+            % Gambar titik-titik
+            \tkzDrawPoints[size=4, fill=black](A,B,C,O,I,N,M,L,D,T)
+        
+            % Beri label pada semua titik
+            \tkzLabelPoints[below left](A,B)
+            \tkzLabelPoints[above right](C)
+            \tkzLabelPoints[below, yshift=-3pt](O)
+            \tkzLabelPoints[above right](I)
+            
+            \tkzLabelPoints[below right](M)
+            \tkzLabelPoints[below](L)
+            \tkzLabelPoints[above left](D)
+        
+        \end{tikzpicture}
+    \end{center}
+
+    \newpage
+    \begin{proof}[\textbf{Klaim 1.}] Panjang $r = \dfrac{a+b-c}{2}$.\\
+        \textbf{Bukti Klaim.} Perhatikan bahwa $\angle C = 90^\circ$ sehingga $r = IP = CP = s-c = \dfrac{a+b-c}{2}$ dimana $s = \dfrac{a+b+c}{2}$. Klaim 1 terbukti.
+    \end{proof}
+    \hrulefill
+    \begin{proof}[\textbf{Klaim 2.}] Panjang $x = a+b-c$.\\
+        \textbf{Bukti Klaim.} Perhatikan bahwa terdapat sebuah homothety atau dilatasi berpusat di $X$ yang mengirim lingkaran $\Omega$ ke lingkaran $\Gamma$ karena kedua lingkaran tersebut bersinggungan di $X$. Dari sini, jelas bahwa $M$ dikirim ke $O$ sehingga $X,M,O,Y$ segaris yang mana menunjukkan juga bahwa $XY$ diameter $\Gamma$. 
+        
+        Lalu, karena $AB$ diameter $\Gamma$, maka $\angle ACB = 90^\circ$ sehingga $\angle MCL = \frac{1}{2}\angle ACB = 45^\circ$. Karena $ML = x$ jari-jari $\Omega$, maka $CM = x\sqrt{2}$. Jangan lupa fakta kalau $MX = x$ dan $XY=AB=c$. Oleh karena itu dengan \textit{power of a point} didapat
+        \begin{align*}
+            CM \cdot MT &= XM \cdot MY\\
+            (CT - CM) \cdot CM &= XM \cdot (XY - XM)\\
+            (\frac{\sqrt{2}}{2}(a+b) - x\sqrt{2}) \cdot x\sqrt{2} &= x \cdot (c - x)\\
+            (a+b)x - 2x^2 &= cx - x^2\\
+            a+b - 2x &= c - x\\
+            x &= a+b -c
+        \end{align*}
+        Klaim 2 Terbukti.
+    \end{proof}
+    
+    \newpage
+    
+    Dari klaim 1 dan klaim 2 kita punya $\dfrac{IP}{ML} = \dfrac{r}{x} = \dfrac{1}{2}$. Sekarang, karena $IP \perp BC$ dan $ML \perp BC$ maka $IP \parallel ML$ sehingga $\triangle CIP \sim \triangle CML$ yang menyebabkan
+    \begin{align*}
+        \dfrac{CI}{CM} = \dfrac{IP}{ML} = \dfrac{1}{2} \implies CI = IM
+    \end{align*}
+
+    \hrulefill
+    \begin{proof}[\textbf{Lemma 1. (Incenter-Excenter Lemma)}] (Tidak wajib dibuktikan untuk saat kontes berlangsung) $A,I,N$ segaris dengan $N$ berada di lingkaran $\Gamma$\\
+        \textbf{Bukti Lemma.} Misalkan $N_1 \neq A$ adalah perpotongan $AI$ dengan $\Gamma$. Akan dibuktikan bahwa $N_1 = N$. 
+        Perhatikan karena $AI$ garis bagi $\angle CAB$, maka $$\angle N_1BC = \angle N_1AC = \angle BAN_1 = \angle BCN_1 \implies N_1C=N_1B.$$ 
+        Lalu observasi bahwa
+        \begin{align*}
+            \angle N_1IC &= 180^\circ - \angle CIA = \angle ACI + \angle IAC = \frac{1}{2}\angle ACB + \frac{1}{2}\angle BAC\\ &= 90^\circ - \frac{1}{2}\angle CBA = 90^\circ - \frac{1}{2} CN_1A
+        \end{align*}
+        sehingga didapat
+        $$\angle ICN_1 = 180^\circ - \angle N_1IC - \angle CN_1A = 180^\circ - \angle N_1IC - (180^\circ - 2\angle N_1IC) = \angle N_1IC$$
+        yang menyebabkan $N_1I=CN_1$. Dari sini didapat $N_1B=N_1C=N_1I$, yang menunjukkan bahwa $N_1$ adalah pusat lingkaran luar $\triangle BIC$ sehingga $N_1 = N$. Oleh karena itu, $A,I,N$ segaris dengan $N$ berada di lingkaran $\Gamma$. Lemma terbukti.
+    \end{proof}
+    \newpage
+
+    \begin{proof}[\textbf{Klaim 3.}] $AD=AO$.\\
+        \textbf{Bukti.} Karena $\angle ABC = 60^\circ$ dan $\angle ACB = 90^\circ$ maka $AB = 2\cdot BC \implies c = 2a$.
+
+        Perhatikan bahwa $CD = CL = ML = DM = x$. Dari Klaim 2 kita punya
+        \begin{align*}
+            AD = AC - CD = b - x = b - (a+b-c) = c - a = a = \frac{1}{2}AB = AO
+        \end{align*}
+        Klaim terbukti.
+    \end{proof}
+    \hrulefill
+
+    \begin{proof}[\textbf{Klaim 4.}] $M,D,C,N,L$ berada di satu lingkaran yang sama.\\
+        \textbf{Bukti.} Karena $\angle ABC = 60^\circ$, dari Lemma 1, dan fakta bahwa $CI=IM$, maka $\angle CNI = \angle CNA = \angle CBA = 60^\circ \text{ dan } NC = NI$ sehingga didapat  $\triangle CNI$ sama sisi yang menyebabkan $MI = IC = IN$. Oleh karena itu $MC = 2 \cdot CN$  dan $\angle MCN = 60^\circ$ sehingga didapat $\angle MNC = 90^\circ$. Dari definisi $D$ dan $L$, kita juga punya $\angle MDC = \angle MLC = 90^\circ$. Dari sini didapat $M,D,C,N,L$ berada di satu lingkaran yang sama. Terbukti.
+    \end{proof}
+    \hrulefill
+
+    \begin{proof}[\textbf{Klaim 5.}] $C,D,O,N$ berada di satu lingkaran yang sama.\\
+        \textbf{Bukti.} Karena $CO=ON$ dan $N$ titik tengah busur $BC$ maka $\angle NOC = \frac{1}{2}\angle BOC = \frac{1}{2}\angle 60^\circ = 30^\circ$. Dari sini didapat juga $\angle CNO = 75^\circ$. 
+        
+        Lalu, karena $AD=AO$ dari klaim 3 dan $\angle OAD = 30^\circ$ maka $\angle ODA = 75^\circ \implies \angle CDO = 180^\circ - 75^\circ = 180^\circ - \angle CNO$. Diperoleh $C,D,O,N$ berada di satu lingkaran yang sama. Terbukti
+    \end{proof}
+    \hrulefill
+
+    Dari fakta-fakta klaim 4 dan klaim 5 tersebut diperoleh $M,D,C,L,N,O$ berada di satu lingkaran yang sama.
+
+
+    Karena $\angle COX = 90^\circ$ dan $CO=CX$ (jari-jari $\Gamma$), maka $\angle OCX = 45^\circ$. Berarti $\angle DCX = \angle ACO + \angle OCX = 30^\circ + 45^\circ = 75^\circ$.
+
+    Misalkan lingkaran $(DCLMO)$ memotong $AB$ sekali lagi di $K$. Berarti $\angle CKO = 180^\circ - \angle CDO = \angle ADO = 75^\circ$. Lalu, $\angle COK = \angle COB = 60^\circ$. Dari sini, didapat $\angle OCK = 180-\angle COK - \angle CKO = 45^\circ = \angle OCX$. Diperoleh $C,K,X$ segaris yang menyebabkan lingkaran luar $\triangle CNM$, $AB$, $CX$ bertemu di satu titik.
+
+    Namun, kita juga tahu bahwa $\angle CNB = 180^\circ - \angle BAC = 150^\circ$. Berarti sudut refleks $\angle CNB = 360^\circ - 150^\circ = 210 ^\circ = 2\cdot 105^\circ = 2(180^\circ - 75^\circ) = 2(180^\circ - \angle CKO) = 2\angle AKB$. Terbukti bahwa lingkaran luar $\triangle BIC$ yang berpusat di $N$ melewati $K$.
+
+    Terbukti bahwa garis $AB$, garis $CX$, lingkaran luar $\triangle BIC$, dan lingkaran luar $\triangle CNM$ bertemu di satu titik. 
+
+    \newpage
+
+    \section{Marking Scheme}
+	\begin{enumerate}[1)]
+	\item Mendapatkan fakta $M,D,C,L,O$ berada di satu lingkaran yang sama. (+5 poin)
+    \begin{enumerate}[(a)]
+        \item Memperoleh $CI=IM$ (+2 poin)
+        \begin{enumerate}[(i)]
+            \item Memperoleh Klaim 1 dan Klaim 2 (memperoleh panjang jari-jari lingkaran dalam $ABC$ dan lingkaran $\Omega$) (+1 poin)
+            \item Melengkapkan solusi sehingga $CI=IM$ (+1 poin)
+        \end{enumerate}
+        \item Melengkapi solusi agar didapat $M,D,C,L,O$ konsiklis (+3 poin)
+        \begin{enumerate}[(i)]
+            \item Memperoleh Klaim 3 dan memakainya di Klaim 5 (+1 poin)
+            \item Memperoleh Klaim 4 dengan menyebut Lemma 1 (Lemma 1 tidak wajib dibuktikan, dianggap well known), serta memakai $CI=IM$ (+2 poin)
+        \end{enumerate}
+    \end{enumerate}
+	\item Membuktikan atau melengkapkan solusi: lingkaran luar $\triangle BIC$ yang berpusat di $N$ melewati $K$. (+2 poin)
+    \begin{enumerate}[(a)]
+        \item Memperoleh $C,K,X$ segaris yang menyebabkan lingkaran luar $\triangle CNM$, $AB$, $CX$ bertemu di satu titik. (+1 poin)
+        \item Memperoleh lingkaran luar $\triangle BIC$ yang berpusat di $N$ melewati $K$. (+1 poin)
+    \end{enumerate}
+	\end{enumerate}
