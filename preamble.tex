@@ -7,7 +7,7 @@
 %  Page format: Instagram 4:5 portrait (17 x 21.25 cm).
 % ============================================================
 \documentclass[12pt]{scrartcl}
-\usepackage[hagavi]{azzam}
+\usepackage[hagavi]{azzam-helvethia}
 
 \usepackage[paperwidth=17cm, paperheight=21.25cm, margin=0.7cm]{geometry}
 
@@ -37,8 +37,12 @@
 \usetikzlibrary{calc,through,intersections,positioning,angles,arrows}
 
 \captionsetup[figure]{font=small, labelformat=empty}
-\colorlet{EvanRed}{Red!50!Purple}
+\colorlet{EvanRed}{crimson}
 \definecolor{officegreen}{rgb}{0.0, 0.5, 0.0}
+
+% ── Helvethia theme: page background + body text color ───────────────────
+\pagecolor{bg}
+\color{ink}
 
 % --- Shared helper macros ---------------------------------------------
 % Right-angle mark in TikZ pictures.

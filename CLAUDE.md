@@ -19,7 +19,9 @@ preamble.tex        Shared preamble for ALL posts. Edit ONCE; used everywhere.
 main.tex            Build driver: \input{preamble} + one post, then compile.
 template.tex        Starter skeleton to copy when writing a new post.
 
-azzam.sty           Personal style package (derived from evan.sty by Evan Chen).
+azzam-helvethia.sty Active style package — Helvethia theme (Helvetica font,
+                    cream/crimson palette). Used by preamble.tex.
+azzam.sty           Original style package (kept for reference / older posts).
 evan.sty            Evan Chen's style package.
 geometry.asy        Asymptote helper (do not treat as generated output).
 olympiad.asy        Asymptote helper (do not treat as generated output).
