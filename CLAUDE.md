@@ -2,6 +2,10 @@
 
 Guidance for working in this repository.
 
+## Git workflow
+
+Always commit and push directly to **`master`**. Do not create feature branches or pull requests unless explicitly asked.
+
 ## What this is
 
 LaTeX sources for olympiad-math problems posted on Instagram (and one on
