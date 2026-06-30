@@ -259,6 +259,7 @@
 
 	%%fakesection New Theorem Styles
 	\ifazzamthm
+		\ifdefined\openbox\let\openbox\relax\fi % newpxmath defines \openbox; clear it before amsthm
 		\usepackage{amsthm}
 		\usepackage{amsmath}
 		\usepackage{thmtools}
