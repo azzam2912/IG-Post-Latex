@@ -10,7 +10,7 @@
 %   crimson     #A8324A  primary brand
 %   crimson-ink #7A1F33  hover / press
 %
-% Font: Helvetica-clone (helvet) for body text; CM for math.
+% Font: Helvetica-clone (helvet) for body text; Palatino-style math via newpxmath.
 %
 % Derived from azzam.sty (Copyright 2025 Azzam, Boost Software License 1.0).
 
@@ -210,7 +210,12 @@
 		\fi
 		\usepackage[nameinlink]{cleveref}
 
-		% ── Helvetica body font (math stays Computer Modern) ─────────────
+		% ── Fonts ────────────────────────────────────────────────────────
+		% Palatino-style math (newpxmath) — elegant, calligraphic, pairs
+		% beautifully with a sans-serif body. Must be loaded before helvet
+		% so it doesn't accidentally inherit the sans text font for math.
+		\usepackage{newpxmath}
+		% Helvetica body text (math glyphs are already set by newpxmath above)
 		\usepackage[scaled=0.95]{helvet}
 		\renewcommand{\familydefault}{\sfdefault}
 		% ─────────────────────────────────────────────────────────────────
