@@ -532,26 +532,28 @@
 		\global\azzamgradientactivetrue
 		\ifazzamgradienttwo
 			% ── Option 2: richer three-point gradient ──────────────────────
-			% Top-left  : crimson  12% (800×400 px → 12.59×6.30 cm, xscale=2)
-			% Bot-right : gradnavy 10% (600×500 px →  9.44×7.87 cm, xscale=1.2)
-			% Center    : gradgold  8% (500×300 px →  7.87×4.72 cm, xscale=1.67)
+			% Centers pushed 2 cm outside page edges so the gradient bleeds
+			% in softly rather than starting at full intensity at the boundary.
+			% Top-left  : crimson  12%, center 2 cm above page top
+			% Bot-right : gradnavy 10%, center 2 cm below page bottom
+			% Center    : gradgold  8%, center at page mid
 			\AddToShipoutPictureBG{%
 				\ifazzamgradientactive
 					\AtPageLowerLeft{%
 						\begin{tikzpicture}[overlay]
 							\begin{scope}
 								\clip (0,0) rectangle (17cm,21.25cm);
-								\begin{scope}[xshift=2.55cm,yshift=21.25cm,xscale=2]
+								\begin{scope}[xshift=2.55cm,yshift=23.25cm,xscale=2]
 									\shade[inner color=crimson!12!bg,outer color=bg,shading=radial]
-										(0,0) circle[radius=6.30cm];
+										(0,0) circle[radius=8cm];
 								\end{scope}
-								\begin{scope}[xshift=15.3cm,yshift=0cm,xscale=1.2]
+								\begin{scope}[xshift=15.3cm,yshift=-2cm,xscale=1.2]
 									\shade[inner color=gradnavy!10!bg,outer color=bg,shading=radial]
-										(0,0) circle[radius=7.87cm];
+										(0,0) circle[radius=10cm];
 								\end{scope}
 								\begin{scope}[xshift=8.5cm,yshift=10.625cm,xscale=1.67]
 									\shade[inner color=gradgold!8!bg,outer color=bg,shading=radial]
-										(0,0) circle[radius=4.72cm];
+										(0,0) circle[radius=5.5cm];
 								\end{scope}
 							\end{scope}
 						\end{tikzpicture}%
@@ -560,21 +562,22 @@
 			}%
 		\else
 			% ── Option 1: subtle two-point gradient (default) ──────────────
-			% Top-left  : crimson  7% (600×300 px → 9.44×4.72 cm, xscale=2)
-			% Bot-right : gradnavy 6% (500×400 px → 7.87×6.30 cm, xscale=1.25)
+			% Centers pushed 2 cm outside page edges for a soft bleed-in.
+			% Top-left  : crimson  7%, center 2 cm above page top
+			% Bot-right : gradnavy 6%, center 2 cm below page bottom
 			\AddToShipoutPictureBG{%
 				\ifazzamgradientactive
 					\AtPageLowerLeft{%
 						\begin{tikzpicture}[overlay]
 							\begin{scope}
 								\clip (0,0) rectangle (17cm,21.25cm);
-								\begin{scope}[xshift=1.7cm,yshift=21.25cm,xscale=2]
+								\begin{scope}[xshift=1.7cm,yshift=23.25cm,xscale=2]
 									\shade[inner color=crimson!7!bg,outer color=bg,shading=radial]
-										(0,0) circle[radius=4.72cm];
+										(0,0) circle[radius=7cm];
 								\end{scope}
-								\begin{scope}[xshift=16.15cm,yshift=0cm,xscale=1.25]
+								\begin{scope}[xshift=16.15cm,yshift=-2cm,xscale=1.25]
 									\shade[inner color=gradnavy!6!bg,outer color=bg,shading=radial]
-										(0,0) circle[radius=6.30cm];
+										(0,0) circle[radius=8cm];
 								\end{scope}
 							\end{scope}
 						\end{tikzpicture}%
