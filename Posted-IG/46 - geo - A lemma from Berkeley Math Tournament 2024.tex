@@ -1,12 +1,52 @@
 % A lemma from Berkeley Math Tournament 2024
 \begin{center}
-    \textbf{\Huge A lemma from Berkeley Math Tournament 2024}
+    \textbf{\Huge A lemma from Berkeley Math Tournament 2024}\\
     \textbf{\large Solution by Azzam L. H.}
 \end{center}
 
 \section{Soal} 
 The incircle of scalene triangle $\triangle{ABC}$ is tangent to $\overline{BC}, \overline{AC},$ and $\overline{AB}$ at points $D, E,$ and $F,$ respectively. The line $EF$ intersects line $BC$ at $P$ and line $AD$ at $Q.$ The circumcircle of $\triangle{AEF}$ intersects line $AP$ again at point $R \neq A$. If $I$ is the incenter of $\triangle{ABC}$, prove that $I,Q,R$ are collinear.
 
+\begin{center}
+\definecolor{rvwvcq}{rgb}{0.08235294117647059,0.396078431372549,0.7529411764705882}
+\definecolor{wewdxt}{rgb}{0.43137254901960786,0.42745098039215684,0.45098039215686275}
+\definecolor{qqwwzz}{rgb}{0.,0.4,0.6}
+\begin{tikzpicture}[line cap=round,line join=round,scale=2.195]
+\clip(-2.5262,-2.7322) rectangle (3.3966,0.8768);
+\draw [color=rvwvcq] (-0.63636,0.37624) -- (-0.58477,-2.39231) -- (3.06937,-2.36652) -- cycle;
+\draw [color=rvwvcq] (-0.63636,0.37624) -- (-0.58477,-2.39231);
+\draw [color=rvwvcq] (-0.58477,-2.39231) -- (3.06937,-2.36652);
+\draw [color=rvwvcq] (3.06937,-2.36652) -- (-0.63636,0.37624);
+\draw [color=wewdxt] (-0.16058,-0.54634) circle (1.0380362210796263cm);
+\draw [color=wewdxt] (-0.63636,0.37624) -- (-2.38370,-2.40501);
+\draw [color=wewdxt] (-0.63636,0.37624) -- (0.32167,-2.38591);
+\draw [color=wewdxt] (-1.19823,-0.51810) -- (0.31520,-1.46892);
+\draw [color=wewdxt] (0.31520,-1.46892) -- (-2.38370,-2.40501);
+\draw [color=wewdxt] (0.31520,-1.46892) circle (0.9170190735507474cm);
+\draw [color=wewdxt] (-0.63636,0.37624) -- (0.31520,-1.46892);
+\draw [color=wewdxt] (-2.38370,-2.40501) -- (3.06937,-2.36652);
+\draw [color=wewdxt] (0.86075,-0.73183) -- (-2.38370,-2.40501);
+\draw [color=qqwwzz] (0.11600,-1.34377) circle (0.23524616228583445cm);
+\begin{scriptsize}
+\fill (-0.6363594864428966,0.37624011380478484) circle (0.85pt);
+\fill (-0.5847715561111524,-2.3923131347934885) circle (0.85pt);
+\fill (3.0693735090540706,-2.366519160427666) circle (0.85pt);
+\fill (0.32167351327140564,-2.3859146967274776) circle (0.85pt);
+\fill (0.8607494049801038,-0.7318292752947456) circle (0.85pt);
+\fill (-0.6016593201398317,-1.486002808666865) circle (0.85pt);
+\fill (-2.383697782803491,-2.4050114420992523) circle (0.85pt);
+\fill (-1.1982313596457344,-0.5180955879989007) circle (0.85pt);
+\node[above left] at (-0.6090863018896259,0.4470246040774467) {$A$};
+\node[below] at (-0.5545070521035885,-2.422873310504881) {$B$};
+\node[above right] at (3.0954802773376593,-2.295583675878454) {$C$};
+\node[below] at (0.3460505693660278,-2.4296957191614878) {$D$};
+\node[above right] at (0.8850206610031466,-0.6786728242626617) {$E$};
+\node[above right] at (-0.5749742707733525,-1.4291377764894007) {$F$};
+\node[below left] at (-2.355622295042821,-2.4501629451313075) {$P$};
+\node[left] at (-1.1685236121965086,-0.4603557472512468) {$R$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
 
 \newpage
 \section{Solusi 1} 
@@ -14,7 +54,7 @@ The incircle of scalene triangle $\triangle{ABC}$ is tangent to $\overline{BC}, 
     Misalkan $I$ adalah titik pusat lingkaran dalam $\triangle ABC$. Lalu, misalkan $H$ adalah perpotongan $AI$ dengan $FE$ dan $G$ adalah titik di $AD$ sehingga $IG \perp AD$.
 
 
-    % --------
+    % -------- TikZLaTeX
 
     \begin{center}
     \definecolor{rvwvcq}{rgb}{0.08235294117647059,0.396078431372549,0.7529411764705882}
@@ -54,13 +94,13 @@ The incircle of scalene triangle $\triangle{ABC}$ is tangent to $\overline{BC}, 
     \fill (0.037078210261320965,-1.5653831644121856) circle (0.85pt);
     \fill (0.12954504242013595,-1.108916041980805) circle (0.85pt);
     \node[above left] at (-0.6090863018896259,0.4470246040774467) {$A$};
-    \node[below] at (-0.5545070521035885,-2.322873310504881) {$B$};
+    \node[below] at (-0.5545070521035885,-2.422873310504881) {$B$};
     \node[above right] at (3.0954802773376593,-2.295583675878454) {$C$};
     \node[above right] at (0.3392281631427731,-1.4154929591761873) {$I$};
-    \node[below] at (0.3460505693660278,-2.3296957191614878) {$D$};
+    \node[below] at (0.3460505693660278,-2.4296957191614878) {$D$};
     \node[above right] at (0.8850206610031466,-0.6786728242626617) {$E$};
     \node[above right] at (-0.5749742707733525,-1.4291377764894007) {$F$};
-    \node[below left] at (-2.355622295042821,-2.3501629451313075) {$P$};
+    \node[below left] at (-2.355622295042821,-2.4501629451313075) {$P$};
     \node[above] at (-0.05647139780599767,-1.1630638388817387) {$Q$};
     \node[left] at (-1.1685236121965086,-0.4603557472512468) {$R$};
     \node[above] at (0.06633191421258637,-1.5110066803686815) {$G$};
