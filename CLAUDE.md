@@ -103,6 +103,25 @@ Output dirs `pdfs/` and `pdf-to-images/` are git-ignored generated artifacts.
 2. Put figures in `Posted-IG/` with a `<number>-` prefix.
 3. Point `main.tex` at the new file and compile.
 
+## Theme colors (`azzam-helvethia.sty`)
+
+The active Helvethia palette (defined in `azzam-helvethia.sty`):
+
+| Name         | Hex       | Role                          |
+|--------------|-----------|-------------------------------|
+| `bg`         | `#F2EEE5` | page background (alt-surface) |
+| `surface`    | `#FFFDF8` | cards / theorem panels        |
+| `ink`        | `#1A1C24` | primary text                  |
+| `inksoft`    | `#3A3D49` | secondary text                |
+| `crimson`    | `#A8324A` | primary brand accent          |
+| `crimsonink` | `#7A1F33` | hover / press variant         |
+
+Convenience macros defined in the style:
+- `\textcrimson{text}` — typeset in crimson
+- `\textcrimsonink{text}` — typeset in crimson-ink
+
+`preamble.tex` sets `\pagecolor{bg}` and `\color{ink}` globally.
+
 ## Notes / known issues
 
 - `Posted-IG/21.tex` references `soal/soal.tex` and `solusi/solusi.tex` that
