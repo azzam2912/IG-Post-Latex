@@ -30,6 +30,10 @@
 \newif\ifazzampatchasy\azzampatchasyfalse
 \newif\ifazzamhints\azzamhintsfalse
 \newif\ifazzamasy\azzamasytrue
+% gradient background flags
+\newif\ifazzamgradient\azzamgradientfalse
+\newif\ifazzamgradienttwo\azzamgradienttwofalse
+\newif\ifazzamgradientactive\azzamgradientactivefalse
 
 % Receive Arguments
 \DeclareOption{wota}{\azzamsecthmtrue\azzammdthmtrue\azzamcolorsectrue}
@@ -56,6 +60,11 @@
 \DeclareOption{patchasy}{\azzampatchasytrue}
 \DeclareOption{noasy}{\azzamasyfalse}
 \DeclareOption{hints}{\azzamhintstrue}
+% gradient: subtle two-point radial gradient (crimson top-left + dark bottom-right)
+% gradient2: richer three-point gradient (crimson + dark + gold center)
+\DeclareOption{gradient}{\azzamgradienttrue}
+\DeclareOption{gradient2}{\azzamgradienttrue\azzamgradienttwotrue}
+\DeclareOption{nogradient}{\azzamgradientfalse\azzamgradienttwofalse}
 
 \ProcessOptions\relax
 
@@ -78,6 +87,11 @@
 \newcommand{\eps}{\varepsilon}
 \newcommand{\vocab}[1]{\textbf{\color{crimson} #1}}
 \providecommand{\alert}{\vocab}
+% ── Crimson color shortcuts ───────────────────────────────────────────────
+% \textcrimson{text}    — brand crimson (#A8324A)
+% \textcrimsonink{text} — darker crimson-ink (#7A1F33), for emphasis / titles
+\newcommand{\textcrimson}[1]{{\color{crimson}#1}}
+\newcommand{\textcrimsonink}[1]{{\color{crimsonink}#1}}
 \providecommand{\half}{\frac{1}{2}}
 \DeclareMathOperator{\cis}{cis}
 \DeclareMathOperator*{\lcm}{lcm}
@@ -184,6 +198,9 @@
 		\definecolor{inksoft}{HTML}{3A3D49}
 		\definecolor{crimson}{HTML}{A8324A}
 		\definecolor{crimsonink}{HTML}{7A1F33}
+		% gradient accent colors (used by gradient / gradient2 options)
+		\definecolor{gradnavy}{HTML}{2E3A55}
+		\definecolor{gradgold}{HTML}{C58F3A}
 		% ─────────────────────────────────────────────────────────────────
 
 		\definecolor{lightblue}{RGB}{173,216,230}
@@ -495,6 +512,76 @@
 		\renewcommand{\solutionextension}{out}
 		\Opensolutionfile{hints}
 		\newcommand{\makehints}{\Closesolutionfile{hints}\input{hints.out}} % chktex 27
+	\fi
+
+	%%fakesection Gradient background (options: gradient / gradient2)
+	% Page dimensions assumed: 17 cm × 21.25 cm (Instagram 4:5).
+	% Ellipse sizes are scaled from a 1080 px reference width.
+	%
+	% Usage in a post file:
+	%   \SetGradient   — enable gradient for this page onward
+	%   \ClearGradient — disable gradient for this page onward
+	%
+	% Or enable for the whole document by passing the option to the package:
+	%   \usepackage[hagavi,gradient]{azzam-helvethia}   % subtle 2-point
+	%   \usepackage[hagavi,gradient2]{azzam-helvethia}  % richer 3-point
+	\newcommand{\SetGradient}{\ifazzamgradient\global\azzamgradientactivetrue\fi}
+	\newcommand{\ClearGradient}{\ifazzamgradient\global\azzamgradientactivefalse\fi}
+	\ifazzamgradient
+		\RequirePackage{eso-pic}
+		\global\azzamgradientactivetrue
+		\ifazzamgradienttwo
+			% ── Option 2: richer three-point gradient ──────────────────────
+			% Top-left  : crimson  12% (800×400 px → 12.59×6.30 cm, xscale=2)
+			% Bot-right : gradnavy 10% (600×500 px →  9.44×7.87 cm, xscale=1.2)
+			% Center    : gradgold  8% (500×300 px →  7.87×4.72 cm, xscale=1.67)
+			\AddToShipoutPictureBG{%
+				\ifazzamgradientactive
+					\AtPageLowerLeft{%
+						\begin{tikzpicture}[overlay]
+							\begin{scope}
+								\clip (0,0) rectangle (17cm,21.25cm);
+								\begin{scope}[xshift=2.55cm,yshift=21.25cm,xscale=2]
+									\shade[inner color=crimson!12!bg,outer color=bg,shading=radial]
+										(0,0) circle[radius=6.30cm];
+								\end{scope}
+								\begin{scope}[xshift=15.3cm,yshift=0cm,xscale=1.2]
+									\shade[inner color=gradnavy!10!bg,outer color=bg,shading=radial]
+										(0,0) circle[radius=7.87cm];
+								\end{scope}
+								\begin{scope}[xshift=8.5cm,yshift=10.625cm,xscale=1.67]
+									\shade[inner color=gradgold!8!bg,outer color=bg,shading=radial]
+										(0,0) circle[radius=4.72cm];
+								\end{scope}
+							\end{scope}
+						\end{tikzpicture}%
+					}%
+				\fi
+			}%
+		\else
+			% ── Option 1: subtle two-point gradient (default) ──────────────
+			% Top-left  : crimson  7% (600×300 px → 9.44×4.72 cm, xscale=2)
+			% Bot-right : gradnavy 6% (500×400 px → 7.87×6.30 cm, xscale=1.25)
+			\AddToShipoutPictureBG{%
+				\ifazzamgradientactive
+					\AtPageLowerLeft{%
+						\begin{tikzpicture}[overlay]
+							\begin{scope}
+								\clip (0,0) rectangle (17cm,21.25cm);
+								\begin{scope}[xshift=1.7cm,yshift=21.25cm,xscale=2]
+									\shade[inner color=crimson!7!bg,outer color=bg,shading=radial]
+										(0,0) circle[radius=4.72cm];
+								\end{scope}
+								\begin{scope}[xshift=16.15cm,yshift=0cm,xscale=1.25]
+									\shade[inner color=gradnavy!6!bg,outer color=bg,shading=radial]
+										(0,0) circle[radius=6.30cm];
+								\end{scope}
+							\end{scope}
+						\end{tikzpicture}%
+					}%
+				\fi
+			}%
+		\fi
 	\fi
 %%fakesection END MAIN SETUP
 \fi

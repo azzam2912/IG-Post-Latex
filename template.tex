@@ -7,6 +7,21 @@
 %  pulled in by main.tex, so you never copy the preamble again.
 %
 %  To preview while writing, set main.tex to \input{Posted-IG/<number>}.
+%
+%  ── Color shortcuts ────────────────────────────────────────────────────
+%  \textcrimson{text}       brand crimson (#A8324A)
+%  \textcrimsonink{text}    darker crimson-ink (#7A1F33)
+%  {\color{crimson}...}     same as \textcrimson, inline
+%  {\color{crimsonink}...}  same as \textcrimsonink, inline
+%
+%  ── Gradient background ────────────────────────────────────────────────
+%  Enable for the WHOLE document by changing preamble.tex:
+%    \usepackage[hagavi,gradient]{azzam-helvethia}   % subtle 2-point
+%    \usepackage[hagavi,gradient2]{azzam-helvethia}  % richer 3-point + gold
+%
+%  Or toggle per-page inside a post file:
+%    \SetGradient    (enable for this page onward)
+%    \ClearGradient  (disable for this page onward)
 % ============================================================
 
 \begin{center}
