@@ -1,0 +1,50 @@
+% Alg ketaksamaan klasik
+    \title{\textcrimson{\textbf{\Huge Ketaksamaan klasik 4 variabel}}}
+\maketitle
+\section{Soal}
+
+Let $a,b,c,d$ be positive real numbers such that $abcd = 1$. Prove the inequality
+\begin{align*}
+\dfrac{ab+1}{a+1} + \dfrac{bc+1}{b+1} + \dfrac{cd+1}{c+1} + \dfrac{da+1}{d+1} \geq 4.
+\end{align*}
+
+\newpage
+\section{Motivasi}
+$abcd = 1$. Gimana caranya agar variabel-variabel tersebut "berkembang" tapi kalau dikalikan jadi tetap 1? Lakukan substitusi klasik yang menyebabkan $\dfrac{x}{w}\times\dfrac{y}{x}\times\dfrac{z}{y}\times\dfrac{w}{z} = 1$  atau kebalikannya juga bisa sih... (tapi pas udah dicoba ternyata ngga bisa hahaha) $\dfrac{w}{x}\times\dfrac{x}{y}\times\dfrac{y}{z}\times\dfrac{z}{w} = 1$
+
+\section{Solusi}
+
+
+Karena $abcd=1$, terdapat $x,y,z,w \in \mathbb{R}^+$ sedemikian sehingga
+\begin{align*}
+    a = \dfrac{x}{w}, \quad b = \dfrac{y}{x}, \quad c = \dfrac{z}{y}, \quad d = \dfrac{w}{z}
+\end{align*}
+
+Dengan substitusi ini,
+\begin{align*}
+    \dfrac{ab+1}{a+1} = \dfrac{y/w+1}{x/w+1} = \dfrac{y+w}{x+w},
+\end{align*}
+dan serupa untuk suku-suku lainnya, sehingga
+\begin{align*}
+    \dfrac{ab+1}{a+1} + \dfrac{bc+1}{b+1} + \dfrac{cd+1}{c+1} + \dfrac{da+1}{d+1} = \dfrac{y+w}{x+w} + \dfrac{z+x}{y+x} + \dfrac{w+y}{z+y} + \dfrac{x+z}{w+z}.
+\end{align*}
+
+Dengan CS-Engel,
+\begin{align*}
+    &\dfrac{y+w}{x+w} + \dfrac{z+x}{y+x} + \dfrac{w+y}{z+y} + \dfrac{x+z}{w+z}\\
+    &= \dfrac{(y+w)^2}{(y+w)(x+w)} + \dfrac{(z+x)^2}{(z+x)(y+x)} + \dfrac{(w+y)^2}{(w+y)(z+y)} + \dfrac{(x+z)^2}{(x+z)(w+z)}\\
+    &\geq \dfrac{\big((y+w)+(z+x)+(w+y)+(x+z)\big)^2}{(y+w)(x+w)+(z+x)(y+x)+(w+y)(z+y)+(x+z)(w+z)}\\
+    &= \dfrac{(2w+2x+2y+2z)^2}{(y+w)(x+w)+(z+x)(y+x)+(w+y)(z+y)+(x+z)(w+z)}.
+\end{align*}
+
+Dikarenakan
+\begin{align*}
+    (y+w)(x+w)+(z+x)(y+x)+(w+y)(z+y)+(x+z)(w+z) = (w+x+y+z)^2,
+\end{align*}
+
+akibatnya
+\begin{align*}
+    \dfrac{ab+1}{a+1} + \dfrac{bc+1}{b+1} + \dfrac{cd+1}{c+1} + \dfrac{da+1}{d+1} \geq \dfrac{4(w+x+y+z)^2}{(w+x+y+z)^2} = 4,
+\end{align*}
+dengan kesamaan saat $w=x=y=z$, yaitu saat $a=b=c=d=1$. Terbukti.
+
