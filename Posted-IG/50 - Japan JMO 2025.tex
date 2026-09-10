@@ -1,30 +1,27 @@
 % Japan JMO Preliminary 2025
-\begin{center}
-    {\color{crimson}\textbf{\Huge Japan JMO Preliminary 2025}}\\[4pt]
-    {\color{inksoft}\textbf{\large Solution by Azzam L. H.}}
-\end{center}
+    \title{\color{crimson}\textbf{\Huge Soal Jepang, Pake Teknik Bulgaria, Ditemuin Orang Amerika}}
+    \maketitle
 
-\section{Soal}
+\section{Soal: Japan Junior MO 2025 Preliminary}
 Mula-mula terdapat $1$ kotak yang berisi $50^{25}$ batu. Perhatikan operasi berikut yang dilakukan secara berulang:
 
-\begin{center}
-\textit{Ambil $1$ batu dari setiap kotak yang berisi paling sedikit $1$ batu. Lalu, siapkan sebuah kotak kosong baru dan masukkan semua batu yang tadi diambil ke dalam kotak baru tersebut.}
-\end{center}
+Ambil $1$ batu dari setiap kotak yang berisi paling sedikit $1$ batu. Lalu, siapkan sebuah kotak kosong baru dan masukkan semua batu yang tadi diambil ke dalam kotak baru tersebut.
 
 Setelah operasi ke-$50^{25}$ selesai, ada berapa banyak kotak yang berisi paling sedikit $1$ batu?
 
+
 \newpage
-\section{Walkthrough}
-\begin{remark*}
+\section{Motivasi dan Walkthrough}
+
     \begin{itemize}
-        \item Operasi ini sebenarnya punya nama: \textcrimson{\textbf{Bulgarian Solitaire}}. Tapi ngga tau namanya pun ngga masalah, yang penting paham geraknya.
+        \item Operasi ini sebenarnya punya nama: \textcrimson{\textbf{Bulgarian Solitaire}}. Teknik ini pertama kali dibahas di 1983 Scientific American column oleh Martin Gardner.
         \item Coba main-main dulu sama angka kecil, misal mulai dari $6$ batu. Tulis banyaknya batu tiap kotak, urut dari yang terbanyak, terus jalanin operasinya beberapa langkah. Nyadar sesuatu?
         \item Kunci utamanya: kotak awal yang isinya $N=50^{25}$ batu itu \emph{selalu} kehilangan tepat $1$ batu tiap langkah. Jadi kapan dia habis? Dan pas dia habis, lagi ada berapa kotak?
-        \item Terakhir, banyaknya kotak yang lagi hidup ternyata nyambung sama bilangan segitiga $T_k = \tfrac{k(k+1)}{2}$. Tinggal cari $k$ yang pas.
+        \item Terakhir, banyaknya kotak yang lagi "hidup" (yang berisi batu) ternyata nyambung sama bilangan segitiga $T_k = \tfrac{k(k+1)}{2}$. Tinggal cari $k$ yang pas.
     \end{itemize}
-\end{remark*}
 
-Mari kita jalankan operasinya untuk $N=6$ batu sebagai gambaran (angka menyatakan isi tiap kotak, diurutkan dari yang terbanyak):
+
+Ayo coba kita jalankan operasinya untuk $N=6$ batu sebagai gambaran (angka menyatakan isi tiap kotak, diurutkan dari yang terbanyak):
 \begin{align*}
     (6) \to (5,1) \to (4,2) \to (3,3) \to (3,2,1) \to (3,2,1) \to \cdots
 \end{align*}
@@ -32,8 +29,7 @@ Perhatikan bahwa kotak awal berisi $6$ batu berkurang $1$ tiap langkah, dan tepa
 
 \newpage
 \section{Solusi}
-\begin{solusi}
-Misalkan $N = 50^{25}$. Pandang \emph{kotak awal} yang mula-mula berisi $N$ batu. Pada setiap operasi, setiap kotak yang tidak kosong kehilangan tepat $1$ batu. Dengan demikian, selama masih ada isinya, kotak awal kehilangan tepat $1$ batu per langkah, sehingga kotak awal menjadi kosong \emph{tepat} setelah operasi ke-$N$. Karena kita memang berhenti setelah operasi ke-$N = 50^{25}$, kita cukup menghitung banyaknya kotak yang hidup tepat pada saat itu.
+Misalkan $N = 50^{25}$. Pandang \emph{kotak awal} yang mula-mula berisi $N$ batu. Pada setiap operasi, setiap kotak yang tidak kosong kehilangan tepat $1$ batu. Dengan demikian, selama masih ada isinya, kotak awal kehilangan tepat $1$ batu per langkah, sehingga kotak awal menjadi kosong \emph{tepat} setelah operasi ke-$N$. Karena kita memang berhenti setelah operasi ke-$N = 50^{25}$, kita cukup menghitung banyaknya kotak yang hidup (kotak yang berisi batu) tepat pada saat itu.
 
 \medskip
 \textbf{Klaim.} Setelah operasi ke-$N$, banyaknya kotak yang hidup adalah bilangan bulat $k$ terbesar yang memenuhi $T_k = \dfrac{k(k+1)}{2} \le N$.
@@ -69,4 +65,3 @@ Dengan demikian, banyaknya kotak yang berisi paling sedikit $1$ batu setelah ope
 \begin{align*}
     \boxed{10\cdot 50^{12} - 1}.
 \end{align*}
-\end{solusi}
