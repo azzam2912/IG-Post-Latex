@@ -1,0 +1,114 @@
+% Final LOGIKA UI 2026 - Geometri
+\begin{center}
+    {\color{crimson}\textbf{\Huge Final LOGIKA UI 2026: Geometri}}\\[4pt]
+    {\color{inksoft}\textbf{\large Problem \& Solution by Azzam L. H.}}
+\end{center}
+
+\section{Soal}
+Diberikan segitiga lancip $ABC$ dengan $\angle BAC > \angle ACB$ dan pusat lingkaran luar $O$. Misalkan $O_1$ dan $O_2$ berturut-turut adalah pusat lingkaran luar segitiga $ABO$ dan $ACO$. Lingkaran luar segitiga $AO_1O_2$ memotong sisi $BC$ di dua titik berbeda $P$ dan $Q$ dengan urutan $B, P, Q, C$. Misalkan $O_3$ adalah pusat lingkaran luar segitiga $OPQ$, dan garis sumbu ruas garis $OB$ memotong garis $O_2O_3$ di titik $D$. Buktikan bahwa
+\[
+    AO_3 = O_3D \quad\text{jika dan hanya jika}\quad A,\ O_1,\ D \text{ segaris.}
+\]
+
+\input{TikzLatex/51-soal}
+
+\newpage
+\section{Motivasi dan Walkthrough}
+    \begin{itemize}
+        \item Soal ini dikembangkan dari konfigurasi soal geometri \textcrimson{\textbf{Japan MO 2025 Final}}. Di sana ada fakta keren: $A$, $O$, $O_3$ segaris. Fakta ini jadi "mesin" utamanya (buktinya ada di slide berikutnya).
+        \item Banyak titik di soal ini yang jaraknya sama ke dua titik lain. Contohnya $O_1O = O_1B$ dan $DO = DB$, berarti $O_1D$ itu garis sumbu $OB$. Coba cari garis sumbu lain yang tersembunyi.
+        \item Garis sumbu itu tegak lurus, jadi sudut antara dua garis sumbu sama dengan sudut antara dua ruas garisnya. Dari sini angle chasing jalan.
+        \item Targetnya: tunjukkan $\angle O_1AO_3 = \angle O_1DO_3$. Kalau $A$, $O_1$, $D$ segaris, segitiga $O_3AD$ langsung sama kaki.
+        \item Arah sebaliknya ada jebakan SSA: dua segitiga dengan dua sisi sama dan satu sudut sama belum tentu kongruen. Pakai Aturan Sinus dan cek kedua kemungkinannya.
+    \end{itemize}
+
+\newpage
+\section{Lemma (Japan MO 2025 Final)}
+\begin{lemma*}
+    Diberikan segitiga lancip $ABC$ dengan pusat lingkaran luar $O$. Misalkan $O_1$ dan $O_2$ berturut-turut adalah pusat lingkaran luar segitiga $ABO$ dan $ACO$. Lingkaran luar segitiga $AO_1O_2$ memotong sisi $BC$ di dua titik berbeda $P$ dan $Q$ dengan urutan $B, P, Q, C$. Jika $O_3$ adalah pusat lingkaran luar segitiga $OPQ$, maka titik $A$, $O$, dan $O_3$ segaris. Lebih jauh, titik $P$ terletak pada lingkaran luar segitiga $ABO$, titik $Q$ terletak pada lingkaran luar segitiga $ACO$, dan $O$ adalah pusat lingkaran dalam segitiga $APQ$.
+\end{lemma*}
+
+\input{TikzLatex/51-lemma}
+
+\newpage
+\begin{proof}[\textbf{Klaim 1.}] Titik $P$ terletak pada lingkaran luar $(ABO)$ dan titik $Q$ terletak pada lingkaran luar $(ACO)$, serta $O$ merupakan pusat lingkaran dalam $\triangle APQ$.\\
+    \textbf{Bukti Klaim.} Karena $O_1$ adalah pusat $(ABO)$ dan $O_2$ adalah pusat $(ACO)$, garis hubung pusat $O_1O_2$ merupakan garis sumbu dari $OA$ ($O_1O_2 \perp OA$). Misalkan $P'$ adalah titik potong kedua garis $BC$ dengan $(ABO)$. Menggunakan sudut berarah modulo $180^\circ$:
+    \begin{align*}
+        \measuredangle(O_1A, AP') &= 90^\circ + \measuredangle(BA, BC), \\
+        \measuredangle(OA, OP') &= \measuredangle(BA, BP') = \measuredangle(BA, BC) \\
+        &= 90^\circ - \measuredangle(CO, CA) = \measuredangle(OA, OO_2),
+    \end{align*}
+    sehingga $O, P', O_2$ segaris. Akibatnya,
+    \[
+        \measuredangle(O_1O_2, O_2P') = \measuredangle(O_1O_2, OA) + \measuredangle(OA, OO_2) = 90^\circ + \measuredangle(BA, BC) = \measuredangle(O_1A, AP'),
+    \]
+    yang berarti $P' \in (AO_1O_2)$. Secara simetris, titik potong kedua $Q'$ dari $BC$ dengan $(ACO)$ juga terletak pada $(AO_1O_2)$, sehingga $P = P' \in (ABO)$ dan $Q = Q' \in (ACO)$.
+
+    Selanjutnya, karena $OB = OC$ dan $B, P, Q, C$ segaris, berlaku
+    \[
+        \measuredangle PAO = \measuredangle PBO = \measuredangle OCQ = \measuredangle OAQ \quad\text{dan}\quad \measuredangle OPA = \measuredangle OBA = \measuredangle BAO = \measuredangle OPQ.
+    \]
+    Dengan demikian, $O$ terletak pada garis bagi dalam sudut $\angle PAQ$ maupun $\angle APQ$, sehingga $O$ adalah pusat lingkaran dalam $\triangle APQ$. Klaim 1 terbukti.
+\end{proof}
+\hrulefill
+\begin{proof}[\textbf{Klaim 2.}] Titik-titik $A$, $O$, dan $O_3$ segaris.\\
+    \textbf{Bukti Klaim.} Karena $O$ adalah pusat lingkaran dalam $\triangle APQ$ dan $O_3$ adalah pusat lingkaran luar $\triangle OPQ$, berdasarkan Lemma \textit{Incenter-Excenter} pada $\triangle APQ$, titik $O_3$ merupakan titik tengah busur $PQ$ (yang tidak memuat $A$) pada lingkaran luar $\triangle APQ$. Akibatnya, garis bagi dalam $AO$ dari $\angle PAQ$ melalui titik $O_3$, sehingga $A$, $O$, dan $O_3$ segaris. Klaim 2 terbukti.
+\end{proof}
+
+\newpage
+\section{Solusi}
+Dari Lemma, $A$, $O$, $O_3$ segaris dengan $O$ di antara $A$ dan $O_3$. Karena $O_1O = O_1B$ dan $DO = DB$, garis $O_1D$ adalah garis sumbu $OB$. Karena $O_2O = O_2Q$ (dari segiempat siklis $AOQC$) dan $O_3O = O_3Q$, garis $O_2O_3$ (yakni $O_3D$) adalah garis sumbu $OQ$.
+
+\input{TikzLatex/51-solusi}
+
+\begin{proof}[\textbf{Klaim 1.}] Segiempat $OO_1O_3D$ siklis dan $\angle O_1AO_3 = \angle O_1DO_3 = C$.\\
+    \textbf{Bukti Klaim.} Dari segiempat siklis $AOQC$ diperoleh $\angle OQB = 180^\circ - \angle OQC = \angle OAC = 90^\circ - B$, sehingga dengan $\angle OBQ = 90^\circ - A$, jumlah sudut $\triangle OBQ$ menyebabkan $\angle BOQ = 180^\circ - C$. Karena $O_1D \perp OB$ dan $O_3D \perp OQ$, diperoleh $\angle O_1DO_3 = 180^\circ - \angle BOQ = C$.
+
+    Di sisi lain, $\angle AO_1O = 2\angle ABO = 180^\circ - 2C$ menyebabkan $\angle O_1AO = \angle AOO_1 = C$ pada segitiga sama kaki $O_1AO$, sehingga $\angle O_1OO_3 = 180^\circ - C$.
+
+    Jadi $\angle O_1DO_3 + \angle O_1OO_3 = 180^\circ$, artinya $OO_1O_3D$ siklis, dan $\angle O_1AO_3 = \angle O_1AO = C = \angle O_1DO_3$. Klaim 1 terbukti.
+\end{proof}
+
+\newpage
+\begin{proof}[\textbf{Klaim 2.}] $AO_3 = O_3D$ jika dan hanya jika $A$, $O_1$, $D$ segaris.\\
+    \textbf{Bukti Klaim.} ($\Leftarrow$) Jika $A$, $O_1$, $D$ segaris dengan $O_1$ di antara $A$ dan $D$, sudut $\angle O_3AD$ dan $\angle O_3DA$ berimpit dengan $\angle O_1AO_3$ dan $\angle O_1DO_3$, sehingga $\angle O_3AD = C = \angle O_3DA$ dan $\triangle O_3AD$ sama kaki dengan $AO_3 = O_3D$.
+
+    ($\Rightarrow$) Jika $AO_3 = O_3D$, Aturan Sinus pada $\triangle O_1AO_3$ dan $\triangle O_1DO_3$ menyebabkan $\sin\angle AO_1O_3 = \sin\angle DO_1O_3$.
+
+    Karena $O_1O_3$ garis sumbu $OP$, diperoleh $\angle OO_1O_3 = \angle OBP = 90^\circ - A$, sehingga
+    \[
+        \angle AO_1O_3 = \angle AO_1O + \angle OO_1O_3 = (180^\circ - 2C) + (90^\circ - A) = 270^\circ - A - 2C;
+    \]
+    karena $A > C$, diperoleh
+    \[
+        \angle DO_1O_3 = \angle DO_1O - \angle OO_1O_3 = (90^\circ - C) - (90^\circ - A) = A - C.
+    \]
+
+    Persamaan sinus tersebut menyebabkan $\angle AO_1O_3 = \angle DO_1O_3$ (yakni $2A + C = 270^\circ$, kontradiksi untuk segitiga lancip) atau $\angle AO_1O_3 + \angle DO_1O_3 = 180^\circ$, yang berarti $A$, $O_1$, $D$ segaris karena $A$ dan $D$ berseberangan terhadap garis $O_1O_3$. Klaim 2 terbukti.
+\end{proof}
+\hrulefill
+
+Dari Klaim 2, terbukti bahwa $AO_3 = O_3D$ jika dan hanya jika titik $A$, $O_1$, $D$ segaris. \qed
+
+\begin{remark*}
+    Dari perhitungan di Klaim 2, $\angle AO_1O_3 + \angle DO_1O_3 = 270^\circ - 3C$. Jadi kedua kondisi di soal sebenarnya sama-sama setara dengan $\angle ACB = 30^\circ$. Gambar di atas memakai $A = 76^\circ$, $B = 74^\circ$, $C = 30^\circ$.
+\end{remark*}
+
+\newpage
+\section{Marking Scheme}
+\begin{enumerate}[1)]
+    \item Mengidentifikasi garis-garis sumbu dan kolinearitas dasar: membuktikan $A$, $O$, $O_3$ segaris (Lemma), $O_1D$ garis sumbu $OB$, serta $O_2O_3$ (yakni $O_3D$) garis sumbu $OQ$. (+2 poin)
+    \item Membuktikan segiempat $OO_1O_3D$ siklis dan kesamaan sudut alas. (+2 poin)
+    \begin{enumerate}[(a)]
+        \item Menghitung $\angle BOQ = 180^\circ - C$ sehingga $\angle O_1DO_3 = C$, serta $\angle O_1AO = \angle AOO_1 = C$. (+1 poin)
+        \item Menyimpulkan $OO_1O_3D$ siklis dan memperoleh hubungan kunci $\angle O_1AO_3 = \angle O_1DO_3 = C$. (+1 poin)
+    \end{enumerate}
+    \item Membuktikan arah ($\Leftarrow$): dari $A$, $O_1$, $D$ segaris ke $AO_3 = O_3D$ via $\triangle O_3AD$ sama kaki. (+1 poin)
+    \item Membuktikan arah ($\Rightarrow$) dan eliminasi kasus degenerasi. (+2 poin)
+    \begin{enumerate}[(a)]
+        \item Menurunkan $\sin\angle AO_1O_3 = \sin\angle DO_1O_3$ dari $AO_3 = O_3D$ via Aturan Sinus. (+1 poin)
+        \item Menghitung $\angle AO_1O_3 = 270^\circ - A - 2C$ dan $\angle DO_1O_3 = A - C$ (memakai $A > C$), lalu mengeliminasi kasus $2A + C = 270^\circ$ memakai syarat segitiga lancip sehingga $A$, $O_1$, $D$ segaris. (+1 poin)
+    \end{enumerate}
+\end{enumerate}
+
+\textit{Catatan: hanya mengutip kolinearitas $A$, $O$, $O_3$ tanpa bukti maksimal 1 poin untuk bagian 1. Mengklaim $\triangle O_1AO_3 \cong \triangle O_1DO_3$ langsung dari SSA tanpa analisis kasus suplemen: $-2$ poin. Lupa menjelaskan mengapa $2A + C = 270^\circ$ kontradiksi: $-1$ poin.}
