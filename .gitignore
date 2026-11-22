@@ -40,4 +40,6 @@ __build_*
 .DS_Store
 *.swp
 *~
-.vscode/
+.vscode/*
+# ...except the shared LaTeX Workshop build config (see CLAUDE.md).
+!.vscode/settings.json

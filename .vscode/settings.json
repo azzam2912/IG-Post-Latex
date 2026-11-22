@@ -1,0 +1,73 @@
+{
+  // ---------------------------------------------------------------
+  // LaTeX Workshop, set up for this repo's conventions:
+  //   * Every post is a body-only fragment; main.tex is the ONLY root.
+  //     Each fragment carries a "%!TEX root = ../main.tex" magic comment,
+  //     so saving ANY .tex file rebuilds main.tex (see CLAUDE.md).
+  //   * PDFs go in "pdfs/" at the repo root, the same folder that
+  //     scripts/build.js writes to.
+  //   * pdflatex runs from the REPO ROOT, so azzam-helvethia.sty,
+  //     0Figure/ and TikzLatex/ relative paths resolve (running it from
+  //     a post folder would not).
+  //   * nonstopmode, never -halt-on-error: a missing 0Figure/ PNG still
+  //     produces a usable PDF.
+  // ---------------------------------------------------------------
+
+  // Build on every save. This workspace setting overrides a global
+  // "latex-workshop.latex.autoBuild.run": "never".
+  "latex-workshop.latex.autoBuild.run": "onSave",
+
+  // Same output folder scripts/build.js uses (-> pdfs/main.pdf).
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/pdfs",
+
+  // Always use the repo recipe below: two pdflatex passes (cross
+  // references / page geometry settle), exactly like scripts/build.js.
+  "latex-workshop.latex.recipe.default": "repo-pdflatex-x2",
+  "latex-workshop.latex.build.forceRecipeUsage": true,
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "repo-pdflatex-x2",
+      "tools": ["repo-pdflatex", "repo-pdflatex"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "repo-pdflatex",
+      "command": "bash",
+      "args": [
+        "-c",
+        "cd \"%WORKSPACE_FOLDER%\" && mkdir -p \"%OUTDIR%\" && pdflatex -synctex=1 -interaction=nonstopmode -file-line-error -output-directory=\"%OUTDIR%\" \"%DOC_EXT%\"; exit 0"
+      ],
+      "env": {}
+    }
+  ],
+
+  // Build on every save, and show the PDF in a VS Code tab.
+  // With autosave on, each save IS a build, so the save delay below is what
+  // debounces compilation: it fires 4s after you stop typing, not mid-keystroke.
+  // (LaTeX Workshop's own autoBuild.interval is only a throttle between builds,
+  // not an idle delay, so it cannot do this job.)
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  // Autosave (and therefore compilation) waits for 4s of idle time.
+  // Applies when files.autoSave is "afterDelay" (your global setting).
+  "files.autoSaveDelay": 4000,
+
+  // Click PDF -> jump to source, and ctrl/cmd-alt-J source -> PDF.
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "latex-workshop.view.pdf.zoom": "page-width",
+
+  // Tidy the build artifacts out of pdfs/, leaving only the PDF.
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux", "*.bbl", "*.blg", "*.idx", "*.ind", "*.lof", "*.lot",
+    "*.out", "*.toc", "*.acn", "*.acr", "*.alg", "*.glg", "*.glo",
+    "*.gls", "*.fls", "*.log", "*.fdb_latexmk", "*.snm", "*.nav",
+    "*.vrb", "*.pre", "*.bcf", "*.run.xml", "*.auxlock", "*.xdv"
+  ],
+
+  // The .synctex.gz is what makes click-to-jump work, so it is NOT in the
+  // clean list above.
+
+  "files.associations": { "*.sty": "latex" }
+}
