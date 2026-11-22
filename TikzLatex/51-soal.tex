@@ -1,0 +1,43 @@
+% Post 51 - figure for the problem statement.
+% Exact configuration A = 76, B = 74, C = 30 (degrees).
+\input{TikzLatex/51-colors}
+\begin{center}
+\begin{tikzpicture}[scale=0.45, line cap=round, line join=round]
+    \clip (-7.6, -12.4) rectangle (9.2, 11.1);
+
+    \coordinate (O)  at (  0.0000,   0.0000);
+    \coordinate (A)  at ( -4.3069,   4.4599);
+    \coordinate (B)  at ( -6.0158,  -1.4999);
+    \coordinate (C)  at (  6.0158,  -1.4999);
+    \coordinate (O1) at ( -3.4409,   0.9867);
+    \coordinate (O2) at (  5.6233,   9.7399);
+    \coordinate (O3) at (  2.1824,  -2.2600);
+    \coordinate (P)  at ( -0.8660,  -1.4999);
+    \coordinate (Q)  at (  5.2308,  -1.4999);
+    \coordinate (D)  at ( -0.3925, -11.2398);
+    \coordinate (K)  at (  2.1824,   4.2334);
+
+    % (ABC), (AO1O2), (OPQ)
+    \draw[color=figcircle, line width=0.55pt] (O) circle (6.2000);
+    \draw[color=figorange, line width=0.55pt, dashed] (K) circle (6.4932);
+    \draw[color=figteal, line width=0.80pt] (O3) circle (3.1417);
+
+    % garis sumbu OB (melalui O1 dan D) dan garis O2O3
+    \draw[color=figaux, line width=0.6pt] ($(D)!-0.03!(O1)$) -- ($(D)!1.30!(O1)$);
+    \draw[color=figaux, line width=0.6pt] ($(O2)!-0.03!(D)$) -- ($(O2)!1.03!(D)$);
+    \draw[color=figaux, line width=0.5pt] (O) -- (B);
+
+    \draw[color=figmain, line width=1.1pt] (A) -- (B) -- (C) -- cycle;
+
+    \fill[figmain] (A)  circle (2.2pt) node[above left]  {$A$};
+    \fill[figmain] (B)  circle (2.2pt) node[below left]  {$B$};
+    \fill[figmain] (C)  circle (2.2pt) node[below right] {$C$};
+    \fill[figmain] (O)  circle (2.2pt) node[above right] {$O$};
+    \fill[crimson] (O1) circle (2.2pt) node[left, xshift=-2pt] {$O_1$};
+    \fill[crimson] (O2) circle (2.2pt) node[above left]  {$O_2$};
+    \fill[crimson] (O3) circle (2.2pt) node[right, xshift=2pt, yshift=-2pt] {$O_3$};
+    \fill[figmain] (P)  circle (2.0pt) node[below left]  {$P$};
+    \fill[figmain] (Q)  circle (2.0pt) node[below, xshift=-4pt] {$Q$};
+    \fill[crimson] (D)  circle (2.2pt) node[below left]  {$D$};
+\end{tikzpicture}
+\end{center}

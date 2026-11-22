@@ -1,0 +1,53 @@
+% Post 51 - figure for the solution.
+% Exact configuration A = 76, B = 74, C = 30 (degrees), where
+% A, O1, D are collinear and AO3 = O3D.
+\input{TikzLatex/51-colors}
+\begin{center}
+\begin{tikzpicture}[scale=0.40, line cap=round, line join=round]
+    \clip (-7.5, -12.3) rectangle (7.5, 10.6);
+
+    \coordinate (O)  at (  0.0000,   0.0000);
+    \coordinate (A)  at ( -4.3069,   4.4599);
+    \coordinate (B)  at ( -6.0158,  -1.4999);
+    \coordinate (C)  at (  6.0158,  -1.4999);
+    \coordinate (O1) at ( -3.4409,   0.9867);
+    \coordinate (O2) at (  5.6233,   9.7399);
+    \coordinate (O3) at (  2.1824,  -2.2600);
+    \coordinate (P)  at ( -0.8660,  -1.4999);
+    \coordinate (Q)  at (  5.2308,  -1.4999);
+    \coordinate (D)  at ( -0.3925, -11.2398);
+
+    \draw[color=figcircle, line width=0.55pt] (O)  circle (6.2000);
+    \draw[color=figteal,   line width=0.80pt] (O3) circle (3.1417);
+    \draw[color=figorange, line width=0.5pt, dashed] (O1) circle (3.5796);
+    \draw[color=figorange, line width=0.5pt, dashed] (O2) circle (11.2467);
+
+    \draw[color=figaux, line width=0.5pt] (O) -- (A);
+    \draw[color=figaux, line width=0.5pt] (O) -- (B);
+    \draw[color=figaux, line width=0.5pt] (O) -- (C);
+    \draw[color=figaux, line width=0.5pt] (O) -- (P);
+    \draw[color=figaux, line width=0.5pt] (O) -- (Q);
+    \draw[color=figaux, line width=0.5pt] (O1) -- (O);
+    \draw[color=figaux, line width=0.5pt] (O1) -- (O3);
+
+    % A - O - O3 segaris
+    \draw[color=crimson, line width=0.85pt] ($(A)!-0.08!(O3)$) -- ($(A)!1.12!(O3)$);
+    % A - O1 - D (garis sumbu OB)
+    \draw[color=crimson, line width=0.85pt] ($(A)!-0.06!(D)$) -- ($(A)!1.05!(D)$);
+    % garis sumbu OQ (melalui O2, O3, D)
+    \draw[color=figteal, line width=0.85pt] ($(O2)!-0.03!(D)$) -- ($(O2)!1.04!(D)$);
+
+    \draw[color=figmain, line width=1.1pt] (A) -- (B) -- (C) -- cycle;
+
+    \fill[figmain] (A)  circle (2.2pt) node[above left]  {$A$};
+    \fill[figmain] (B)  circle (2.2pt) node[below left]  {$B$};
+    \fill[figmain] (C)  circle (2.2pt) node[below right] {$C$};
+    \fill[figmain] (O)  circle (2.2pt) node[above right] {$O$};
+    \fill[crimson] (O1) circle (2.2pt) node[left, xshift=-2pt] {$O_1$};
+    \fill[figmain] (O2) circle (2.0pt) node[above left]  {$O_2$};
+    \fill[crimson] (O3) circle (2.2pt) node[right, xshift=2pt, yshift=-1pt] {$O_3$};
+    \fill[figmain] (P)  circle (2.0pt) node[below left]  {$P$};
+    \fill[figmain] (Q)  circle (2.0pt) node[below, xshift=-4pt] {$Q$};
+    \fill[crimson] (D)  circle (2.2pt) node[below left]  {$D$};
+\end{tikzpicture}
+\end{center}

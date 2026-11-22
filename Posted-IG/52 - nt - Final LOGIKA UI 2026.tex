@@ -1,0 +1,86 @@
+% Final LOGIKA UI 2026 - Teori Bilangan
+\begin{center}
+    {\color{crimson}\textbf{\Huge Final LOGIKA UI 2026: Teori Bilangan}}\\[4pt]
+    {\color{inksoft}\textbf{\large Problem \& Solution by Azzam L. H.}}
+\end{center}
+
+\section{Soal}
+Tentukan semua bilangan bulat positif $m$ sedemikian sehingga terdapat tak hingga banyaknya bilangan bulat positif $N$ yang memenuhi ketiga syarat berikut sekaligus:
+\begin{enumerate}[(i)]
+    \item $N$ merupakan bilangan palindrom dalam basis $10$;
+    \item $N$ habis dibagi $m$; dan
+    \item jumlah semua digit dari $N$ juga habis dibagi $m$.
+\end{enumerate}
+
+\newpage
+\section{Motivasi dan Walkthrough}
+    \begin{itemize}
+        \item Cek dulu yang gampang: kalau $10 \mid m$, digit satuan $N$ pasti $0$. Palindrom kok diawali $0$? Jadi kelipatan $10$ langsung gugur.
+        \item Kalau $\fpb(m, 10) = 1$, ingat Teorema Euler: $10^{\varphi(m)} \equiv 1 \pmod{m}$. Artinya, kalau kita tempel satu blok angka berulang-ulang dengan jarak kelipatan $\varphi(m)$, setiap copy blok "terlihat sama" modulo $m$.
+        \item Ambil banyaknya copy kelipatan $m$. Dengan begitu sisa pembagian $N$ dan jumlah digitnya sama-sama beres. Kenapa $2m$ copy, bukan $m$? Coba pikirin kasus $m = 1$.
+        \item Faktor $2^u$ dan $5^v$ hanya peduli pada digit-digit belakang. Triknya: taruh $r = 2^u 5^v$ di belakang, lalu kebalikannya di depan, jadilah palindrom.
+    \end{itemize}
+
+\textbf{Contoh $m = 12 = 2^2 \cdot 3$.} Di sini $r = 4$ ditulis dua digit sebagai $04$, kebalikannya $40$, jadi blok $B = 4004$ (habis dibagi $4$). Karena $\varphi(3) = 2$, ambil jarak $L = 8$ dan tempel $24$ copy:
+\[
+    N = \underbrace{4004\,0000\,4004\,0000 \cdots 0000\,4004}_{24 \text{ copy } 4004}.
+\]
+$N$ palindrom, $12 \mid N$, dan jumlah digitnya $24 \cdot 8 = 192 = 12 \cdot 16$.
+
+\newpage
+\section{Solusi}
+\textbf{Jawaban:} Semua bilangan bulat positif $m$ sedemikian sehingga $\mathbf{10 \nmid m}$.
+
+\medskip
+Untuk setiap bilangan bulat positif $N$, tulis $S(N)$ untuk jumlah digit-digit $N$ dalam basis $10$.
+
+\begin{proof}[\textbf{Klaim 1.}] Jika $10 \mid m$, tak ada $N$ yang memenuhi (i) dan (ii) sekaligus.\\
+    \textbf{Bukti Klaim.} Jika $m \mid N$ dan $10 \mid m$, maka digit satuan $N$ adalah $0$ sedangkan digit paling kirinya bukan $0$, sehingga $N$ bukan palindrom. Klaim 1 terbukti.
+\end{proof}
+\hrulefill
+\begin{proof}[\textbf{Klaim 2.}] Misalkan $10 \nmid m$ dan $m = 2^u 5^v m'$ dengan $\min(u, v) = 0$ serta $\fpb(m', 10) = 1$. Dengan $d = \max(u, v, 1)$ dan $r = 2^u 5^v$, terdapat palindrom $2d$-digit $B$ dengan $r \mid B$.\\
+    \textbf{Bukti Klaim.} Karena $\min(u, v) = 0$, $r$ berbentuk $2^u$ atau $5^v$ sehingga $1 \le r \le 5^d < 10^d$ dan $10 \nmid r$. Tuliskan $r = \sum_{i=0}^{d-1} c_i 10^i$ berisi tepat $d$ digit (boleh diawali angka $0$) dengan $c_0 \ne 0$.
+
+    Definisikan reversal-nya $\overline{r} = \sum_{i=0}^{d-1} c_{d-1-i} 10^i$, yang tidak diawali $0$. Maka $B = \overline{r} \cdot 10^d + r$ adalah palindrom $2d$-digit, dan $r \mid 10^d$ menyebabkan $r \mid B$. Klaim 2 terbukti.
+\end{proof}
+\hrulefill
+
+\newpage
+\begin{proof}[\textbf{Klaim 3.}] Untuk setiap $m$ dengan $10 \nmid m$, terdapat tak hingga banyaknya $N$ yang memenuhi (i), (ii), dan (iii).\\
+    \textbf{Bukti Klaim.} Dengan notasi Klaim 2, Teorema Euler menyebabkan $10^{\varphi(m')} \equiv 1 \pmod{m'}$. Untuk $k \ge 2d$, definisikan $L_k = k\varphi(m') \ge 2d$ dan
+    \[
+        N_k = B \sum_{j=0}^{2m-1} 10^{j L_k}.
+    \]
+
+    Karena $L_k \ge 2d$, desimal $N_k$ memuat tepat $2m \ge 2$ copy dari blok $B$ yang tidak overlap dan tersusun simetris, sehingga (i) $N_k$ palindrom.
+
+    Lalu $r \mid B \mid N_k$ dan $10^{L_k} \equiv 1 \pmod{m'}$ menyebabkan $N_k \equiv 2mB \equiv 0 \pmod{m'}$, sehingga (ii) $m \mid N_k$ karena $\fpb(r, m') = 1$.
+
+    Karena copy-copy blok $B$ tidak overlap, (iii) $S(N_k) = 2m \cdot S(B)$ habis dibagi $m$. Akhirnya $L_k$ naik ketat terhadap $k$, sehingga $N_k$ saling berbeda. Klaim 3 terbukti.
+\end{proof}
+\hrulefill
+
+Dari Klaim 1 dan Klaim 3, terbukti bahwa jawabannya adalah semua bilangan bulat positif $m$ dengan $10 \nmid m$. \qed
+
+\newpage
+\section{Marking Scheme}
+\begin{enumerate}[1)]
+    \item Menyatakan jawaban $10 \nmid m$ dan membuktikan syarat perlu: jika $10 \mid m$ maka tak ada $N$ yang memenuhi (i) dan (ii) (digit satuan $0$). (+1 poin)
+    \item Memfaktorkan $m$ dan mengonstruksi blok palindrom $B$. (+2 poin)
+    \begin{enumerate}[(a)]
+        \item Menuliskan $m = 2^u 5^v m'$ dengan $\fpb(m', 10) = 1$ serta mendefinisikan $d$ dan $r = 2^u 5^v$. (+1 poin)
+        \item Mengonstruksi $B = \overline{r} \cdot 10^d + r$ palindrom $2d$-digit tanpa nol di depan yang habis dibagi $r$. (+1 poin)
+    \end{enumerate}
+    \item Menyusun pengulangan simetris blok $B$. (+2 poin)
+    \begin{enumerate}[(a)]
+        \item Menerapkan Teorema Euler $10^{k\varphi(m')} \equiv 1 \pmod{m'}$ dengan jarak antar blok $L_k \ge 2d$. (+1 poin)
+        \item Menyusun $N_k$ memakai $2m$ copy dari blok $B$ yang tidak overlap. (+1 poin)
+    \end{enumerate}
+    \item Memverifikasi ketiga syarat secara lengkap. (+2 poin)
+    \begin{enumerate}[(a)]
+        \item Sifat palindrom $N_k$ dan $m \mid N_k$ via $\fpb(2^u 5^v, m') = 1$. (+1 poin)
+        \item $m \mid S(N_k) = 2m \cdot S(B)$ serta tak hingga banyaknya solusi berbeda (termasuk kasus $m = 1$). (+1 poin)
+    \end{enumerate}
+\end{enumerate}
+
+\textit{Catatan: hanya menangani $\fpb(m, 10) = 1$ tanpa faktor $2^u$ atau $5^v$: $-1$ poin. Reversal dari $r$ tanpa nol pelengkap $d$-digit: $-1$ poin. Jarak antar blok $< 2d$ sehingga overlap: $-1$ poin. Pengulangan $m$ kali (bukan $2m$) tanpa cek kasus $m = 1$: $-0$ sampai $-1$ poin.}

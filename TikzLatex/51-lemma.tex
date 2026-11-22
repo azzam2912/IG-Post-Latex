@@ -1,0 +1,43 @@
+% Post 51 - figure for the JMO 2025 Final lemma.
+\input{TikzLatex/51-colors}
+\begin{center}
+\begin{tikzpicture}[scale=0.50, line cap=round, line join=round]
+    \coordinate (A)  at (-7.572, 11.157);
+    \coordinate (B)  at (-14.255, 0.689);
+    \coordinate (C)  at (1.678, 0.818);
+    \coordinate (O)  at (-6.307, 2.982);
+    \coordinate (O1) at (-11.584, 6.350);
+    \coordinate (O2) at (-0.650, 8.042);
+    \coordinate (O3) at (-5.834, -0.077);
+    \coordinate (P)  at (-8.821, 0.733);
+    \coordinate (Q)  at (-2.860, 0.781);
+
+    \draw[color=figcircle, line width=0.5pt] (-5.880, 5.667) circle (5.744);
+    \draw[color=figorange, line width=0.5pt, dashed] (O1) circle (6.261);
+    \draw[color=figorange, line width=0.5pt, dashed] (O2) circle (7.590);
+    \draw[color=figteal,   line width=0.75pt] (O3) circle (3.095);
+
+    \draw[color=figaux, line width=0.55pt] (A) -- (O);
+    \draw[color=figaux, line width=0.55pt] (O) -- (C);
+    \draw[color=figaux, line width=0.55pt] (B) -- (O);
+    \draw[color=figaux, line width=0.55pt] (P) -- (A);
+    \draw[color=figaux, line width=0.55pt] (A) -- (Q);
+    \draw[color=figaux, line width=0.55pt] (O1) -- (Q);
+    \draw[color=figaux, line width=0.55pt] (P) -- (O2);
+    \draw[color=figaux, line width=0.55pt] (O1) -- (O2);
+    \draw[color=figaux, line width=0.55pt] (O3) -- (P);
+    \draw[color=crimson, line width=0.85pt] ($(A)!-0.06!(O3)$) -- ($(A)!1.10!(O3)$);
+
+    \draw[color=figmain, line width=1.1pt] (A) -- (B) -- (C) -- cycle;
+
+    \fill[figmain] (A)  circle (2.2pt) node[above right] {$A$};
+    \fill[figmain] (B)  circle (2.2pt) node[below left]  {$B$};
+    \fill[figmain] (C)  circle (2.2pt) node[below right] {$C$};
+    \fill[crimson] (O)  circle (2.4pt) node[above right] {$O$};
+    \fill[figmain] (O1) circle (2.2pt) node[above left]  {$O_1$};
+    \fill[figmain] (O2) circle (2.2pt) node[above right] {$O_2$};
+    \fill[crimson] (O3) circle (2.4pt) node[below right] {$O_3$};
+    \fill[figmain] (P)  circle (2.0pt) node[below, yshift=-2pt] {$P$};
+    \fill[figmain] (Q)  circle (2.0pt) node[below, yshift=-2pt] {$Q$};
+\end{tikzpicture}
+\end{center}
