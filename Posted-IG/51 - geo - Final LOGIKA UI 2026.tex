@@ -2,7 +2,7 @@
 % Final LOGIKA UI 2026 - Geometri
 \begin{center}
     {\color{crimson}\textbf{\Huge Final LOGIKA UI 2026: Geometri}}\\[4pt]
-    {\color{inksoft}\textbf{\large Problem \& Solution by Azzam L. H.}}
+    {\color{inksoft}\textbf{\large Problem and Solution proposed by Azzam L. H.}}
 \end{center}
 
 \section{Soal}
@@ -14,11 +14,17 @@ Diberikan segitiga lancip $ABC$ dengan $\angle BAC > \angle ACB$ dan pusat lingk
 \input{TikzLatex/51-soal}
 
 \newpage
-\section{Motivasi dan Walkthrough}
-Nemu soal ini dari soal \textcrimson{\textbf{Japan MO 2025 Final}}. Lebih kayak, bro, ini soal apaan "aneh" juga: $A$, $O$, $O_3$ segaris. Nah terus aku ada soal Iran (yang mana ngga aku catat tahun berapa, terlalu malas aku ceknya itu tahun berapa), yang ada konfigurasi 30 derajat (nanti di solusi ini ada). Nah terus main-main di GeoGebra, jadilah, soal cantik tapi mematikan ini.
+\section{Motivasi dan Cerita Terbentuknya Soal Ini}
+Kalo ngga salah sekitar bulan Agustus-September 2026 ini, aku lagi iseng \textit{scrolling} AoPS, soalnya aku juga lagi ngescrapping bank-bank soal buat dimasukin ke \url{helvethia.web.id}. Nah, ternyata di AoPS, soal-soal Jepang sempat di"hide" oleh moderator (karena \textit{copyright problem} (?)).
+
+Yaudah, aku cari lah di sumber aslinya \url{imojp.org} dan akhirnya nemu. Singkat cerita, setelah ngescrap dan ngumpulin jadi bank soal, tentu saja aku coba-coba lah dari soal yang tahunnya agak baru. Karena aku lihat yang tahun 2026 dan ngga terlalu suka, akhirnya setelah nyoba soal geometrinya \textcrimson{\textbf{Japan MO 2025 Final}}, aku langsung suka. 
+
+Ya, random aja pas nemu ini kayak, "bro, ini soal apaan aneh juga" : $A$, $O$, $O_3$ segaris.
+
+Yaudahlah, karena emang kebetulan sekitar September-Oktober diminta jadi tim soal LOGIKA UI 2026, aku coba lah ulik ini soal. Singkat cerita (time skip ke awal November), setelah agak berdebu, aku nemu lagi bank soal yang aku tulis di buku tulis, dan sialnya lupa aku tulis sumber tahunnya (\textit{but I know it's an Iranian MO problem, maybe?}) yang mana ngga aku catat tahun berapa, terlalu malas aku ceknya itu tahun berapa. Dari situ, aku coba lah idenya (perpotongan garis dan lingkaran) dan seperti peyuka soal geometri pada umumnya, aku teruskan dengan main-main di GeoGebra. Dan ya, setelah nemu momen "aha"nya jadilah, soal cantik tapi mematikan ini. (No, Andrew adalah anomali, mana ada orang normal bisa solve ini 5 menit broo x\_x).
 
 \newpage
-\section{Lemma (Japan MO 2025 Final)}
+\section{Lemma Inspirasi Utama Soal Ini (Japan MO 2025 Final)}
 \begin{lemma*}
     Diberikan segitiga lancip $ABC$ dengan pusat lingkaran luar $O$. Misalkan $O_1$ dan $O_2$ berturut-turut adalah pusat lingkaran luar segitiga $ABO$ dan $ACO$. Lingkaran luar segitiga $AO_1O_2$ memotong sisi $BC$ di dua titik berbeda $P$ dan $Q$ dengan urutan $B, P, Q, C$. Jika $O_3$ adalah pusat lingkaran luar segitiga $OPQ$, maka titik $A$, $O$, dan $O_3$ segaris. Lebih jauh, titik $P$ terletak pada lingkaran luar segitiga $ABO$, titik $Q$ terletak pada lingkaran luar segitiga $ACO$, dan $O$ adalah pusat lingkaran dalam segitiga $APQ$.
 \end{lemma*}
@@ -30,8 +36,7 @@ Nemu soal ini dari soal \textcrimson{\textbf{Japan MO 2025 Final}}. Lebih kayak,
     \textbf{Bukti Klaim.} Karena $O_1$ adalah pusat $(ABO)$ dan $O_2$ adalah pusat $(ACO)$, garis hubung pusat $O_1O_2$ merupakan garis sumbu dari $OA$ ($O_1O_2 \perp OA$). Misalkan $P'$ adalah titik potong kedua garis $BC$ dengan $(ABO)$. Menggunakan sudut berarah modulo $180^\circ$:
     \begin{align*}
         \measuredangle(O_1A, AP') &= 90^\circ + \measuredangle(BA, BC), \\
-        \measuredangle(OA, OP') &= \measuredangle(BA, BP') = \measuredangle(BA, BC) \\
-        &= 90^\circ - \measuredangle(CO, CA) = \measuredangle(OA, OO_2),
+        \measuredangle(OA, OP') &= \measuredangle(BA, BP') = \measuredangle(BA, BC) = 90^\circ - \measuredangle(CO, CA) = \measuredangle(OA, OO_2),
     \end{align*}
     sehingga $O, P', O_2$ segaris. Akibatnya,
     \[
@@ -49,10 +54,11 @@ Nemu soal ini dari soal \textcrimson{\textbf{Japan MO 2025 Final}}. Lebih kayak,
 \begin{proof}[\textbf{Klaim 2.}] Titik-titik $A$, $O$, dan $O_3$ segaris.\\
     \textbf{Bukti Klaim.} Karena $O$ adalah pusat lingkaran dalam $\triangle APQ$ dan $O_3$ adalah pusat lingkaran luar $\triangle OPQ$, berdasarkan Lemma \textit{Incenter-Excenter} pada $\triangle APQ$, titik $O_3$ merupakan titik tengah busur $PQ$ (yang tidak memuat $A$) pada lingkaran luar $\triangle APQ$. Akibatnya, garis bagi dalam $AO$ dari $\angle PAQ$ melalui titik $O_3$, sehingga $A$, $O$, dan $O_3$ segaris. Klaim 2 terbukti.
 \end{proof}
+Dapat disimpulkan dari Klaim 2, lemma "Lemma Jepang" ini terbukti.
 
 \newpage
 \section{Solusi}
-Dari Lemma, $A$, $O$, $O_3$ segaris dengan $O$ di antara $A$ dan $O_3$. Karena $O_1O = O_1B$ dan $DO = DB$, garis $O_1D$ adalah garis sumbu $OB$. Karena $O_2O = O_2Q$ (dari segiempat siklis $AOQC$) dan $O_3O = O_3Q$, garis $O_2O_3$ (yakni $O_3D$) adalah garis sumbu $OQ$.
+Dari \textcrimson{\textbf{Lemma Jepang tersebut}}, $A$, $O$, $O_3$ segaris dengan $O$ di antara $A$ dan $O_3$. Karena $O_1O = O_1B$ dan $DO = DB$, garis $O_1D$ adalah garis sumbu $OB$. Karena $O_2O = O_2Q$ (dari segiempat siklis $AOQC$) dan $O_3O = O_3Q$, garis $O_2O_3$ (yakni $O_3D$) adalah garis sumbu $OQ$.
 
 \input{TikzLatex/51-solusi}
 
@@ -91,6 +97,7 @@ Dari Klaim 2, terbukti bahwa $AO_3 = O_3D$ jika dan hanya jika titik $A$, $O_1$,
 
 \newpage
 \section{Marking Scheme yang diajukan (Bisa berbeda dengan yang dipakai juri, ya saya bukan jurinya)}
+Total poin yang saya asumsikan adalah 7 poin bilangan bulat non negatif, bisa jadi berbeda dengan yang dipakai juri.
 \begin{enumerate}[1)]
     \item Mengidentifikasi garis-garis sumbu dan kolinearitas dasar: membuktikan $A$, $O$, $O_3$ segaris (Lemma), $O_1D$ garis sumbu $OB$, serta $O_2O_3$ (yakni $O_3D$) garis sumbu $OQ$. (+2 poin)
     \item Membuktikan segiempat $OO_1O_3D$ siklis dan kesamaan sudut alas. (+2 poin)
